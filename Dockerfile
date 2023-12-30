@@ -17,9 +17,8 @@ RUN \
     else echo "Lockfile not found." && exit 1; \
     fi
 
-
 # Rebuild the source code only when needed
-FROM base AS builder
+FROM deps AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -29,16 +28,17 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN yarn build
+ARG NODE_ENV=production
+RUN if [ "$NODE_ENV" = "production" ]; then yarn build; fi
 
 # If using npm comment out above and use below instead
-# RUN npm run build
+# RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
 
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV $NODE_ENV
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
