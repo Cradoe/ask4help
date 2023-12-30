@@ -1,4 +1,4 @@
-name: Push Image to Container Registory
+name: Push Image to Container Registry
 
 on:
   push:
@@ -36,9 +36,12 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          # Build a docker container and
-          # push it to ECR so that it can
-          # be deployed to ECS.
+          # Build a docker container and push it to ECR so that it can be deployed to ECS.
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:Frontend-$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:Frontend-$IMAGE_TAG
+
+          # Tag the same image as 'Latest' and push this tag as well
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:Frontend-$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:Latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:Latest
+
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:Frontend-$IMAGE_TAG" >> $GITHUB_OUTPUT
