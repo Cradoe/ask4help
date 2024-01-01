@@ -59,10 +59,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 
 # Container healthcheck for container service
-HEALTHCHECK \
-    --interval=30s \
-    --timeout=3s \
-    CMD curl -f http://localhost:3000/api/healthcheck || exit 1
+# HEALTHCHECK \
+#     --interval=30s \
+#     --timeout=3s \
+#     CMD curl -f http://localhost:3000/api/healthcheck || exit 1
 
 
 EXPOSE 3000
