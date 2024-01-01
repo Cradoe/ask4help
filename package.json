@@ -15,10 +15,13 @@
     "*.js": "eslint --cache --fix"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "clsx": "^2.1.0",
     "husky": "^8.0.3",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-icons": "^4.12.0"
   },
   "devDependencies": {
     "@types/node": "^20",
