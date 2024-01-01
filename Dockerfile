@@ -58,9 +58,18 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-EXPOSE 3000
+# Container healthcheck for container service
+HEALTHCHECK \
+    --interval=3s \
+    --retries=3 \
+    --timeout=30s \
+    CMD curl -f http://localhost:3000/ || exit 1
 
+
+EXPOSE 3000
 ENV PORT 3000
+
+
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
 
