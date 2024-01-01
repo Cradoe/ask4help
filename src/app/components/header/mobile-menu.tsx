@@ -1,9 +1,9 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
+import { useMobileHeader } from "hooks/common";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import { TfiClose } from "react-icons/tfi";
@@ -14,37 +14,18 @@ type Menu = {
 };
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [isOpen, setIsOpen] = useState(false);
-  const openMobileMenu = () => setIsOpen(true);
-  const closeMobileMenu = () => setIsOpen(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsOpen(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [isOpen]);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname, searchParams]);
-
+  const { isOpen, toggleMobileMenu } = useMobileHeader();
   return (
     <>
       <button
-        onClick={openMobileMenu}
+        onClick={toggleMobileMenu}
         aria-label="Open mobile menu"
         className="bg-secondary-400 flex h-10 w-10 items-center justify-center rounded-full text-primary-600 transition-colors md:hidden"
       >
         <RxHamburgerMenu className="h-4" />
       </button>
       <Transition show={isOpen}>
-        <Dialog onClose={closeMobileMenu} className="relative z-50">
+        <Dialog onClose={toggleMobileMenu} className="relative z-50">
           <Transition.Child
             as={Fragment}
             enter="transition-all ease-in-out duration-300"
@@ -70,7 +51,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 <div className="flex justify-end">
                   <button
                     className="bg-secondary-400 flex h-10 w-10 items-center justify-center rounded-full text-primary-600 transition-colors md:hidden"
-                    onClick={closeMobileMenu}
+                    onClick={toggleMobileMenu}
                     aria-label="Close mobile menu"
                   >
                     <TfiClose className="h-6" />
@@ -80,7 +61,11 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 <ul className="flex w-full flex-col">
                   {menu.map((item: Menu) => (
                     <li className="py-2 transition-colors" key={item.title}>
-                      <Link href={item.path} onClick={closeMobileMenu}>
+                      <Link
+                        href={item.path}
+                        onClick={toggleMobileMenu}
+                        className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                      >
                         {item.title}
                       </Link>
                     </li>
