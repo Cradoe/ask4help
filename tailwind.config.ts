@@ -23,6 +23,7 @@ const config: Config = {
       spacing: {
         wrapper: "1rem",
         "wrapper-md": "1.7rem",
+        "wrapper-lg": "3.7rem",
         "wrapper-xl": "5rem",
       },
       screens: {
@@ -30,6 +31,7 @@ const config: Config = {
       },
       backgroundImage: {
         "desktop-hero-bg": "url('/desktop-hero-image.svg')",
+        "mobile-hero-bg": "url('/mobile-hero-image.svg')",
       },
     },
   },
