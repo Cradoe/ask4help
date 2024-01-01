@@ -8,3 +8,9 @@ services:
     image: ask4help-frontend
     ports:
       - "3000:3000"
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: ask4help-frontend
+        awslogs-region: us-east-1
+        awslogs-stream-prefix: ask4help-frontend
