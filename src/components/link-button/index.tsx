@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ButtonProps } from "./type";
 import { clsx } from "clsx";
+import { archivo } from "lib/font";
 
 export const LinkButton = (props: ButtonProps) => {
   const {
@@ -45,6 +46,7 @@ export const LinkButton = (props: ButtonProps) => {
         href={href}
         className={clsx(
           "transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 font-medium  text-sm text-center flex items-center focus:ring-offset-2",
+          archivo.className,
           justifyContent,
           radius,
           variantClass(),
