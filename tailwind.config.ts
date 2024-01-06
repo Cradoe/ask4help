@@ -35,8 +35,9 @@ const config: Config = {
         "4xl": "2560px",
       },
       backgroundImage: {
-        "desktop-hero-bg": "url('/desktop-hero-image.svg')",
-        "mobile-hero-bg": "url('/mobile-hero-image.svg')",
+        "desktop-hero-bg": "url('/desktop-hero-image.png')",
+        "mobile-hero-bg": "url('/mobile-hero-image.png')",
+        "footer-bg": "url('/footer-bg.png')",
       },
     },
   },

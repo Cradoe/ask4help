@@ -15,7 +15,7 @@ export const FaqItem = ({
     {...rest}
     header={({ state: { isEnter } }) => (
       <>
-        <div className="font-medium w-3/4 xl:w-2/4">{header}</div>
+        <div className="font-medium lg:text-xl w-3/4 xl:w-2/4">{header}</div>
         <div
           className={clsx(
             "ml-auto transition-transform duration-200 ease-out h-10 w-10 flex items-center justify-center rounded-full",

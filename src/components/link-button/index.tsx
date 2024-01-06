@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { ButtonProps } from "./type";
 import { clsx } from "clsx";
@@ -44,6 +45,9 @@ export const LinkButton = (props: ButtonProps) => {
     <>
       <Link
         href={href}
+        onClick={(e) => {
+          onClick?.(e);
+        }}
         className={clsx(
           "transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 font-medium  text-sm text-center flex items-center focus:ring-offset-2",
           archivo.className,

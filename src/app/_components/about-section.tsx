@@ -4,7 +4,10 @@ import Image from "next/image";
 
 export const AboutSection = () => {
   return (
-    <section className="mt-40 bg-primary-100 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl grid grid-cols-1 lg:grid-cols-2 gap-12 py-20">
+    <section
+      id="about"
+      className="mt-20 md:mt-32 xl:mt-40 bg-primary-100 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-x-0 py-20"
+    >
       <div className="space-y-7 xl:p-10 xl:mr-10">
         <div>
           <div
@@ -38,10 +41,10 @@ export const AboutSection = () => {
       </div>
       <div className="order-first lg:order-last">
         <Image
-          src="/about-image.svg"
-          height={200}
-          width={50}
-          className="w-full xl:w-[80%] h-auto"
+          src="/about-image.webp"
+          height={480}
+          width={500}
+          className="w-full xl:w-[80%] h-auto mx-auto"
           alt="2 ladies and a guy smiling"
         />
       </div>
