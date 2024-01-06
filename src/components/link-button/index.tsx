@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { ButtonProps } from "./type";
 import { clsx } from "clsx";
