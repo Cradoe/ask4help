@@ -1,7 +1,7 @@
 export type ButtonVariant = "primary" | "secondary" | "transparent";
 
 export type ButtonProps = {
-  onClick?: () => void;
+  onClick?: Function;
   variant?: ButtonVariant;
   children: React.ReactNode;
   href: string;

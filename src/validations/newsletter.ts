@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const newsletterValidationSchema = yup.object().shape({
+export const waitlistValidationSchema = yup.object().shape({
   fullname: yup
     .string()
     .required("Please enter your fullname")

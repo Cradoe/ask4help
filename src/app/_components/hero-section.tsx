@@ -25,7 +25,7 @@ export const HeroSection = () => {
             size="md"
             href="/#waitlist"
             radius="rounded-full"
-            className="gap-2"
+            className="gap-2 h-12"
           >
             <span>Join Waitlist</span> <FaArrowRightLong />
           </LinkButton>
