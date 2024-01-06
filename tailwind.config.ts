@@ -37,6 +37,7 @@ const config: Config = {
       backgroundImage: {
         "desktop-hero-bg": "url('/desktop-hero-image.svg')",
         "mobile-hero-bg": "url('/mobile-hero-image.svg')",
+        "footer-bg": "url('/footer-bg.png')",
       },
     },
   },

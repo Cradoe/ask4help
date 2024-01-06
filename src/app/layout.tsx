@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "components/header";
 import { workSans } from "lib/font";
+import { Footer } from "components/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className={`${workSans.className}`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
