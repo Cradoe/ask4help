@@ -26,7 +26,7 @@ const menu: Menu[] = [
   },
 ];
 
-export const Header = async () => {
+export const Header = () => {
   return (
     <header className="bg-secondary-600 ">
       <nav className="relative flex items-center justify-between px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl py-10">
