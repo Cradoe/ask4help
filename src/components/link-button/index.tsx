@@ -44,7 +44,9 @@ export const LinkButton = (props: ButtonProps) => {
     <>
       <Link
         href={href}
-        onClick={onClick}
+        onClick={() => {
+          onClick?.();
+        }}
         className={clsx(
           "transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 font-medium  text-sm text-center flex items-center focus:ring-offset-2",
           archivo.className,
