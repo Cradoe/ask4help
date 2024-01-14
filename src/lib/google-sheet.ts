@@ -45,7 +45,6 @@ const getOuth2AccessToken = async (jwtToken: string): Promise<string> => {
 
 export const saveToGoogleSheet = async (data: string[]): Promise<boolean> => {
   const accessToken = await getGoogleSheetsAccessToken();
-  const range = "Sheet1!A2";
 
   const response = await fetch(
     `https://sheets.googleapis.com/v4/spreadsheets/${process.env.GOOGLE_SHEETS_SUBSCRIBERS_ID}/values/${process.env.GOOGLE_SHEETS_SUBSCRIBERS_PAGE}:append?valueInputOption=USER_ENTERED`,
@@ -56,7 +55,7 @@ export const saveToGoogleSheet = async (data: string[]): Promise<boolean> => {
         Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
-        range,
+        range: process.env.GOOGLE_SHEETS_SUBSCRIBERS_PAGE,
         values: [data],
       }),
     }
