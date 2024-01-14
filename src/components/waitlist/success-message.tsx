@@ -27,10 +27,10 @@ export const SuccessMessage = ({ onClose }: { onClose: Function }) => {
           Congratulations! 🎉
         </h5>
         <p className="w-full 2xl:w-2/4 mx-auto text-sm lg:text-lg text-[#484559]">
-          You've just taken the first exciting step towards a world of
-          educational opportunities. By joining our waitlist, you've secured
-          your spot for exclusive access to personalized advisory services that
-          will make your schooling abroad dreams a reality.
+          You&apos;ve just taken the first exciting step towards a world of
+          educational opportunities. By joining our waitlist, you&apos;ve
+          secured your spot for exclusive access to personalized advisory
+          services that will make your schooling abroad dreams a reality.
         </p>
       </div>
       <hr className="my-10" />
