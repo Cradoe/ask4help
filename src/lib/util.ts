@@ -16,3 +16,27 @@ export const scrollToElement = (
     });
   }
 };
+
+export const validateEnvironmentVariables = () => {
+  const requiredEnvironmentVariables = [
+    "GOOGLE_SHEETS_SERVICE_ACCOUNT",
+    "GOOGLE_SHEETS_PRIVATE_KEY",
+    "GOOGLE_SHEETS_SUBSCRIBERS_ID",
+    "GOOGLE_SHEETS_SUBSCRIBERS_PAGE",
+  ];
+  const missingEnvironmentVariables = [] as string[];
+
+  requiredEnvironmentVariables.forEach((envVar) => {
+    if (!process.env[envVar]) {
+      missingEnvironmentVariables.push(envVar);
+    }
+  });
+
+  if (missingEnvironmentVariables.length) {
+    throw new Error(
+      `The following environment variables are missing. This site will not work without them. \n${missingEnvironmentVariables.join(
+        "\n"
+      )}\n`
+    );
+  }
+};
