@@ -16,7 +16,7 @@ export const AppFeature = ({
         width={600}
         className="w-full h-auto"
       />
-      <div className="px-4 md:px-8 py-10">
+      <div className="px-4 md:px-8 py-10 min-h-72">
         <div
           className={clsx(
             "text-2xl md:text-3xl font-medium text-secondary-500",
