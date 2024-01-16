@@ -20,11 +20,11 @@ export const AboutSection = () => {
           </div>
         </div>
         <h3 className="font-medium text-2xl lg:text-3xl 2xl:text-5xl 2xl:w-3/4">
-          Ask4Hep, Your Dedicated Partner
+          Ask4help, Your Dedicated Partner
         </h3>
 
         <p>
-          Ask4Hep serves as your exclusive platform for pursuing your
+          Ask4help serves as your exclusive platform for pursuing your
           aspirations of studying abroad.
         </p>
 

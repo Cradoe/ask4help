@@ -30,7 +30,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="md:text-center text-xs md:text-sm px-2">
-        Ask4hep &copy; {new Date().getFullYear()}
+        Ask4help &copy; {new Date().getFullYear()}
       </div>
     </footer>
   );
