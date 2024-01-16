@@ -14,7 +14,7 @@ export const WhyChooseUs = () => {
               archivo.className
             )}
           >
-            Why Choose Ask4Hep?
+            Why Choose Ask4help?
           </div>
         </div>
         <h3 className="font-medium text-2xl lg:text-3xl 2xl:text-5xl 2xl:w-3/4">

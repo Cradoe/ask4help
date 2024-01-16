@@ -12,7 +12,7 @@ export const HOW_IT_WORKS: HowItWorks = {
       icon: "/search-icon.png",
       title: "Find an Advisor that Fits Your Desired Destination",
       description:
-        "After creating your Ask4hep student profile, you're ready to explore a variety of study advisors that align with your specific needs.",
+        "After creating your Ask4help student profile, you're ready to explore a variety of study advisors that align with your specific needs.",
     },
     {
       icon: "/message-icon.png",

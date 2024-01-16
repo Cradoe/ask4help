@@ -15,7 +15,7 @@ export const APP_FEATURES = [
     image: "/peer-journey.webp",
     title: "Peer Journeying",
     description:
-      "At Ask4Hep, we foster connections among applicants pursuing the same courses or study destinations and those who share similar academic goals.",
+      "At Ask4help, we foster connections among applicants pursuing the same courses or study destinations and those who share similar academic goals.",
   },
   {
     image: "/financial-insight.webp",
