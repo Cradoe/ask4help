@@ -20,9 +20,6 @@ export const WaitlistForm = ({ onSubmit, isSubmitting }: FormProps) => {
     formState: { errors },
     setValue,
   } = useForm({
-    defaultValues: {
-      userType: "student",
-    },
     resolver: yupResolver(waitlistValidationSchema),
   });
 
