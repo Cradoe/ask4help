@@ -38,6 +38,7 @@ const config: Config = {
         "desktop-hero-bg": "url('/desktop-hero-image.png')",
         "mobile-hero-bg": "url('/mobile-hero-image.png')",
         "footer-bg": "url('/footer-bg.png')",
+        "auth-bg-pattern": "url('/auth-bg-pattern.svg')",
       },
     },
   },
