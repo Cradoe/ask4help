@@ -28,8 +28,8 @@ const menu: Menu[] = [
 
 export const Header = () => {
   return (
-    <header className="bg-secondary-600 ">
-      <nav className="relative flex items-center justify-between px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl py-10">
+    <header className="bg-secondary-600">
+      <nav className="relative flex items-center justify-between px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl py-4">
         <div>
           <Link
             href="/"
@@ -38,14 +38,14 @@ export const Header = () => {
             <Image
               src="/logo.svg"
               alt="Asq4hep logo"
-              className="max-h-20 w-auto"
+              className="max-h-12 xl:max-h-16 w-auto"
               width={100}
               height={100}
             />
           </Link>
         </div>
 
-        <ul className="hidden gap-6 lg:gap-8 xl:gap-12 text-sm md:text-base md:flex md:items-center justify-between bg-secondary-400 py-3.5 px-8 lg:px-12 xl:px-16 rounded-full">
+        <ul className="hidden gap-6 lg:gap-8 xl:gap-12 text-sm md:text-base md:flex md:items-center justify-between bg-secondary-400 py-3 px-8 lg:px-12 xl:px-16 rounded-full">
           {menu.map((item: Menu) => (
             <li key={item.title}>
               <Link

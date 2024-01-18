@@ -23,7 +23,7 @@ export const StepCard = ({
     >
       <div
         className={clsx(
-          "bg-white duration-200 ease-in-out relative p-4 md:p-8 pt-8 md:pt-16 rounded-t-3xl h-full space-y-5 border-2 border border-black min-h-[23.5rem] md:min-h-[27.5rem]",
+          "bg-white duration-200 ease-in-out relative p-4 md:p-8 pt-8 md:pt-16 rounded-t-3xl h-full space-y-5 border-2 border border-black min-h-[23.5rem] md:min-h-[20.5rem] lg:min-h-[27.5rem]",
           variant === "primary"
             ? "group-hover:bg-primary-50"
             : "group-hover:bg-secondary-50"
@@ -46,12 +46,12 @@ export const StepCard = ({
         <div
           className={clsx(
             "font-medium md:text-2xl relative",
-            variant === "primary" ? "text-primary-500" : "text-secondary-500"
+            variant === "primary" ? "text-black" : "text-secondary-500"
           )}
         >
           {item.title}
         </div>
-        <div className="relative text-sm md:text-base">{item.description}</div>
+        <div className="relative text-sm">{item.description}</div>
       </div>
     </div>
   );
