@@ -22,7 +22,7 @@ export const HowItWorks = () => {
             variant={activeTab === "student" ? "primary" : "transparent"}
             onClick={() => setActiveTab("student")}
           >
-            For Student
+            For Students
           </Button>
           <Button
             radius="rounded-full"
@@ -30,7 +30,7 @@ export const HowItWorks = () => {
             variant={activeTab === "advisor" ? "primary" : "transparent"}
             onClick={() => setActiveTab("advisor")}
           >
-            For Study Advisor
+            For Study Advisors
           </Button>
         </div>
       </div>
