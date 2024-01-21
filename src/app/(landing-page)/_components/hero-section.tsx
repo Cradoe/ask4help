@@ -5,7 +5,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 export const HeroSection = () => {
   return (
-    <section className="relative bg-mobile-hero-bg md:bg-desktop-hero-bg min-h-[45rem] md:min-h-[30rem] xl:min-h-[50rem] 2xl:min-h-[55rem] 4xl:min-h-[100rem] w-screen bg-cover bg-bottom grid md:grid-cols-2 2xl:grid-cols-[40%_1fr] pt-20 md:py-20 lg:py-36 md:items-center px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl text-center md:text-left">
+    <section className="relative bg-mobile-hero-bg md:bg-desktop-hero-bg min-h-[45rem] md:min-h-[30rem] xl:min-h-[50rem] 2xl:min-h-[55rem] 4xl:min-h-[100rem] w-screen bg-cover bg-bottom grid md:grid-cols-2 2xl:grid-cols-[40%_1fr] pt-20 md:py-20 lg:py-36 md:items-center px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl text-center md:text-left">
       <div>
         <h1
           className={clsx(
