@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 const Page = () => {
-  // redirect to get started page if no URL param
+  // use student as default role
   redirect("/get-started/user");
 };
 

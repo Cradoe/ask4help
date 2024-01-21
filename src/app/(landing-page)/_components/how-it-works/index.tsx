@@ -9,7 +9,7 @@ export const HowItWorks = () => {
   const [activeTab, setActiveTab] = useState<string>("student");
 
   return (
-    <section className="mt-10 lg:mt-20 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl">
+    <section className="mt-10 lg:mt-20 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl 4xl:px-wrapper-4xl">
       <div className="flex justify-center flex-col items-center gap-6 font-medium">
         <div className="bg-secondary-50 px-8 rounded-full py-2 text-xs md:text-sm lg:text-base uppercase">
           How Ask4help works

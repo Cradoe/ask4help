@@ -59,4 +59,5 @@ export const signupValidationSchema = yup.object().shape({
     .string()
     .required("Confirm password is required")
     .oneOf([yup.ref("password")], "Passwords must match"),
+  role: yup.string(),
 });

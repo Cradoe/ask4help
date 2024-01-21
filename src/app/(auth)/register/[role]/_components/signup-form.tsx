@@ -6,18 +6,25 @@ import { Input } from "components/input";
 import { MaskPasswordInput } from "components/mask-password-input";
 import { useSignUp } from "hooks/auth";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { signupValidationSchema } from "validations";
 import { InferType } from "yup";
 
 export const SignUpForm = () => {
   const { mutate: signUp, isPending: isSubmitting } = useSignUp();
+  const params = useParams();
+
+  const role = params.role as string;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      role,
+    },
     resolver: yupResolver(signupValidationSchema),
   });
 

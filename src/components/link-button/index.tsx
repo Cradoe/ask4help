@@ -23,7 +23,7 @@ export const LinkButton = (props: ButtonProps) => {
     } else if (variant === "secondary") {
       return "text-white bg-secondary-500 hover:bg-secondary-500/80 focus:ring-secondary-500";
     } else if (variant === "transparent") {
-      return "bg-transparent border border-[#D1D1D1] focus:ring-primary-600";
+      return "bg-transparent border border-[#D1D1D1] focus:ring-secondary-500";
     } else {
       return "text-dark bg-white hover:bg-primary-100 border border-[#D1D1D1]";
     }

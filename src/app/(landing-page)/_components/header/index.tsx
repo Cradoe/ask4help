@@ -29,7 +29,7 @@ const menu: Menu[] = [
 export const Header = () => {
   return (
     <header className="bg-secondary-600">
-      <nav className="relative flex items-center justify-between px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl py-4">
+      <nav className="relative flex items-center justify-between px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl 4xl:px-wrapper-4xl py-4">
         <div>
           <Link
             href="/"
@@ -37,7 +37,7 @@ export const Header = () => {
           >
             <Image
               src="/logo.svg"
-              alt="Asq4hep logo"
+              alt="Ask4help logo"
               className="max-h-12 xl:max-h-16 w-auto"
               width={100}
               height={100}

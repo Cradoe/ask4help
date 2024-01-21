@@ -31,6 +31,7 @@ const config: Config = {
         "wrapper-lg": "3.7rem",
         "wrapper-xl": "5rem",
         "wrapper-3xl": "8rem",
+        "wrapper-4xl": "15rem",
       },
       screens: {
         "3xl": "1536px",

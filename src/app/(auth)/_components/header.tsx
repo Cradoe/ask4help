@@ -8,11 +8,11 @@ export const Header = () => {
       <nav className="flex items-center justify-between block w-full">
         <Link
           href="/"
-          className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+          className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded block"
         >
           <Image
             src="/logo.svg"
-            alt="Asq4hep logo"
+            alt="Ask4help logo"
             className="max-h-12 xl:max-h-16 w-auto"
             width={100}
             height={100}
