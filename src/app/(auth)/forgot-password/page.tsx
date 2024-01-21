@@ -13,8 +13,8 @@ export default function Page() {
         Recover your Account
       </h2>
       <p className="mt-3 text-sm w-2/3">
-        Enter the email associated with your account and we'll send you a reset
-        password link
+        Enter the email associated with your account and we&apos;ll send you a
+        reset password link
       </p>
       <ForgotPasswordForm />
     </Card>
