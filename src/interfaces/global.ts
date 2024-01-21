@@ -16,7 +16,7 @@ export interface APIResponse extends AxiosResponse {
   message?: string;
   success?: boolean;
   data: any;
-  token?: string;
+  accessToken?: string;
 }
 
 export interface HowItWorkStep {

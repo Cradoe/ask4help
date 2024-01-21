@@ -42,7 +42,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             value={value}
             defaultValue={defaultValue}
             onChange={onChange ? onChange : undefined}
-            className={`mt-2 outline-0 placeholder-[#828282] block w-full h-12  text-sm rounded-md py-2 border border-slate-300 focus:ring-1 focus:ring-primary-500  focus:outline-none px-4 ${
+            className={`mt-2 outline-0 placeholder-[#828282] block w-full h-12  text-sm rounded-md py-2 border border-slate-300 focus:ring-1 focus:ring-secondary-500  focus:outline-none px-4 ${
               className ? className : "text-gray-600"
             }`}
             ref={ref}

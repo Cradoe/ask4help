@@ -30,7 +30,8 @@ const config: Config = {
         "wrapper-md": "1.7rem",
         "wrapper-lg": "3.7rem",
         "wrapper-xl": "5rem",
-        "wrapper-3xl": "10rem",
+        "wrapper-3xl": "8rem",
+        "wrapper-4xl": "15rem",
       },
       screens: {
         "3xl": "1536px",
@@ -40,6 +41,7 @@ const config: Config = {
         "desktop-hero-bg": "url('/desktop-hero-image.png')",
         "mobile-hero-bg": "url('/mobile-hero-image.png')",
         "footer-bg": "url('/footer-bg.png')",
+        "auth-bg-pattern": "url('/auth-bg-pattern.svg')",
       },
     },
   },
