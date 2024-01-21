@@ -23,6 +23,7 @@ export const validateEnvironmentVariables = () => {
     "GOOGLE_SHEETS_PRIVATE_KEY",
     "GOOGLE_SHEETS_SUBSCRIBERS_ID",
     "GOOGLE_SHEETS_SUBSCRIBERS_PAGE",
+    "NEXT_PUBLIC_API_BASE_URL",
   ];
   const missingEnvironmentVariables = [] as string[];
 

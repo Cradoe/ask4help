@@ -1,6 +1,6 @@
-import { LinkButton } from "components/link-button";
 import Image from "next/image";
 import Link from "next/link";
+import { CtaButton } from "./cta-button";
 
 export const Header = () => {
   return (
@@ -19,18 +19,7 @@ export const Header = () => {
           />
         </Link>
 
-        <div className="text-sm flex items-center gap-6">
-          <span className="text-white hidden md:block">
-            Don&apos;t have an account?
-          </span>
-          <LinkButton
-            href="/register"
-            radius="rounded-full"
-            className="w-36 h-10"
-          >
-            Sign up
-          </LinkButton>
-        </div>
+        <CtaButton />
       </nav>
     </header>
   );

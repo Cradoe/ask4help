@@ -5,7 +5,7 @@ import axios, {
 } from "axios";
 import { toast } from "react-hot-toast";
 
-const service = (baseURL = "") => {
+const service = (baseURL = process.env.NEXT_PUBLIC_API_BASE_URL!) => {
   const service = axios.create({
     baseURL,
     withCredentials: false,
