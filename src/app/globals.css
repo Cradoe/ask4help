@@ -5,5 +5,7 @@
 body {
   color: #0C0722;
   background: #eee;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
 }
 
