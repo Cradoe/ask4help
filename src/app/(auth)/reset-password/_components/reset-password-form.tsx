@@ -3,14 +3,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
 import { MaskPasswordInput } from "components/mask-password-input";
-import { useForgotPassword } from "hooks/auth";
+import { useResetPassword } from "hooks/auth";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { resetPasswordValidationSchema } from "validations";
 import { InferType } from "yup";
 
 export const ResetPasswordForm = () => {
-  const { mutate: submitRequest, isPending: isSubmitting } =
-    useForgotPassword();
+  const { mutate: submitRequest, isPending: isSubmitting } = useResetPassword();
 
   const {
     register,
