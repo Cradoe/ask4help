@@ -31,10 +31,10 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 ARG NODE_ENV=production
-RUN if [ "$NODE_ENV" = "production" ]; then yarn build; fi
+# RUN if [ "$NODE_ENV" = "production" ]; then yarn build; fi
 
 # If using npm comment out above and use below instead
-# RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
+RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
 
 # Production image, copy all the files and run next
 FROM base AS runner
