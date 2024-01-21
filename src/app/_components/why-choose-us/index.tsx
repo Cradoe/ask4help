@@ -5,7 +5,7 @@ import { Slider } from "./slider";
 
 export const WhyChooseUs = () => {
   return (
-    <section className="mt-20 md:mt-32 xl:mt-40 pl-wrapper md:pl-wrapper-md lg:pl-wrapper-lg xl:pl-wrapper-xl grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-[55%_1fr] 4xl:grid-cols-1 gap-12 relative">
+    <section className="mt-20 md:mt-32 xl:mt-40 pl-wrapper md:pl-wrapper-md lg:pl-wrapper-lg xl:pl-wrapper-xl 3xl:px-wrapper-3xl grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-[55%_1fr] 4xl:grid-cols-1 gap-12 relative">
       <div className="space-y-7 xl:p-10 xl:mr-10">
         <div>
           <div

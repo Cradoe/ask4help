@@ -6,7 +6,7 @@ export const AboutSection = () => {
   return (
     <section
       id="about"
-      className="mt-20 md:mt-32 xl:mt-40 bg-primary-100 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-x-0 py-20"
+      className="mt-20 md:mt-32 xl:mt-40 bg-primary-100 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-x-0 py-20"
     >
       <div className="space-y-7 xl:p-10 xl:mr-10">
         <div>

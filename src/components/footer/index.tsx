@@ -7,7 +7,7 @@ import { FooterMenu } from "./footer-menu";
 
 export const Footer = () => {
   return (
-    <footer className="md:mt-64 lg:mt-96 bg-footer-bg bg-no-repeat bg-cover w-screen flex flex-col justify-end text-white gap-y-10 md:gap-y-16 lg:gap-y-32 pb-20 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl">
+    <footer className="md:mt-64 lg:mt-96 bg-footer-bg bg-no-repeat bg-cover w-screen flex flex-col justify-end text-white gap-y-10 md:gap-y-16 lg:gap-y-32 pb-20 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl">
       <Waitlist />
       <div className="gap-y-10 flex flex-col md:flex-row md:items-center justify-between">
         <div>
