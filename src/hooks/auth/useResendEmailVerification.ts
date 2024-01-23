@@ -17,7 +17,7 @@ export const useResendEmailVerification = () => {
       return clientRequest.auth.resendEmailVerification({ email });
     },
     onSuccess: async (response: APIResponse) => {
-      if (response?.status === 200) {
+      if (response?.statusCode === 200) {
         toast.success(response?.message ?? "Email sent successfully!");
       } else {
         if (response) {

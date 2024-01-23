@@ -5,7 +5,7 @@ import axios, {
 } from "axios";
 import { toast } from "react-hot-toast";
 
-const service = (baseURL = process.env.NEXT_PUBLIC_API_BASE_URL!) => {
+const service = (baseURL = "") => {
   const service = axios.create({
     baseURL,
     withCredentials: false,
@@ -38,18 +38,26 @@ const service = (baseURL = process.env.NEXT_PUBLIC_API_BASE_URL!) => {
             const error = serverErrors[key];
             if (Array.isArray(error)) {
               error.forEach((err) => {
-                toast.error(err?.msg || `Error with ${serverErrors[key]}`);
+                toast.error(err?.message || `Error with ${serverErrors[key]}`);
               });
             } else {
-              toast.error(error?.msg || `Error with ${serverErrors[key]}`);
+              toast.error(error?.message || `Error with ${serverErrors[key]}`);
             }
           });
         } else {
-          toast.error(
-            // @ts-ignore
-            (errors?.error || errors?.message) ??
-              "Something went wrong! Please try again."
-          );
+          // @ts-ignore
+          const messages = errors?.message;
+          if (Array.isArray(messages)) {
+            messages.forEach((message) => {
+              toast.error(message);
+            });
+          } else {
+            toast.error(
+              // @ts-ignore
+              (errors?.message || errors?.error) ??
+                "Something went wrong! Please try again."
+            );
+          }
         }
         return Promise.reject(errors);
       }
@@ -117,4 +125,6 @@ const service = (baseURL = process.env.NEXT_PUBLIC_API_BASE_URL!) => {
   };
 };
 
-export const clientRequest = (baseUrl: string = "") => service(baseUrl);
+export const clientRequest = (
+  baseUrl: string = process.env.NEXT_PUBLIC_API_BASE_URL!
+) => service(baseUrl);

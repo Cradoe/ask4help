@@ -1,5 +1,5 @@
 "use client";
-import { APIResponse, ApiError } from "interfaces";
+import { APIResponse, ApiError, User } from "interfaces";
 import { setCookie } from "lib/cookie";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -24,11 +24,21 @@ export const useSignIn = () => {
       return clientRequest.auth.login(data);
     },
     onSuccess: async (response: APIResponse) => {
-      if (response?.status === 200) {
+      const user: User = response?.data;
+
+      if (response?.statusCode === 200) {
+        // check if user has verified email
+        if (!user.isVerified) {
+          // save email to cookies, needed in the next page
+          setCookie("email", user.email);
+
+          // redirect to verification page
+          router.push("/verify-email");
+          return;
+        }
+
         toast.success(response?.message ?? "Welcome back");
         setCookie("token", response?.accessToken!);
-
-        const user = response?.data;
 
         setCookie("role", user?.role!);
 
@@ -38,7 +48,6 @@ export const useSignIn = () => {
           router.push("/helper/dashboard");
         } else {
           // unknown/lost user
-
           toast.error("Access denied!");
         }
       } else {

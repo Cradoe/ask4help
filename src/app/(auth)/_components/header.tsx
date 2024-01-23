@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CtaButton } from "./cta-button";
+import { MobileHeaderMenu } from "components/mobile-header-menu";
 
 export const Header = () => {
   return (
@@ -19,7 +20,13 @@ export const Header = () => {
           />
         </Link>
 
-        <CtaButton />
+        <div className="hidden md:block">
+          <CtaButton />
+        </div>
+
+        <div className="block flex-none md:hidden">
+          <MobileHeaderMenu />
+        </div>
       </nav>
     </header>
   );

@@ -12,7 +12,7 @@ export default function Page() {
   const email = cookieStore.get("email");
 
   // redirect to login page if email is not in cookie store
-  // if (!email || !email.value) redirect("/forgot-password");
+  if (!email || !email.value) redirect("/forgot-password");
 
   return (
     <Card className="md:w-2/3 lg:w-2/4 xl:w-1/3 mx-auto rounded-xl px-9 py-12 text-sm">

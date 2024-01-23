@@ -14,7 +14,6 @@ export default function Page({ params }: { params: { role: string } }) {
   return (
     <main className="grid grid-cols-1 md:grid-cols-[45%_1fr] min-h-screen">
       <LeftSection role={role} />
-
       <RightSection role={role} />
     </main>
   );

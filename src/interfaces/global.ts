@@ -13,6 +13,7 @@ export interface ServiceResponse {
 }
 
 export interface APIResponse extends AxiosResponse {
+  statusCode: number;
   message?: string;
   success?: boolean;
   data: any;
@@ -27,4 +28,9 @@ export interface HowItWorkStep {
 export interface HowItWorks {
   student: HowItWorkStep[];
   advisor: HowItWorkStep[];
+}
+
+export interface HeaderMenu {
+  title: string;
+  path: string;
 }

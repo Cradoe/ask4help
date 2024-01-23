@@ -34,7 +34,7 @@ export const UserTypeOptions = ({ selectedRole }: { selectedRole: string }) => {
             >
               <Card
                 className={clsx(
-                  "grid grid-cols-[1fr_2rem] items-center ease-in-out duration-200",
+                  "grid grid-cols-[1fr_1rem] md:grid-cols-[1fr_2rem] items-center ease-in-out duration-200",
                   {
                     "bg-secondary-50 border-secondary-500":
                       selectedRole === UserRole.USER &&
@@ -67,7 +67,7 @@ export const UserTypeOptions = ({ selectedRole }: { selectedRole: string }) => {
                 {/* radio-like button  */}
                 <div
                   className={clsx(
-                    "h-8 w-8 rounded-full border flex items-center justify-center",
+                    "h-5 lg:h-8 w-5 lg:w-8 rounded-full border flex items-center justify-center",
                     {
                       "bg-secondary-500":
                         selectedRole === UserRole.USER &&
@@ -81,7 +81,9 @@ export const UserTypeOptions = ({ selectedRole }: { selectedRole: string }) => {
                   )}
                 >
                   {option.value === selectedRole && (
-                    <div className={"h-3 w-3 rounded-full bg-white"}></div>
+                    <div
+                      className={"h-2 lg:h-3 w-2 lg:w-3 rounded-full bg-white"}
+                    ></div>
                   )}
                 </div>
               </Card>

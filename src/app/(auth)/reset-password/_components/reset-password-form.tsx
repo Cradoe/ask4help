@@ -4,18 +4,24 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
 import { MaskPasswordInput } from "components/mask-password-input";
 import { useResetPassword } from "hooks/auth";
+import { useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { resetPasswordValidationSchema } from "validations";
 import { InferType } from "yup";
 
 export const ResetPasswordForm = () => {
   const { mutate: submitRequest, isPending: isSubmitting } = useResetPassword();
+  const searchParams = useSearchParams();
+  const resetToken = searchParams.get("ref");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      resetToken: (resetToken as string) || "",
+    },
     resolver: yupResolver(resetPasswordValidationSchema),
   });
 

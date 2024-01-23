@@ -10,7 +10,12 @@ import { forgotPasswordValidationSchema } from "validations";
 
 type MutationProp = { data: InferType<typeof forgotPasswordValidationSchema> };
 
-export const useForgotPassword = () => {
+interface HookProps {
+  showNotification?: boolean;
+}
+export const useForgotPassword = ({
+  showNotification = false,
+}: HookProps = {}) => {
   const router = useRouter();
 
   const { mutate, isPending } = useMutation<
@@ -23,9 +28,13 @@ export const useForgotPassword = () => {
       return clientRequest.auth.forgotPassword(data);
     },
     onSuccess: async (response: APIResponse, variables) => {
-      if (response?.status === 200) {
+      if (response?.statusCode === 201) {
         setCookie("email", variables.data.email);
         router.push("/forgot-password/success");
+
+        if (showNotification) {
+          toast.success(response?.message ?? "Email sent successfully!");
+        }
       } else {
         if (response) {
           toast.error(response?.message || "Opps! Something went wrong.");

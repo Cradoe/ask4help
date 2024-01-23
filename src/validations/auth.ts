@@ -28,6 +28,7 @@ export const forgotPasswordValidationSchema = yup.object().shape({
 });
 
 export const resetPasswordValidationSchema = yup.object().shape({
+  resetToken: yup.string(),
   newPassword: yup
     .string()
     .required("Password is required")
@@ -43,6 +44,10 @@ export const signupValidationSchema = yup.object().shape({
     .string()
     .required("Your fullname is required")
     .min(3, "Fullname must be at least 3 characters long"),
+
+  firstName: yup.string(), // will be destructured from fullName
+  lastName: yup.string(), // will be destructured from fullName
+
   email: yup
     .string()
     .email("Email must be a valid email")

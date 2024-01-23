@@ -22,7 +22,7 @@ export const useResetPassword = () => {
       return clientRequest.auth.resetPassword(data);
     },
     onSuccess: async (response: APIResponse) => {
-      if (response?.status === 200) {
+      if (response?.statusCode === 200) {
         router.push("/reset-password/success");
       } else {
         if (response) {

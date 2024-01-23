@@ -12,7 +12,7 @@ export default function Page() {
   const email = cookieStore.get("email");
 
   // redirect to login page if email is not in cookie store
-  // if (!email || !email.value) redirect("/login");
+  if (!email || !email.value) redirect("/login");
 
   return (
     <Card className="md:w-2/3 lg:w-2/4 xl:w-1/3 mx-auto rounded-xl px-9 py-12 text-xs">
@@ -23,7 +23,7 @@ export default function Page() {
       </SectionTitle>
 
       <h2 className={clsx("text-xl xl:text-2xl mt-5", archivo.className)}>
-        Please Verify your Email!
+        Please Verify your email!
       </h2>
       <p className="my-3">
         We sent you an email to {email?.value || "****"}, check your inbox to
