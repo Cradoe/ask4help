@@ -1,3 +1,4 @@
+import { HeaderMenu } from "interfaces";
 import { ToasterProps } from "react-hot-toast";
 
 export const TOASTER_PROPS: ToasterProps = {
@@ -15,3 +16,18 @@ export const TOASTER_PROPS: ToasterProps = {
     },
   },
 };
+
+export const HEADER_MENU: HeaderMenu[] = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "About us",
+    path: "/#about",
+  },
+  {
+    title: "FAQs",
+    path: "/#faqs",
+  },
+];

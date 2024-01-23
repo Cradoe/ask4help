@@ -71,14 +71,14 @@ export const SignUpForm = () => {
         >
           User Agreement
         </Link>
-        ,
+        ,{" "}
         <Link
           className="text-secondary-500 hover:text-secondary-500/80 hover:underline "
           href="/legal/privacy-policy"
         >
           Privacy Policy
         </Link>
-        , and
+        , and{" "}
         <Link
           className="text-secondary-500 hover:text-secondary-500/80 hover:underline "
           href="/legal/cookie-policy"

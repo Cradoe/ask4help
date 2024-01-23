@@ -2,18 +2,15 @@
 
 import { Dialog, Transition } from "@headlessui/react";
 import { useMobileHeader } from "hooks/common";
+import { HeaderMenu } from "interfaces";
+import { HEADER_MENU } from "lib/constants";
 import Link from "next/link";
 import { Fragment } from "react";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import { TfiClose } from "react-icons/tfi";
 
-type Menu = {
-  title: string;
-  path: string;
-};
-
-export default function MobileMenu({ menu }: { menu: Menu[] }) {
+export const MobileHeaderMenu = () => {
   const { isOpen, toggleMobileMenu } = useMobileHeader();
   return (
     <>
@@ -47,7 +44,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
             leaveTo="translate-x-[-100%]"
           >
             <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6">
-              <div className="p-4 pt-10">
+              <div className="p-4 pt-12">
                 <div className="flex justify-end">
                   <button
                     className="bg-secondary-400 flex h-10 w-10 items-center justify-center rounded-full text-primary-600 transition-colors md:hidden"
@@ -58,8 +55,8 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </button>
                 </div>
 
-                <ul className="flex w-full flex-col">
-                  {menu.map((item: Menu) => (
+                <ul className="flex w-full flex-col gap-4">
+                  {HEADER_MENU.map((item: HeaderMenu) => (
                     <li className="py-2 transition-colors" key={item.title}>
                       <Link
                         href={item.path}
@@ -70,6 +67,29 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <hr className="border-gray-500 my-8" />
+                  </li>
+
+                  <li className="py-2 transition-colors">
+                    <Link
+                      href="/login"
+                      onClick={toggleMobileMenu}
+                      className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                    >
+                      Login
+                    </Link>
+                  </li>
+
+                  <li className="py-2 transition-colors">
+                    <Link
+                      href="/get-started/user"
+                      onClick={toggleMobileMenu}
+                      className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                    >
+                      Sign up
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </Dialog.Panel>
@@ -78,4 +98,4 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
       </Transition>
     </>
   );
-}
+};

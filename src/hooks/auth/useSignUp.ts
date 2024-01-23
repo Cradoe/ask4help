@@ -20,10 +20,16 @@ export const useSignUp = () => {
   >({
     // @ts-ignore
     mutationFn: ({ data }: MutationProp) => {
+      const [firstName, lastName] = data.fullname.split(" ");
+      data = {
+        ...data,
+        firstName,
+        lastName,
+      };
       return clientRequest.auth.register(data);
     },
     onSuccess: async (response: APIResponse, variables) => {
-      if (response?.status === 200) {
+      if (response?.statusCode === 201) {
         setCookie("email", variables.data.email);
         router.push("/verify-email");
       } else {

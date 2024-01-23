@@ -5,6 +5,7 @@ import { archivo } from "lib/font";
 import clsx from "clsx";
 import { UserRole } from "lib/enum";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function Page({ params }: { params: { role: string } }) {
   const { role } = params;
@@ -22,6 +23,16 @@ export default function Page({ params }: { params: { role: string } }) {
         Create an account
       </h2>
       <SignUpForm />
+
+      <div className="flex text-xs items-center justify-center mt-5 gap-1 md:hidden">
+        <span>Already have an account?</span>
+        <Link
+          className="text-secondary-500 hover:text-secondary-500/80 underline "
+          href="/login"
+        >
+          Login
+        </Link>
+      </div>
     </Card>
   );
 }

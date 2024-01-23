@@ -3,6 +3,7 @@ import { LoginForm } from "./_components/login-form";
 import { SectionTitle } from "components/section-title";
 import clsx from "clsx";
 import { archivo } from "lib/font";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -14,6 +15,16 @@ export default function Page() {
       </h2>
 
       <LoginForm />
+
+      <div className="flex text-xs items-center justify-center mt-5 gap-1 md:hidden">
+        <span>Don&apos;t have an account? </span>
+        <Link
+          className="text-secondary-500 hover:text-secondary-500/80 underline "
+          href="/get-started/user"
+        >
+          Sign up
+        </Link>
+      </div>
     </Card>
   );
 }
