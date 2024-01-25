@@ -8,11 +8,14 @@ import { InferType } from "yup";
 import { Input } from "components/input";
 import { Button } from "components/button";
 import { UserTypeSelect } from "components/user-type-select";
+import { Select } from "components/select";
+import { ICountry, countries } from "countries-list";
 
 interface FormProps {
   onSubmit: (data: InferType<typeof waitlistValidationSchema>) => void;
   isSubmitting: boolean;
 }
+
 export const WaitlistForm = ({ onSubmit, isSubmitting }: FormProps) => {
   const {
     register,
@@ -30,6 +33,8 @@ export const WaitlistForm = ({ onSubmit, isSubmitting }: FormProps) => {
     InferType<typeof waitlistValidationSchema>
   > = (data) => onSubmit(data);
 
+  console.log("countries", countries);
+
   return (
     <div className="p-8 lg:p-24 rounded-2xl bg-secondary-600">
       <h5
@@ -43,16 +48,14 @@ export const WaitlistForm = ({ onSubmit, isSubmitting }: FormProps) => {
       <div>
         <form onSubmit={handleSubmit(handleData)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
-            <div className="md:col-span-2">
-              <Input
-                label="Full Name"
-                placeholder="Your full name"
-                error={errors.fullname}
-                labelClassName="text-white text-base"
-                className="bg-transparent border-0 rounded-none border-b border-b-[#E3E0F2] placeholder-white text-white font-light px-0"
-                {...register("fullname", { required: true })}
-              />
-            </div>
+            <Input
+              label="Full Name"
+              placeholder="Your full name"
+              error={errors.fullname}
+              labelClassName="text-white text-base"
+              className="bg-transparent border-0 rounded-none border-b border-b-[#E3E0F2] placeholder-white text-white font-light px-0"
+              {...register("fullname", { required: true })}
+            />
 
             <Input
               label="Email Address"
@@ -62,6 +65,20 @@ export const WaitlistForm = ({ onSubmit, isSubmitting }: FormProps) => {
               labelClassName="text-white text-base"
               className="bg-transparent border-0 rounded-none border-b  border-b-[#E3E0F2] placeholder-white text-white font-light px-0"
               {...register("email", { required: true })}
+            />
+
+            <Select
+              label="Country"
+              error={errors.country}
+              labelClassName="text-white text-base"
+              className="bg-transparent border-0 rounded-none border-b border-b-[#E3E0F2] placeholder-white text-white font-light px-0"
+              {...register("country", { required: true })}
+              options={
+                Object.values(countries).map((country: ICountry) => ({
+                  label: country.name,
+                  value: country.name,
+                })) || []
+              }
             />
 
             <UserTypeSelect
