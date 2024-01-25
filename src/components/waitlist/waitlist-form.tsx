@@ -33,8 +33,6 @@ export const WaitlistForm = ({ onSubmit, isSubmitting }: FormProps) => {
     InferType<typeof waitlistValidationSchema>
   > = (data) => onSubmit(data);
 
-  console.log("countries", countries);
-
   return (
     <div className="p-8 lg:p-24 rounded-2xl bg-secondary-600">
       <h5
