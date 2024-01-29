@@ -1,31 +1,28 @@
 "use client";
 import { APIResponse, ApiError } from "interfaces";
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { clientRequest } from "services/client";
-import { InferType } from "yup";
-import { resetPasswordValidationSchema } from "validations";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-type MutationProp = {
-  data: InferType<typeof resetPasswordValidationSchema>;
-};
-
-export const useResetPassword = () => {
+export const useVerifyAccount = ({
+  email,
+  verificationCode,
+}: {
+  email: string;
+  verificationCode: string;
+}) => {
   const router = useRouter();
 
-  const { mutate, isPending } = useMutation<
-    APIResponse,
-    ApiError,
-    MutationProp
-  >({
+  const { mutate, isPending } = useMutation<APIResponse, ApiError>({
     // @ts-ignore
-    mutationFn: ({ data }: MutationProp) => {
-      return clientRequest.auth.resetPassword(data);
+    mutationFn: () => {
+      return clientRequest.auth.verifyAccount({ email, verificationCode });
     },
     onSuccess: async (response: APIResponse) => {
       if (response?.statusCode === 200) {
-        router.push("/reset-password/success");
+        router.replace("/verify-email/success");
       } else {
         if (response) {
           toast.error(response?.message || "Opps! Something went wrong.");
@@ -36,6 +33,13 @@ export const useResetPassword = () => {
       toast.error(error?.message || "Opps! Something went wrong.");
     },
   });
+
+  //   call mutate on load
+  useEffect(() => {
+    if (email && verificationCode && !isPending) {
+      mutate();
+    }
+  }, []);
 
   return { mutate, isPending };
 };

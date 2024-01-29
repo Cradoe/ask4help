@@ -23,7 +23,7 @@ export const ResendEmailButton = () => {
         variant="secondary"
         isLoading={isSubmitting}
       >
-        Resend confirmation email
+        Resend recovery email
       </Button>
     </div>
   );
