@@ -24,7 +24,9 @@ export const ProfileForm = () => {
 
   const sendToServer: SubmitHandler<
     InferType<typeof eduGoalsValidationSchema>
-  > = (data) => mutate({ data });
+  > = (data) => {
+    // mutate({ data })
+  };
 
   return (
     <form onSubmit={handleSubmit(sendToServer)} className="mt-6">
