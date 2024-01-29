@@ -17,9 +17,12 @@ export const authClientRequest = {
   resendEmailVerification: (payload: { email: string }) =>
     clientRequest().post({ url: "auth/verify-email/request", payload }),
 
+  verifyAccount: (payload: { email: string; verificationCode: string }) =>
+    clientRequest().post({ url: "auth/verify-email", payload }),
+
   forgotPassword: (payload: InferType<typeof forgotPasswordValidationSchema>) =>
     clientRequest().post({ url: "auth/forgot-password", payload }),
 
   resetPassword: (payload: InferType<typeof resetPasswordValidationSchema>) =>
-    clientRequest().post({ url: "auth/reset-password", payload }),
+    clientRequest().post({ url: `auth/reset-password`, payload }),
 };
