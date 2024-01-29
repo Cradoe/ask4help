@@ -3,13 +3,13 @@ import { saveToGoogleSheet } from "lib/google-sheet";
 
 export async function POST(req: Request) {
   try {
-    const { fullname, email, userType } = await req.json();
+    const { fullname, email, userType, country } = await req.json();
 
-    if (!fullname || !email || !userType) {
+    if (!fullname || !email || !userType || !country) {
       return sendErrorResponse("All fields are required.", 400);
     }
 
-    const data = [fullname, email, userType];
+    const data = [fullname, email, country, userType];
 
     const saved = await saveToGoogleSheet(data);
 
