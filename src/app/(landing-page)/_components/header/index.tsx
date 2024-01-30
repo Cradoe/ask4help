@@ -3,7 +3,6 @@ import Link from "next/link";
 import { MobileHeaderMenu } from "components/mobile-header-menu";
 import Image from "next/image";
 import { LinkButton } from "components/link-button";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { scrollToElement } from "lib/util";
 import { HEADER_MENU } from "lib/constants";
 import { HeaderMenu } from "interfaces";
@@ -41,14 +40,21 @@ export const Header = () => {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-2">
           <LinkButton
-            href="/#waitlist"
-            onClick={scrollToElement}
+            href="/login"
+            variant="transparent"
             radius="rounded-full"
-            className="gap-2"
+            className="border-transparent text-white hover:border-primary-500 lg:w-36"
           >
-            <span>Join Waitlist</span> <FaArrowRightLong />
+            Log in
+          </LinkButton>
+          <LinkButton
+            href="/get-started/user"
+            radius="rounded-full"
+            className="lg:w-36"
+          >
+            <span>Sign up</span>
           </LinkButton>
         </div>
 
