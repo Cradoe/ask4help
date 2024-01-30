@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import { archivo } from "lib/font";
 import { Slider } from "./slider";
+import { LinkButton } from "components/link-button";
 
 export const WhyChooseUs = () => {
   return (
@@ -25,6 +26,18 @@ export const WhyChooseUs = () => {
           Become a part of our platform and access a pool of expert study
           advisors to address all your inquiries.
         </p>
+
+        <div>
+          <LinkButton
+            size="md"
+            href="/get-started/user"
+            radius="rounded-full"
+            className="h-12 w-36"
+            variant="secondary"
+          >
+            Get Started
+          </LinkButton>
+        </div>
       </div>
       <div>
         <Slider />

@@ -9,7 +9,7 @@ export const Faqs = () => {
   return (
     <section
       id="faqs"
-      className="mt-24 mb-40 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl 4xl:px-wrapper-4xl lg:w-2/3 mx-auto"
+      className="mt-24 mb:mb-40 px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl 4xl:px-wrapper-4xl lg:w-2/3 mx-auto"
     >
       <h4
         className={clsx(

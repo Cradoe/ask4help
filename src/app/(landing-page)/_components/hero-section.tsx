@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { LinkButton } from "components/link-button";
 import { archivo } from "lib/font";
-import { FaArrowRightLong } from "react-icons/fa6";
 
 export const HeroSection = () => {
   return (
@@ -23,11 +22,11 @@ export const HeroSection = () => {
         <div className="mt-8 md:mt-10 flex justify-center md:justify-start">
           <LinkButton
             size="md"
-            href="/#waitlist"
+            href="/get-started/user"
             radius="rounded-full"
-            className="gap-2 h-12"
+            className="h-12 min-w-36"
           >
-            <span>Join Waitlist</span> <FaArrowRightLong />
+            Get Started
           </LinkButton>
         </div>
       </div>

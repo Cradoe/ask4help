@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import { archivo } from "lib/font";
 import Image from "next/image";
+import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export const AboutSection = () => {
   return (
@@ -38,6 +40,13 @@ export const AboutSection = () => {
           independently navigate their study abroad journey, with the precise
           and comprehensive information and assistance they need.
         </p>
+        <Link
+          href="/get-started/user"
+          className="mt-8 h-12 min-w-36 underline text-black hover:text-secondary-500 font-medium flex gap-1 items-center"
+        >
+          <span>Get Started </span>
+          <FaArrowRightLong />
+        </Link>
       </div>
       <div className="order-first lg:order-last">
         <Image
