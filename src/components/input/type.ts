@@ -14,4 +14,6 @@ export interface InputProps
   labelClassName?: string;
   readOnly?: boolean;
   value?: string | number;
+  radius?: string;
+  leftIcon?: React.ReactNode;
 }
