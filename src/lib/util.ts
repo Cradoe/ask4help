@@ -40,3 +40,7 @@ export const validateEnvironmentVariables = () => {
     );
   }
 };
+
+export const toSentenceCase = (input: string): string => {
+  return input.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
+};

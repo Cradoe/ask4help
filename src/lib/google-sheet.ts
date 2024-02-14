@@ -43,9 +43,20 @@ const getOuth2AccessToken = async (jwtToken: string): Promise<string> => {
   return accessToken;
 };
 
-export const saveToGoogleSheet = async (data: string[]): Promise<boolean> => {
+export const saveToGoogleSheet = async (
+  data: string[]
+): Promise<{ success: boolean; message?: string }> => {
   const accessToken = await getGoogleSheetsAccessToken();
 
+  // Check for duplicates
+  if (await isDuplicateData(data)) {
+    return {
+      success: false,
+      message: "Opps! Looks like you're already on our waitlist.",
+    };
+  }
+
+  // add data to google sheet
   const response = await fetch(
     `https://sheets.googleapis.com/v4/spreadsheets/${process.env.GOOGLE_SHEETS_SUBSCRIBERS_ID}/values/${process.env.GOOGLE_SHEETS_SUBSCRIBERS_PAGE}:append?valueInputOption=USER_ENTERED`,
     {
@@ -63,11 +74,42 @@ export const saveToGoogleSheet = async (data: string[]): Promise<boolean> => {
 
   if (response.ok) {
     // The request was successful
-    return true;
+    return { success: true };
   } else {
     // The request failed
     const errorData = await response.json();
     console.error("Error appending data:", errorData);
-    return false;
+    return {
+      success: false,
+      message: "Error saving information. Please try again.",
+    };
+  }
+};
+
+const isDuplicateData = async (data: string[]): Promise<boolean> => {
+  const accessToken = await getGoogleSheetsAccessToken();
+
+  const response = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${process.env.GOOGLE_SHEETS_SUBSCRIBERS_ID}/values/${process.env.GOOGLE_SHEETS_SUBSCRIBERS_PAGE}?valueRenderOption=FORMATTED_VALUE`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  if (response.ok) {
+    const sheetData = await response.json();
+    const existingData = sheetData.values || [];
+
+    const isDuplicate = existingData.some((existingRow: any) => {
+      return JSON.stringify(existingRow) === JSON.stringify(data);
+    });
+
+    return isDuplicate;
+  } else {
+    console.error("Error fetching existing data:", await response.json());
+    return true; // Assume duplicate to prevent appending on error
   }
 };
