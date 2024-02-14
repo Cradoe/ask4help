@@ -14,7 +14,7 @@ export const RightSection = ({ role }: { role: string }) => {
       <div className="place-self-start justify-self-end flex items-center justify-between md:justify-end w-full">
         <Link
           href="/"
-          className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded block md:hidden"
+          className=" focus:outline-primary-600 focus:outline-2 rounded block md:hidden"
         >
           <Image
             src="/logo.svg"

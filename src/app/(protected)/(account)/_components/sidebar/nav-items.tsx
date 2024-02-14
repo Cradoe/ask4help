@@ -45,7 +45,7 @@ export const NavItems = () => {
           <Link
             href={item.path}
             className={clsx(
-              "flex items-center gap-3",
+              "flex items-center gap-3  focus:outline-2 focus:outline-secondary-500 rounded px-1",
               archivo.className,
               pathname === item.path
                 ? "text-secondary-500"

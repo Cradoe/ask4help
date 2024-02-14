@@ -28,7 +28,7 @@ export const Header = () => {
       <nav className="flex items-center justify-between block w-full">
         <Link
           href="/"
-          className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded block"
+          className=" focus:outline-secondary-500 focus:outline-2 rounded block"
         >
           <Image
             src="/logo-alt.svg"

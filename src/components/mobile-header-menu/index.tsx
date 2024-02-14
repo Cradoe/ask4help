@@ -61,7 +61,7 @@ export const MobileHeaderMenu = () => {
                       <Link
                         href={item.path}
                         onClick={toggleMobileMenu}
-                        className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                        className=" focus:outline-primary-600 focus:outline-2 rounded"
                       >
                         {item.title}
                       </Link>
@@ -75,7 +75,7 @@ export const MobileHeaderMenu = () => {
                     <Link
                       href="/login"
                       onClick={toggleMobileMenu}
-                      className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                      className=" focus:outline-primary-600 focus:outline-2 rounded"
                     >
                       Login
                     </Link>
@@ -85,7 +85,7 @@ export const MobileHeaderMenu = () => {
                     <Link
                       href="/get-started/user"
                       onClick={toggleMobileMenu}
-                      className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                      className=" focus:outline-primary-600 focus:outline-2 rounded"
                     >
                       Sign up
                     </Link>

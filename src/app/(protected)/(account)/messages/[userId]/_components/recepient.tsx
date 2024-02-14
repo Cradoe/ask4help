@@ -10,7 +10,7 @@ export const Recepient = () => {
       <div>
         <div className="text-base leading-3 flex items-center justify-between">
           <span>Katrina Kilback</span>
-          <button className="rounded-full p-1 text-xs">
+          <button className="rounded-full p-1 text-xs  focus:outline-2 focus:outline-secondary-500">
             <FaEllipsisH />
           </button>
         </div>

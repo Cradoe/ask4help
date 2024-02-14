@@ -51,7 +51,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             defaultValue={defaultValue}
             onChange={onChange ? onChange : undefined}
             className={clsx(
-              "mt-2 outline-0 placeholder-[#828282] block w-full h-12  text-sm py-2 border border-slate-300 focus:ring-1 focus:ring-secondary-500  focus:outline-none",
+              "mt-2 outline-0 placeholder-[#828282] block w-full h-12  text-sm py-2 border border-slate-300 focus:outline-1 focus:outline-secondary-500  ",
               className ? className : "text-gray-600",
               leftIcon ? "pl-10" : "px-4",
               radius

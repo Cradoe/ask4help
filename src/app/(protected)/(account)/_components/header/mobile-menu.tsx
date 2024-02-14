@@ -60,7 +60,7 @@ export const MobileHeaderMenu = ({ menu }: { menu: HeaderMenu[] }) => {
                       <Link
                         href={item.path}
                         onClick={toggleMobileMenu}
-                        className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                        className=" focus:outline-primary-600 focus:outline-2 rounded"
                       >
                         {item.title}
                       </Link>

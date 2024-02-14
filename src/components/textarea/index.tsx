@@ -57,7 +57,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             value={value}
             onChange={onChange ? onChange : undefined}
             onKeyDown={handleTextareaKeyDown}
-            className={`mt-2 outline-0 placeholder-[#828282] text-gray-600 block w-full h-12  text-sm rounded-md p-2 border border-slate-300 focus:ring-2 focus:ring-primary  focus:outline-none ${
+            className={`mt-2 outline-0 placeholder-[#828282] text-gray-600 block w-full h-12  text-sm rounded-md p-2 border border-slate-300 focus:outline-2 focus:outline-primary   ${
               className ? className : ""
             } ${leftIcon ? "pl-10" : "px-3"}`}
             ref={ref}

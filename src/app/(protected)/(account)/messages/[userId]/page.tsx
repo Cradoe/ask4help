@@ -1,11 +1,21 @@
-import { ChatList } from "./_components/chat-lists";
-import { MessageArea } from "./_components/message-area";
+import { MessageBox } from "./_components/message-box";
+import { Messages } from "./_components/messages";
+import { Recepient } from "./_components/recepient";
 
 export default function Page() {
   return (
-    <div className="grid grid-cols-[40%_1fr] gap-x-1 bg-transparent">
-      <ChatList />
-      <MessageArea />
+    <div className="py-3 h-full">
+      <div className="grid grid-rows-[13%_1fr_20%] h-full">
+        <div className="border-b border-b-gray-300">
+          <Recepient />
+        </div>
+        <div className="">
+          <Messages />
+        </div>
+        <div className="px-6">
+          <MessageBox />
+        </div>
+      </div>
     </div>
   );
 }

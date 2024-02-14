@@ -20,7 +20,7 @@ export const UserDropdown = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="flex items-center gap-x-1 xl:gap-x-2 text-black focus:ring-2 focus:outline-none"
+        className="flex items-center gap-x-1 xl:gap-x-2 text-black  focus:outline-2 focus:outline-secondary-500 rounded"
         onClick={handleDropdown}
         aria-haspopup="menu"
         aria-expanded={showDropdown ? "true" : "false"}
@@ -32,7 +32,7 @@ export const UserDropdown = () => {
         <SlArrowDown className="font-bold text-xs" />
       </button>
       {showDropdown && (
-        <div className="absolute -right-3 md:right-0 w-48 mt-2 origin-top-right  divide-y divide-gray-100 rounded-md shadow-lg outline-none divide-y">
+        <div className="absolute -right-3 md:right-0 w-48 mt-2 origin-top-right  divide-y divide-gray-100 rounded-md shadow-lg outline-none divide-y bg-white">
           <div className="">
             <LinkButton
               href="/profile"

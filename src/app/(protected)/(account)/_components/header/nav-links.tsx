@@ -19,7 +19,12 @@ export const NavLink = ({ menu }: { menu: HeaderMenu }) => {
           : "border-b-transparent hover:border-b-secondary-500"
       )}
     >
-      <Link href={menu.path}>{menu.title}</Link>
+      <Link
+        href={menu.path}
+        className=" focus:outline-2 focus:outline-secondary-500 rounded px-1"
+      >
+        {menu.title}
+      </Link>
     </li>
   );
 };

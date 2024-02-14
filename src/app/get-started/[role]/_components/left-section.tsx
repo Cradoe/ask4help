@@ -10,7 +10,7 @@ export const LeftSection = ({ role }: { role: string }) => {
       <div className="place-self-start">
         <Link
           href="/"
-          className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded block"
+          className=" focus:outline-primary-600 focus:outline-2 rounded block"
         >
           <Image
             src="/logo.svg"

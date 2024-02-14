@@ -14,14 +14,14 @@ export const Sidebar = () => {
         <div className="flex gap-2 justify-center ">
           <Link
             href="/legal/agreement"
-            className="hover:underline hover:text-secondary-500"
+            className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
             User Agreement
           </Link>
           <span>|</span>
           <Link
             href="/legal/privacy-policy"
-            className="hover:underline hover:text-secondary-500"
+            className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
             Privacy Policy
           </Link>
@@ -29,14 +29,14 @@ export const Sidebar = () => {
         <div className="flex gap-2 justify-center ">
           <Link
             href="/legal/cookie-policy"
-            className="hover:underline hover:text-secondary-500"
+            className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
             Cookie Policy
           </Link>
           <span>|</span>
           <Link
             href="/legal/support"
-            className="hover:underline hover:text-secondary-500"
+            className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
             Support
           </Link>

@@ -14,7 +14,7 @@ export const Header = () => {
         <div>
           <Link
             href="/"
-            className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6 focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+            className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6  focus:outline-primary-600 focus:outline-2 rounded"
           >
             <Image
               src="/logo.svg"
@@ -32,7 +32,7 @@ export const Header = () => {
               <Link
                 href={item.path}
                 onClick={scrollToElement}
-                className="text-white hover:text-white/80 hover:underline focus:outline-none focus:ring-primary-600 focus:ring-2 rounded px-2"
+                className="text-white hover:text-white/80 hover:underline  focus:outline-primary-600 focus:outline-2 rounded px-2"
               >
                 {item.title}
               </Link>

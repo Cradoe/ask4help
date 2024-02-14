@@ -10,7 +10,8 @@ export const ChatList = () => {
     <div className="bg-white  py-10 rounded-l-xl ">
       <div className="flex items-center justify-between px-9">
         <h1 className={clsx(archivo.className)}>Messages</h1>
-        <button className="text-2xl">
+
+        <button className="text-2xl  focus:outline-2 focus:outline-secondary-500 rounded">
           <IoFilterSharp />
         </button>
       </div>
