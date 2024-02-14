@@ -42,6 +42,7 @@ const config: Config = {
         "mobile-hero-bg": "url('/mobile-hero-image.png')",
         "footer-bg": "url('/footer-bg.png')",
         "auth-bg-pattern": "url('/auth-bg-pattern.svg')",
+        "profile-progress": "url('/profile-progress.png')",
       },
     },
   },

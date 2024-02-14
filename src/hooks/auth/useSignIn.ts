@@ -43,9 +43,9 @@ export const useSignIn = () => {
         setCookie("role", user?.role!);
 
         if (user?.role === UserRole.USER) {
-          router.push("/dashboard");
+          router.push("/home");
         } else if (user?.role === UserRole.HELPER) {
-          router.push("/helper/dashboard");
+          router.push("/helper/home");
         } else {
           // unknown/lost user
           toast.error("Access denied!");
