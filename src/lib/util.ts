@@ -86,3 +86,7 @@ const parseInputDate = (input: string): Date => {
 
   return new Date(formattedDateString);
 };
+
+export const toSentenceCase = (input: string): string => {
+  return input.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
+};

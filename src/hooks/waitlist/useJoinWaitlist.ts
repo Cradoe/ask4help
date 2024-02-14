@@ -23,7 +23,8 @@ export const useJoinWaitlist = (onSuccess?: Function) => {
         onSuccess?.();
       } else {
         if (response) {
-          toast.error(response?.message || "Opps! Something went wrong.");
+          // @ts-ignore
+          toast.error(response?.body?.message || "Opps! Something went wrong.");
         }
       }
     },
