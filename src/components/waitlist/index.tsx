@@ -3,9 +3,13 @@ import { useJoinWaitlist } from "hooks/waitlist";
 import { WaitlistForm } from "./waitlist-form";
 import { useState } from "react";
 import { SuccessMessage } from "./success-message";
+import { useAutoScrollToWaitlist } from "hooks/waitlist";
 
 export const Waitlist = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+  // Scroll to the waitlist section if it's in the URL
+  useAutoScrollToWaitlist();
+
   const onSuccess = () => {
     setShowSuccessMessage(true);
   };
