@@ -103,8 +103,15 @@ const isDuplicateData = async (data: string[]): Promise<boolean> => {
     const sheetData = await response.json();
     const existingData = sheetData.values || [];
 
+    // Exclude the last element (createdAt) before comparison
+    const newDataWithoutCreatedAt = data.slice(0, -1);
+
     const isDuplicate = existingData.some((existingRow: any) => {
-      return JSON.stringify(existingRow) === JSON.stringify(data);
+      const existingDataWithoutCreatedAt = existingRow?.slice(0, -1);
+      return (
+        JSON.stringify(existingDataWithoutCreatedAt) ===
+        JSON.stringify(newDataWithoutCreatedAt)
+      );
     });
 
     return isDuplicate;

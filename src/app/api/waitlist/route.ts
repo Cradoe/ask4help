@@ -22,11 +22,14 @@ export async function POST(req: Request) {
       return sendErrorResponse("Invalid email address.", 400);
     }
 
+    const createdAt = new Date();
+
     const data = [
       cleanedFullname,
       cleanedEmail,
       cleanedCountry,
       cleanedUserType,
+      createdAt,
     ];
 
     const response = await saveToGoogleSheet(data);
