@@ -6,13 +6,21 @@ import { FaUser } from "react-icons/fa";
 import { formatDate, getTimeAgo } from "lib/util";
 import { useGroupedMessages } from "hooks/message";
 
-export const Messages = () => {
+export const Messages = ({ messages }: { messages: Message[] }) => {
   const { data: user } = useAccount();
   const { data: groupedChats } = useGroupedMessages();
 
   return (
     <div>
-      {groupedChats?.map((group, index: number) => (
+      <div>
+        {messages.map((msg, index) => (
+          <div key={index}>
+            <strong>{msg.senderId}:</strong> {msg.content}
+          </div>
+        ))}
+      </div>
+
+      {/* {groupedChats?.map((group, index: number) => (
         <div key={index}>
           <div className="grid grid-cols-[1fr,auto,1fr] justify-content items-center gap-3 my-6">
             <div className="bg-[#C5C5C5] h-px"></div>
@@ -21,7 +29,7 @@ export const Messages = () => {
             </div>
             <div className="bg-[#C5C5C5] h-px"></div>
           </div>
-          {/* chats */}
+        
           <div className="flex flex-col gap-10">
             {group?.chats?.map((chat: Message, idx: number) => (
               <div
@@ -70,7 +78,7 @@ export const Messages = () => {
             ))}
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

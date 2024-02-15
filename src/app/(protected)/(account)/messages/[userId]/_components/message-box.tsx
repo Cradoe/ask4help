@@ -2,7 +2,6 @@
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
-import { Button } from "components/button";
 import { Textarea } from "components/textarea";
 import { ChangeEvent } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -10,21 +9,16 @@ import { IoIosSend } from "react-icons/io";
 import { sendMessageValidationSchema } from "validations";
 import { InferType } from "yup";
 
-export const MessageBox = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-    setValue,
-  } = useForm({
+export const MessageBox = ({ sendMessage }: { sendMessage: Function }) => {
+  const { handleSubmit, watch, setValue, reset } = useForm({
     resolver: yupResolver(sendMessageValidationSchema),
   });
 
   const sendToServer: SubmitHandler<
     InferType<typeof sendMessageValidationSchema>
   > = (data) => {
-    console.log("data", data);
+    sendMessage(data);
+    reset();
   };
 
   return (
@@ -32,8 +26,9 @@ export const MessageBox = () => {
       <Textarea
         className="h-14 resize-none border-none focus:outline-transparent mt-0 pt-0"
         placeholder="Write a message ..."
+        value={watch("content")}
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-          setValue("message", e.target.value)
+          setValue("content", e.target.value)
         }
       />
 
@@ -42,12 +37,12 @@ export const MessageBox = () => {
         <button
           className={clsx(
             "text-xs gap-2 items-center py-1 rounded-full px-3 flex py-1.5 duration-200 ease-in-out  focus:outline-2 focus:outline-secondary-500",
-            watch("message")
+            watch("content")
               ? "bg-primary-600 hover:bg-primary-600/80 text-black"
               : "bg-neutral-200 text-gray-500"
           )}
           onClick={handleSubmit(sendToServer)}
-          disabled={!watch("message")}
+          disabled={!watch("content")}
         >
           <IoIosSend />
           Send
