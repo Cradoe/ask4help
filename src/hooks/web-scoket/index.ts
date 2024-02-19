@@ -30,7 +30,7 @@ export const useWebSocket = ({ receiverId }: { receiverId: string }) => {
         socket.off("oldMessages");
       };
     }
-  }, [user]);
+  }, [user, receiverId]);
 
   const sendMessage = ({ content }: { content: string }) => {
     socket.emit("message", { senderId: user?.id, receiverId, content });

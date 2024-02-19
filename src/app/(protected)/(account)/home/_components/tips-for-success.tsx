@@ -31,10 +31,9 @@ export const TipsForSuccess = () => {
   const { isReady } = useDomIsReady();
   return (
     <div>
-      {isReady && (
+      {/* {isReady && (
         <div>
           <div>
-            {/* <ReactSlick {...settings}> */}
             {APP_FEATURES?.map((feature, index) => (
               <div key={index} style={{ width: "30vw", height: "100%" }}>
                 <SectionTitle>#1 Tips for Success</SectionTitle>
@@ -49,10 +48,10 @@ export const TipsForSuccess = () => {
                 </p>
               </div>
             ))}
-            {/* </ReactSlick> */}
+            </ReactSlick>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
