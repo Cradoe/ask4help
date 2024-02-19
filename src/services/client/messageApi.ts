@@ -6,6 +6,5 @@ export const messageClientRequest = {
   sendMessage: (payload: InferType<typeof sendMessageValidationSchema>) =>
     clientRequest().post({ url: "messages", payload }),
 
-  getChat: (recepientId: string) =>
-    clientRequest().get(`messages/${recepientId}`),
+  getChatLists: () => clientRequest().get("real-time/chat/list"),
 };

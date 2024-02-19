@@ -1,76 +1,69 @@
 "use client";
 
 import { useAccount } from "hooks/account";
-import { Message } from "interfaces";
+import { Message, User } from "interfaces";
 import { FaUser } from "react-icons/fa";
-import { formatDate, getTimeAgo } from "lib/util";
-import { useGroupedMessages } from "hooks/message";
+import { formatDate, getTimeFromDate } from "lib/util";
+import { useAutoScrollToLastMessage, useGroupedMessages } from "hooks/message";
+import Link from "next/link";
 
-export const Messages = ({ messages }: { messages: Message[] }) => {
-  const { data: user } = useAccount();
-  const { data: groupedChats } = useGroupedMessages();
+export const Messages = ({
+  messages,
+  receiver,
+}: {
+  messages: Message[];
+  receiver: User | undefined;
+}) => {
+  const { data: sender } = useAccount();
+
+  const { messages: groupedChats } = useGroupedMessages(messages);
+
+  const { ref } = useAutoScrollToLastMessage(groupedChats);
 
   return (
-    <div>
-      <div>
-        {messages.map((msg, index) => (
-          <div key={index}>
-            <strong>{msg.senderId}:</strong> {msg.content}
-          </div>
-        ))}
-      </div>
-
-      {/* {groupedChats?.map((group, index: number) => (
+    <div className="h-[28rem] overflow-y-auto px-6" ref={ref}>
+      {groupedChats?.map((group, index: number) => (
         <div key={index}>
-          <div className="grid grid-cols-[1fr,auto,1fr] justify-content items-center gap-3 my-6">
+          <div className="grid grid-cols-[1fr,auto,1fr] justify-content items-center">
             <div className="bg-[#C5C5C5] h-px"></div>
-            <div className="font-semibold">
+            <div className="text-xs bg-neutral-200 rounded-full px-4 py-2">
               {formatDate(group?.date as string)}
             </div>
             <div className="bg-[#C5C5C5] h-px"></div>
           </div>
-        
+
           <div className="flex flex-col gap-10">
-            {group?.chats?.map((chat: Message, idx: number) => (
-              <div
-                className={`flex ${
-                  user?.id === chat?.sender?.id
-                    ? "justify-end"
-                    : "justify-start"
-                }`}
-                key={idx}
-              >
-                <div
-                  className={`flex ${
-                    user?.id === chat?.sender?.id
-                      ? "justify-end"
-                      : "justify-start"
-                  } w-1/3 gap-3`}
-                >
+            {group?.chats?.map((chat: Message | undefined, idx: number) => (
+              <div className={`flex justify-start`} key={idx}>
+                <div className={`flex justify-start w-[80%] gap-1`}>
                   <div>
-                    <div className="text-xl rounded-full p-2 border border-gray-200">
+                    <div className="text-3xl rounded-full p-2 border border-gray-200 bg-secondary-600 text-white">
                       <FaUser aria-hidden="true" />
                     </div>
                   </div>
 
-                  <div
-                    className={`${
-                      user?.id === chat?.sender?.id
-                        ? "order-first"
-                        : "order-last"
-                    }`}
-                  >
-                    <div
-                      className={`${
-                        user?.id === chat?.sender?.id
-                          ? "bg-primary/10"
-                          : "bg-[#F4F6F5]"
-                      } text-black text-sm rounded-xl p-4`}
-                    >
-                      {chat?.message}
+                  <div>
+                    <div className="flex gap-3">
+                      {/* sender details  */}
+                      {chat?.senderId === sender?.id ? (
+                        <div className="text-secondary-600 font-medium">
+                          You
+                        </div>
+                      ) : (
+                        <Link
+                          href={`/profile/${receiver?.id}`}
+                          className="text-secondary-600 font-medium hover:underline"
+                        >
+                          {receiver?.firstName} {receiver?.lastName}
+                        </Link>
+                      )}
+
+                      <div className="text-[0.7rem] mt-2">
+                        {getTimeFromDate(chat?.createdAt as string)}
+                      </div>
                     </div>
-                    <div className="text-[0.7rem] mt-2">
-                      {getTimeAgo(chat?.createdAt as string)}
+                    <div className={`text-black text-sm mt-2`}>
+                      <Paragraphs content={chat?.content || ""} />
                     </div>
                   </div>
                 </div>
@@ -78,7 +71,19 @@ export const Messages = ({ messages }: { messages: Message[] }) => {
             ))}
           </div>
         </div>
-      ))} */}
+      ))}
+    </div>
+  );
+};
+
+const Paragraphs = ({ content }: { content: string }) => {
+  const paragraphs = content?.split("\n");
+
+  return (
+    <div>
+      {paragraphs?.map((paragraph: string, index: number) => (
+        <p key={index}>{paragraph}</p>
+      ))}
     </div>
   );
 };

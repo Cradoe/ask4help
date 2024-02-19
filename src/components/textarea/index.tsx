@@ -27,6 +27,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       defaultValue,
       onChange,
     });
+
     return (
       <div className="py-3">
         {label && (
@@ -54,7 +55,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             id={label || ariaLabel}
             readOnly={readOnly}
             placeholder={placeholder}
-            value={value}
+            value={value || ""}
             onChange={onChange ? onChange : undefined}
             onKeyDown={handleTextareaKeyDown}
             className={`mt-2 outline-0 placeholder-[#828282] text-gray-600 block w-full h-12  text-sm rounded-md p-2 border border-slate-300 focus:outline-2 focus:outline-primary   ${
@@ -62,7 +63,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             } ${leftIcon ? "pl-10" : "px-3"}`}
             ref={ref}
             {...rest}
-          ></textarea>
+          >
+            {value}
+          </textarea>
         </div>
         <p className="text-red-500 text-xs">{error?.message}</p>
       </div>

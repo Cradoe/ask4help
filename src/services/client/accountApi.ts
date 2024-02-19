@@ -6,5 +6,5 @@ export const accountClientRequest = {
   joinWaitlist: (payload: InferType<typeof waitlistValidationSchema>) =>
     clientRequest().post({ url: "/api/waitlist", payload }),
 
-  accountDetails: () => clientRequest().get("account/details"),
+  accountDetails: () => clientRequest().get("users/account"),
 };

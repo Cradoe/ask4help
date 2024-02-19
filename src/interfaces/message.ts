@@ -8,6 +8,22 @@ export interface Message {
   receiverId?: string;
   content: string;
   createdAt?: string;
+}
 
-  time?: string;
+export interface ChatListItem {
+  id: string;
+  user: ChatContact;
+  lastMessage: ChatLastMessage;
+  unreadMessageCount: number;
+}
+
+export interface ChatContact {
+  id: string;
+  firstName: string;
+  lastName: string;
+}
+
+export interface ChatLastMessage {
+  content: string;
+  createdAt: string;
 }

@@ -24,6 +24,7 @@ export const validateEnvironmentVariables = () => {
     "GOOGLE_SHEETS_SUBSCRIBERS_ID",
     "GOOGLE_SHEETS_SUBSCRIBERS_PAGE",
     "NEXT_PUBLIC_API_BASE_URL",
+    "NEXT_PUBLIC_WS_URL",
   ];
   const missingEnvironmentVariables = [] as string[];
 
@@ -55,6 +56,15 @@ export const formatDate = (date: string) => {
   });
 };
 
+export const getTimeFromDate = (dateString: string): string => {
+  const inputDate = new Date(dateString);
+
+  const options: Intl.DateTimeFormatOptions = {
+    hour: "numeric",
+    minute: "numeric",
+  };
+  return inputDate.toLocaleTimeString(undefined, options);
+};
 export const getTimeAgo = (dateString: string): string => {
   const inputDate = new Date(dateString);
   const currentDate = new Date();

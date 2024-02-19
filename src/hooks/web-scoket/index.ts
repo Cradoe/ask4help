@@ -1,34 +1,40 @@
-"use client";
-
+import { useAccount } from "hooks/account";
+import { Message } from "interfaces";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const socket = io("ws://localhost:8500");
+const socket = io(process.env.NEXT_PUBLIC_WS_URL!);
+
 export const useWebSocket = ({ receiverId }: { receiverId: string }) => {
-  const userId = "1"; // Replace with actual user ID
-  const [messages, setMessages] = useState<
-    { senderId: string; content: string }[]
-  >([]);
+  const { data: user } = useAccount();
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
-    // Authenticate user upon page load
-    socket.emit("authenticate", userId);
+    if (user) {
+      // Authenticate user upon page load
+      socket.emit("authenticate", { senderId: user?.id, receiverId });
 
-    // Listen for incoming messages
-    socket.on("message", (data) => {
-      console.log("mesage", data);
+      // Listen for previous messages
+      socket.on("oldMessages", (oldMessages: Message[]) => {
+        setMessages((prevMessages) => [...prevMessages, ...oldMessages]);
+      });
 
-      setMessages((prevMessages) => [...prevMessages, data]);
-    });
+      // Listen for incoming messages
+      socket.on("message", (data) => {
+        setMessages((prevMessages) => [...prevMessages, data]);
+      });
 
-    return () => {
-      // Clean up event listeners
-      socket.off("message");
-    };
-  }, []);
+      return () => {
+        // Clean up event listeners
+        socket.off("message");
+        socket.off("oldMessages");
+      };
+    }
+  }, [user]);
 
   const sendMessage = ({ content }: { content: string }) => {
-    socket.emit("message", { senderId: userId, receiverId, content });
+    socket.emit("message", { senderId: user?.id, receiverId, content });
   };
+
   return { messages, sendMessage };
 };

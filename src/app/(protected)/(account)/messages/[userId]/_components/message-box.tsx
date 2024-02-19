@@ -22,7 +22,7 @@ export const MessageBox = ({ sendMessage }: { sendMessage: Function }) => {
   };
 
   return (
-    <div className="relative h-32 border border-slate-400 rounded-xl px-1">
+    <form className="relative h-32 border border-slate-400 rounded-xl px-1">
       <Textarea
         className="h-14 resize-none border-none focus:outline-transparent mt-0 pt-0"
         placeholder="Write a message ..."
@@ -35,6 +35,7 @@ export const MessageBox = ({ sendMessage }: { sendMessage: Function }) => {
       <div className="px-4 flex justify-between items-center">
         <div></div>
         <button
+          type="submit"
           className={clsx(
             "text-xs gap-2 items-center py-1 rounded-full px-3 flex py-1.5 duration-200 ease-in-out  focus:outline-2 focus:outline-secondary-500",
             watch("content")
@@ -48,6 +49,6 @@ export const MessageBox = ({ sendMessage }: { sendMessage: Function }) => {
           Send
         </button>
       </div>
-    </div>
+    </form>
   );
 };

@@ -6,7 +6,7 @@ export const SearchForm = () => {
     <form action="">
       <Input
         radius="rounded-full"
-        className="h-[2.5rem] w-[22.1rem]"
+        className="h-[2.5rem] w-[22.2rem]"
         leftIcon={<HiOutlineSearch className="text-xl" />}
         placeholder="Search for study advisor"
       />
