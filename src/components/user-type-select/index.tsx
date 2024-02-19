@@ -61,7 +61,7 @@ export const UserTypeSelect = ({
         <button
           type="button"
           onClick={() => setShowDropdown((prev) => !prev)}
-          className={`mt-2 outline-0 placeholder-[#828282] flex justify-between items-center w-full h-12  text-sm rounded-md py-2 border border-slate-300 focus:ring-1 focus:ring-primary-500  focus:outline-none px-4 ${
+          className={`mt-2 outline-0 placeholder-[#828282] flex justify-between items-center w-full h-12  text-sm rounded-md py-2 border border-slate-300 focus:outline-1 focus:outline-primary-500   px-4 ${
             className ? className : "text-gray-600"
           }`}
         >

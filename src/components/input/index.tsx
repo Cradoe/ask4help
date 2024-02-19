@@ -1,5 +1,6 @@
 import { forwardRef, useId } from "react";
 import { InputProps } from "./type";
+import clsx from "clsx";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -14,6 +15,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       defaultValue,
       value,
       onChange,
+      radius = "rounded-md",
+      leftIcon,
       ...rest
     },
     ref
@@ -32,7 +35,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
 
-        <div className="relative mt-1 rounded-md">
+        <div className={clsx("relative mt-1", radius)}>
+          {leftIcon && (
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <span className="text-gray-500 sm:text-sm">{leftIcon}</span>
+            </div>
+          )}
           <input
             aria-invalid={error ? "true" : "false"}
             type={type}
@@ -42,9 +50,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             value={value}
             defaultValue={defaultValue}
             onChange={onChange ? onChange : undefined}
-            className={`mt-2 outline-0 placeholder-[#828282] block w-full h-12  text-sm rounded-md py-2 border border-slate-300 focus:ring-1 focus:ring-secondary-500  focus:outline-none px-4 ${
-              className ? className : "text-gray-600"
-            }`}
+            className={clsx(
+              "mt-2 outline-0 placeholder-[#828282] block w-full h-12  text-sm py-2 border border-slate-300 focus:outline-1 focus:outline-secondary-500  ",
+              className ? className : "text-gray-600",
+              leftIcon ? "pl-10" : "px-4",
+              radius
+            )}
             ref={ref}
             {...rest}
           />

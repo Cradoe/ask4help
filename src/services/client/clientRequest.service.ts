@@ -3,6 +3,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
+import { getCookie } from "lib/cookie";
 import { toast } from "react-hot-toast";
 
 const service = (baseURL = "") => {
@@ -16,6 +17,12 @@ const service = (baseURL = "") => {
   });
 
   service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    // get token from cookie
+    const token = getCookie("token");
+    if (token) {
+      // if token is present, add it to headers as Authorization
+      config.headers!["Authorization"] = `Bearer ${token}`;
+    }
     return config;
   });
 

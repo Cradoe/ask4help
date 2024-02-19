@@ -39,7 +39,7 @@ export const useVerifyAccount = ({
     if (email && verificationCode && !isPending) {
       mutate();
     }
-  }, []);
+  }, [email, verificationCode, isPending]);
 
   return { mutate, isPending };
 };
