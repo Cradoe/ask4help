@@ -37,6 +37,12 @@ const service = (baseURL = "") => {
       } else {
         const errors = error?.response?.data;
 
+        // check if statusCode is 401, unauthorized
+        // @ts-ignore
+        if (errors?.statusCode === 401) {
+          location.href = "/login";
+          return;
+        }
         // @ts-ignore
         let serverErrors = errors?.errors;
         if (serverErrors) {

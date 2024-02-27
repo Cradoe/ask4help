@@ -43,6 +43,7 @@ const config: Config = {
         "footer-bg": "url('/footer-bg.png')",
         "auth-bg-pattern": "url('/auth-bg-pattern.svg')",
         "profile-progress": "url('/profile-progress.png')",
+        "cover-image-pattern": "url('/cover-image-pattern.svg')",
       },
     },
   },

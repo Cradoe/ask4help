@@ -3,63 +3,74 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
 import { Select } from "components/select";
-import { useSignIn } from "hooks/auth";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { eduGoalsValidationSchema } from "validations";
 import { InferType } from "yup";
 import { ICountry, countries } from "countries-list";
 import Link from "next/link";
 import { SearchableSelect } from "components/select/searchable-select";
+import {
+  useFaculties,
+  useQualifications,
+  useSaveEducationGoal,
+} from "hooks/education";
 
 export const ProfileForm = () => {
-  const { mutate, isPending: isSubmitting } = useSignIn();
+  const { mutate, isPending: isSubmitting } = useSaveEducationGoal();
+
+  const { data: faculties } = useFaculties();
+  const { data: qualifications } = useQualifications();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
+    defaultValues: {
+      interests: ["dd"],
+    },
     resolver: yupResolver(eduGoalsValidationSchema),
   });
 
   const sendToServer: SubmitHandler<
     InferType<typeof eduGoalsValidationSchema>
-  > = (data) => {
-    // mutate({ data })
-  };
+  > = (data) => mutate({ data });
 
   return (
     <form onSubmit={handleSubmit(sendToServer)} className="mt-6">
       <Select
         label="Field of Interest"
         placeholder="Please select"
-        error={errors.fieldOfInterest}
-        {...register("fieldOfInterest", { required: true })}
-        options={[
-          {
-            label: "1",
-            value: "1",
-          },
-        ]}
+        error={errors.facultyId}
+        {...register("facultyId", { required: true })}
+        options={faculties?.map((item) => ({
+          label: item?.name,
+          value: item?.id,
+        }))}
       />
 
       <Select
         label="Intended Study Level "
         placeholder="Please select"
-        error={errors.intendedStudyLevel}
-        {...register("intendedStudyLevel", { required: true })}
-        options={[
-          {
-            label: "1",
-            value: "1",
-          },
-        ]}
+        error={errors.qualificationId}
+        {...register("qualificationId", { required: true })}
+        options={qualifications?.map((item) => ({
+          label: item?.name,
+          value: item?.id,
+        }))}
       />
 
       <SearchableSelect
         label="Preferred Study Destinations"
-        error={errors.preferredCountry}
-        {...register("preferredCountry", { required: true })}
+        error={errors.preferredDestinations}
+        multi={true}
+        onChange={(selectedOptions: { label: string; value: string }[]) => {
+          setValue(
+            "preferredDestinations",
+            selectedOptions?.map((item) => item.value)
+          );
+        }}
         options={
           Object.values(countries).map((country: ICountry) => ({
             label: country.name,

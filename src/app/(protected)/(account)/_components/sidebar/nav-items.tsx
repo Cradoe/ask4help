@@ -9,6 +9,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { archivo } from "lib/font";
+import { ConnectionIcon } from "./connection-icon";
 
 interface Menu extends HeaderMenu {
   icon: ReactElement;
@@ -27,7 +28,7 @@ const menu: Menu[] = [
   {
     title: "Connections",
     path: "/connections",
-    icon: <LuUsers />,
+    icon: <ConnectionIcon />,
   },
   {
     title: "Notifications",
@@ -47,7 +48,7 @@ export const NavItems = () => {
             className={clsx(
               "flex items-center gap-3  focus:outline-2 focus:outline-secondary-500 rounded px-1",
               archivo.className,
-              pathname === item.path
+              pathname.includes(item.path)
                 ? "text-secondary-500"
                 : "hover:text-secondary-500"
             )}

@@ -5,12 +5,18 @@ import { Button } from "components/button";
 import { Input } from "components/input";
 import { Select } from "components/select";
 import { useSignIn } from "hooks/auth";
+import {
+  useClassOfDegrees,
+  useFaculties,
+  useQualifications,
+  useSaveEducationBackground,
+} from "hooks/education";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { eduBackgroundValidationSchema } from "validations";
 import { InferType } from "yup";
 
 export const ProfileForm = () => {
-  const { mutate, isPending: isSubmitting } = useSignIn();
+  const { mutate, isPending: isSubmitting } = useSaveEducationBackground();
 
   const {
     register,
@@ -20,51 +26,47 @@ export const ProfileForm = () => {
     resolver: yupResolver(eduBackgroundValidationSchema),
   });
 
+  const { data: qualifications } = useQualifications();
+  const { data: classOfDegress } = useClassOfDegrees();
+  const { data: faculties } = useFaculties();
+
   const sendToServer: SubmitHandler<
     InferType<typeof eduBackgroundValidationSchema>
-  > = (data) => {
-    // mutate({ data })
-  };
+  > = (data) => mutate({ data });
 
   return (
     <form onSubmit={handleSubmit(sendToServer)} className="mt-6">
       <Select
         label="Highest Educational Level Attained"
         placeholder="e.g Bachelor of Science"
-        error={errors.highestQualification}
-        {...register("highestQualification", { required: true })}
-        options={[
-          {
-            label: "1",
-            value: "1",
-          },
-        ]}
+        error={errors.qualificationId}
+        {...register("qualificationId", { required: true })}
+        options={qualifications?.map((item) => ({
+          label: item?.name,
+          value: item?.id,
+        }))}
       />
 
       <Select
         label="Field of Study"
         placeholder="Please select"
-        error={errors.fieldOfStudy}
-        {...register("fieldOfStudy", { required: true })}
-        options={[
-          {
-            label: "1",
-            value: "1",
-          },
-        ]}
+        error={errors.facultyId}
+        {...register("facultyId", { required: true })}
+        options={faculties?.map((item) => ({
+          label: item?.name,
+          value: item?.id,
+        }))}
       />
 
       <Select
         label="Class of degree"
         placeholder="Please select"
-        error={errors.classOfDegree}
-        {...register("classOfDegree", { required: true })}
-        options={[
-          {
-            label: "1",
-            value: "1",
-          },
-        ]}
+        error={errors.classOfDegreeId}
+        {...register("classOfDegreeId", { required: true })}
+        options={classOfDegress?.map((item) => ({
+          label: item?.name,
+          value: item?.id,
+        }))}
       />
 
       <Input
