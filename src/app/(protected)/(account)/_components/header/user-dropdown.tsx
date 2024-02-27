@@ -5,6 +5,9 @@ import { SlArrowDown } from "react-icons/sl";
 import { useEscapeKeyListener, useOnClickOutside } from "hooks/common";
 import { FiLogOut } from "react-icons/fi";
 import { LinkButton } from "components/link-button";
+import { useAccount } from "hooks/account";
+import { Button } from "components/button";
+import { useLogout } from "hooks/auth";
 
 export const UserDropdown = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -17,6 +20,8 @@ export const UserDropdown = () => {
     setShowDropdown((prev: boolean) => !prev);
   };
 
+  const { data: user, isPending } = useAccount();
+  const { mutate: logout, isPending: isLoggingOut } = useLogout();
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -24,7 +29,7 @@ export const UserDropdown = () => {
         onClick={handleDropdown}
         aria-haspopup="menu"
         aria-expanded={showDropdown ? "true" : "false"}
-        // disabled={!userDetails}
+        disabled={!user}
       >
         <div className="flex items-center justify-center p-3 rounded-full bg-secondary-600 text-white">
           <FaUser />
@@ -46,15 +51,16 @@ export const UserDropdown = () => {
           </div>
 
           <div className="">
-            <LinkButton
-              href="/logout"
+            <Button
               justifyContent="justify-start"
               className="block w-full md:h-12 text-xs text-red-500 border-transparent hover:bg-gray-200"
               variant="transparent"
+              onClick={logout}
+              isLoading={isLoggingOut}
             >
               <FiLogOut className="mr-2" />
               Log out
-            </LinkButton>
+            </Button>
           </div>
         </div>
       )}

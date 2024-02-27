@@ -4,8 +4,8 @@ import { UserProfile } from "./user-profile";
 
 export const Sidebar = () => {
   return (
-    <aside className="space-y-10">
-      <div className="bg-white p-8 pt-10 rounded-xl pb-20 space-y-10">
+    <aside className="space-y-10 hidden lg:block">
+      <div className="bg-white p-8 pt-10 rounded-3xl pb-20 space-y-10">
         <UserProfile />
         <NavItems />
       </div>

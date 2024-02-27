@@ -22,6 +22,8 @@ export const Button = (props: ButtonProps) => {
       return "bg-primary-600 hover:bg-primary-600/80 focus:outline-secondary-600";
     } else if (variant === "secondary") {
       return "text-white bg-secondary-500 hover:bg-secondary-500/80 focus:outline-secondary-500";
+    } else if (variant === "neutral") {
+      return "text-[#neutral] bg-neutral-400 hover:bg-neutral-400/80 focus:outline-neutral-400";
     } else if (variant === "transparent") {
       return "bg-transparent border border-[#D1D1D1] focus:outline-primary-600";
     } else {

@@ -13,6 +13,7 @@ export const SearchableSelect = ({
   onChange,
   options,
   showRequiredAsterik = false,
+  multi = false,
   ...rest
 }: any) => {
   return (
@@ -35,6 +36,7 @@ export const SearchableSelect = ({
         )}
 
         <SelectSearch
+          multi={multi}
           options={
             options?.map((option: Option) => ({
               label: option?.label,

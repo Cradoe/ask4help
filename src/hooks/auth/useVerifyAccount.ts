@@ -39,7 +39,7 @@ export const useVerifyAccount = ({
     if (email && verificationCode && !isPending) {
       mutate();
     }
-  }, [email, verificationCode, isPending]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { mutate, isPending };
 };

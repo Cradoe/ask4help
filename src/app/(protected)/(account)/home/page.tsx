@@ -5,7 +5,7 @@ import { TipsForSuccess } from "./_components/tips-for-success";
 
 export default function Page() {
   return (
-    <div className="bg-white  py-10 rounded-xl p-10 px-8">
+    <div className="bg-white  py-10 rounded-3xl p-10 px-8">
       <section>
         <h1 className={clsx("text-3xl", archivo.className)}>Welcome! 👋</h1>
         <p className="text-sm">What do you like to do today?</p>

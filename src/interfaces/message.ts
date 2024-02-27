@@ -1,6 +1,8 @@
+import { MessageStatus } from "lib/enum";
 import { User } from "./user";
 
 export interface Message {
+  id: string;
   sender?: User;
   recepient?: User;
 
@@ -8,6 +10,7 @@ export interface Message {
   receiverId?: string;
   content: string;
   createdAt?: string;
+  status: MessageStatus;
 }
 
 export interface ChatListItem {
