@@ -15,8 +15,17 @@ export interface Faculty {
 
 export interface EducationBackground {
   id: string;
+  classOfDegree: ClassOfDegree;
+  qualification: Qualification;
+  faculty: Faculty;
+  graduationYear: string;
+  createdAt: string;
 }
 
 export interface EducationGoal {
   id: string;
+  qualification: Qualification;
+  preferredDestinations: string[];
+  interests: string[];
+  faculty: Faculty;
 }

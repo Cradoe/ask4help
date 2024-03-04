@@ -14,9 +14,16 @@ import {
   useQualifications,
   useSaveEducationGoal,
 } from "hooks/education";
+import { useRouter } from "next/navigation";
 
 export const ProfileForm = () => {
-  const { mutate, isPending: isSubmitting } = useSaveEducationGoal();
+  const router = useRouter();
+  const onSuccess = () => {
+    // redirect to home page
+    router.push("/home");
+  };
+
+  const { mutate, isPending: isSubmitting } = useSaveEducationGoal(onSuccess);
 
   const { data: faculties } = useFaculties();
   const { data: qualifications } = useQualifications();

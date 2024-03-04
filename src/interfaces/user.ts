@@ -5,6 +5,9 @@ export interface User {
   id: string;
   firstName: string;
   lastName: string;
+  bio: string;
+  location?: string;
+  jobTitle?: string;
   email: string;
   role: UserRole;
   isVerified: boolean;
@@ -24,4 +27,12 @@ export interface Connection {
 export interface SuggestedConnection {
   user: User;
   mutualUsers?: User[];
+}
+
+export interface SocialMediaHandle {
+  platform: {
+    name: string;
+    urlPrefix: string;
+  };
+  handle: string;
 }

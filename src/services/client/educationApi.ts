@@ -11,17 +11,27 @@ export const educationClientRequest = {
   getClassOfDegrees: () => clientRequest().get(`educations/class-of-degree`),
 
   // education background
-  getMyEducationBackground: () => clientRequest().get(`educations/background`),
+  getEducationBackground: (userId?: string) => {
+    if (userId) {
+      return clientRequest().get(`educations/${userId}/background`);
+    } else {
+      return clientRequest().get(`educations/background`);
+    }
+  },
+
   saveEducationBackground: (
     payload: InferType<typeof eduBackgroundValidationSchema>
   ) => clientRequest().post({ url: `educations/background`, payload }),
-  getUserEducationBackground: (userId: string) =>
-    clientRequest().get(`educations/${userId}/background`),
 
   // education goal
-  getMyEducationGoal: () => clientRequest().get(`educations/goal`),
+  getEducationGoal: (userId?: string) => {
+    if (userId) {
+      return clientRequest().get(`educations/${userId}/goal`);
+    } else {
+      return clientRequest().get(`educations/goal`);
+    }
+  },
+
   saveEducationGoal: (payload: InferType<typeof eduGoalsValidationSchema>) =>
     clientRequest().post({ url: `educations/goal`, payload }),
-  getUserEducationGoal: (userId: string) =>
-    clientRequest().get(`educations/${userId}/goal`),
 };

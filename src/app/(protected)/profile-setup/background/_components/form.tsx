@@ -11,12 +11,21 @@ import {
   useQualifications,
   useSaveEducationBackground,
 } from "hooks/education";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { eduBackgroundValidationSchema } from "validations";
 import { InferType } from "yup";
 
 export const ProfileForm = () => {
-  const { mutate, isPending: isSubmitting } = useSaveEducationBackground();
+  const router = useRouter();
+
+  const onSuccess = () => {
+    // redirect to next page
+    router.push("/profile-setup/goal");
+  };
+
+  const { mutate, isPending: isSubmitting } =
+    useSaveEducationBackground(onSuccess);
 
   const {
     register,
