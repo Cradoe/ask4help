@@ -6,3 +6,4 @@ export * from "./useAcceptConnectionRequest";
 export * from "./useRejectConnectionRequest";
 export * from "./useSentInvitations";
 export * from "./useWithdrawInvitation";
+export * from "./useCountConnections";

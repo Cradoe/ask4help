@@ -1,16 +1,21 @@
 "use client";
 import { APIResponse, ApiError } from "interfaces";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { clientRequest } from "services/client";
 import { InferType } from "yup";
 import { eduBackgroundValidationSchema } from "validations";
+import { useState } from "react";
 
-type MutationProp = { data: InferType<typeof eduBackgroundValidationSchema> };
+type MutationProp = {
+  data: InferType<typeof eduBackgroundValidationSchema>;
+  userId?: string;
+};
 
-export const useSaveEducationBackground = () => {
-  const router = useRouter();
+export const useSaveEducationBackground = (onSuccess?: Function) => {
+  const [userId, setUserId] = useState<string | undefined>();
+  const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation<
     APIResponse,
@@ -18,13 +23,19 @@ export const useSaveEducationBackground = () => {
     MutationProp
   >({
     // @ts-ignore
-    mutationFn: ({ data }: MutationProp) => {
+    mutationFn: ({ data, userId }: MutationProp) => {
+      setUserId(userId);
       return clientRequest.education.saveEducationBackground(data);
     },
     onSuccess: async (response: APIResponse) => {
       if (response?.statusCode === 201) {
-        // redirect to next page
-        router.push("/profile-setup/goal");
+        queryClient.invalidateQueries({
+          queryKey: ["education", "background", userId],
+        });
+
+        toast.success(response?.message || "Data saved successfully!");
+
+        onSuccess?.();
       } else {
         if (response) {
           toast.error(response?.message || "Opps! Something went wrong.");

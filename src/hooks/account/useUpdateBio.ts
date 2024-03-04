@@ -4,36 +4,28 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { clientRequest } from "services/client";
 import { InferType } from "yup";
-import { eduGoalsValidationSchema } from "validations";
-import { useState } from "react";
+import { bioValidationSchema } from "validations";
 
-type MutationProp = {
-  data: InferType<typeof eduGoalsValidationSchema>;
-  userId?: string;
-};
-
-export const useSaveEducationGoal = (onSuccess?: Function) => {
-  const [userId, setUserId] = useState<string | undefined>();
+interface MutationProps {
+  data: InferType<typeof bioValidationSchema>;
+}
+export const useUpdateBio = (onSuccess?: Function) => {
   const queryClient = useQueryClient();
-
-  const { mutate, isPending } = useMutation<
+  const { mutate, isPending, isSuccess } = useMutation<
     APIResponse,
     ApiError,
-    MutationProp
+    MutationProps
   >({
     // @ts-ignore
-    mutationFn: ({ data, userId }: MutationProp) => {
-      setUserId(userId);
-      return clientRequest.education.saveEducationGoal(data);
+    mutationFn: ({ data }: MutationProps) => {
+      return clientRequest.account.editBio(data);
     },
     onSuccess: async (response: APIResponse) => {
-      if (response?.statusCode === 201) {
+      if (response?.statusCode === 200) {
+        toast.success(response?.message || "Bio updated successfully!");
         queryClient.invalidateQueries({
-          queryKey: ["education", "goal", userId],
+          queryKey: ["profile"],
         });
-
-        toast.success(response?.message || "Data saved successfully!");
-
         onSuccess?.();
       } else {
         if (response) {
@@ -46,5 +38,5 @@ export const useSaveEducationGoal = (onSuccess?: Function) => {
     },
   });
 
-  return { mutate, isPending };
+  return { mutate, isPending, isSuccess };
 };
