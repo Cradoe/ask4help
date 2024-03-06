@@ -65,9 +65,7 @@ export const Modal = ({
                     </h3>
                   )}
                   {modalDescription && (
-                    <p className="text-xs text-primary-200 font-light">
-                      {modalDescription}
-                    </p>
+                    <p className="mt-3 text-xs mr-10">{modalDescription}</p>
                   )}
                 </div>
                 <button

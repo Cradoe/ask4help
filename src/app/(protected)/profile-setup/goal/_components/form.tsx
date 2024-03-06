@@ -15,6 +15,7 @@ import {
   useSaveEducationGoal,
 } from "hooks/education";
 import { useRouter } from "next/navigation";
+import { InterestBox } from "./interest-box";
 
 export const ProfileForm = () => {
   const router = useRouter();
@@ -34,9 +35,6 @@ export const ProfileForm = () => {
     formState: { errors },
     setValue,
   } = useForm({
-    defaultValues: {
-      interests: ["dd"],
-    },
     resolver: yupResolver(eduGoalsValidationSchema),
   });
 
@@ -84,6 +82,10 @@ export const ProfileForm = () => {
             value: country.name,
           })) || []
         }
+      />
+      <InterestBox
+        error={errors?.interests}
+        onChange={(values: string[]) => setValue("interests", values)}
       />
 
       <div className="pt-5 flex items-center justify-between">
