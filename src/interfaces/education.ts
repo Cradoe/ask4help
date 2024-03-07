@@ -1,3 +1,5 @@
+import { Country } from "./country";
+
 export interface Qualification {
   id: string;
   name: string;
@@ -25,7 +27,6 @@ export interface EducationBackground {
 export interface EducationGoal {
   id: string;
   qualification: Qualification;
-  preferredDestinations: string[];
-  interests: string[];
+  destinations: Country[];
   faculty: Faculty;
 }

@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
-import { ICountry, countries } from "countries-list";
 import { Modal } from "components/modal";
 import { Select } from "components/select";
 import { SearchableSelect } from "components/select/searchable-select";
@@ -14,6 +13,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { FaPlus } from "react-icons/fa";
 import { eduGoalsValidationSchema } from "validations";
 import { InferType } from "yup";
+import { useCountries } from "hooks/country";
 
 export const AddEducationGoalModal = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -26,6 +26,7 @@ export const AddEducationGoalModal = () => {
 
   const { data: faculties } = useFaculties();
   const { data: qualifications } = useQualifications();
+  const { data: countries } = useCountries();
 
   const {
     register,
@@ -33,9 +34,6 @@ export const AddEducationGoalModal = () => {
     formState: { errors },
     setValue,
   } = useForm({
-    defaultValues: {
-      interests: ["dd"],
-    },
     resolver: yupResolver(eduGoalsValidationSchema),
   });
 
@@ -90,9 +88,9 @@ export const AddEducationGoalModal = () => {
               );
             }}
             options={
-              Object.values(countries).map((country: ICountry) => ({
+              countries?.map((country) => ({
                 label: country.name,
-                value: country.name,
+                value: country.id,
               })) || []
             }
           />

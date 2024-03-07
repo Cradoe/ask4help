@@ -4,7 +4,13 @@ import { archivo } from "lib/font";
 import { EducationBackgroundItem } from "./education-background-item";
 import { useEducationBackground } from "hooks/education";
 import { Skeleton } from "components/skeleton";
-import { AddEducationBackgroundModal } from "./add-education-background";
+import dynamic from "next/dynamic";
+
+const AddEducationBackgroundModal = dynamic(() =>
+  import("./add-education-background").then(
+    (mod) => mod.AddEducationBackgroundModal
+  )
+);
 
 export const EducationBackgrounds = () => {
   const { data: educations, isPending } = useEducationBackground();
@@ -20,7 +26,7 @@ export const EducationBackgrounds = () => {
       </div>
 
       <div className="pt-10 space-y-2">
-        {isPending && <Skeleton height={140} />}
+        {isPending && <Skeleton borderRadius={30} height={140} />}
         {educations?.map((education, index) => (
           <EducationBackgroundItem education={education} key={index} />
         ))}

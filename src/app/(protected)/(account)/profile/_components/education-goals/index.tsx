@@ -4,8 +4,12 @@ import { archivo } from "lib/font";
 import { EducationGoalItem } from "./education-goal-item";
 import { useEducationGoal } from "hooks/education";
 import { EducationGoal } from "interfaces";
-import { AddEducationGoalModal } from "./add-education-goal";
 import { Skeleton } from "components/skeleton";
+import dynamic from "next/dynamic";
+
+const AddEducationGoalModal = dynamic(() =>
+  import("./add-education-goal").then((mod) => mod.AddEducationGoalModal)
+);
 
 export const EducationGoals = () => {
   const { data: goals, isPending } = useEducationGoal();
@@ -19,7 +23,7 @@ export const EducationGoals = () => {
       </div>
 
       <div className="pt-10 space-y-2">
-        {isPending && <Skeleton height={140} />}
+        {isPending && <Skeleton borderRadius={30} height={140} />}
 
         {goals?.map((goal: EducationGoal) => (
           <EducationGoalItem goal={goal} key={goal.id} />

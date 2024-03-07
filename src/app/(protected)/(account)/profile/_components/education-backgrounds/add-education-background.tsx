@@ -3,8 +3,6 @@ import { Button } from "components/button";
 import { Input } from "components/input";
 import { Modal } from "components/modal";
 import { Select } from "components/select";
-import { Textarea } from "components/textarea";
-import { useUpdateBio } from "hooks/account";
 import {
   useClassOfDegrees,
   useFaculties,

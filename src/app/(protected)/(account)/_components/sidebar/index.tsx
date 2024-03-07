@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { NavItems } from "./nav-items";
-import { UserProfile } from "./user-profile";
+import { UserAccountProfile } from "../user-account-profile";
 
 export const Sidebar = () => {
   return (
     <aside className="space-y-10 hidden lg:block">
       <div className="bg-white p-8 pt-10 rounded-3xl pb-20 space-y-10">
-        <UserProfile />
+        <UserAccountProfile />
         <NavItems />
       </div>
 

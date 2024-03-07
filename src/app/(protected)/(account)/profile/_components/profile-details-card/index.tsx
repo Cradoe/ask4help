@@ -3,8 +3,12 @@ import { LuUsers } from "react-icons/lu";
 import { ProfilePicture } from "./profile-picture";
 import { useAccount } from "hooks/account";
 import { useCountConnections } from "hooks/connections";
-import { EditBasicDetails } from "./edit-basic-details";
 import { Skeleton } from "components/skeleton";
+import dynamic from "next/dynamic";
+
+const EditBasicDetails = dynamic(() =>
+  import("./edit-basic-details").then((mod) => mod.EditBasicDetails)
+);
 
 export const DetailsCard = () => {
   const { data: user, isPending: isLoadingUser } = useAccount();

@@ -3,6 +3,7 @@ import { clientRequest } from "./clientRequest.service";
 import {
   basicUserDetailsValidationSchema,
   bioValidationSchema,
+  interestValidationSchema,
   socialHandlesValidationSchema,
   waitlistValidationSchema,
 } from "validations";
@@ -20,9 +21,26 @@ export const accountClientRequest = {
   editBio: (payload: InferType<typeof bioValidationSchema>) =>
     clientRequest().patch({ url: "/users/account/bio", payload }),
 
-  getSocialHandles: () => clientRequest().get("users/account/social-media"),
+  getSocialHandles: (userId?: string) => {
+    if (userId) {
+      return clientRequest().get(`users/account/social-media/${userId}`);
+    } else {
+      return clientRequest().get("users/account/social-media");
+    }
+  },
 
   updateSocialHandles: (
     payload: InferType<typeof socialHandlesValidationSchema>
   ) => clientRequest().post({ url: "/users/account/social-media", payload }),
+
+  getUserInterests: (userId?: string) => {
+    if (userId) {
+      return clientRequest().get(`users/account/interests/${userId}`);
+    } else {
+      return clientRequest().get("users/account/interests");
+    }
+  },
+
+  updateUserInterests: (payload: InferType<typeof interestValidationSchema>) =>
+    clientRequest().post({ url: "/users/account/interests", payload }),
 };

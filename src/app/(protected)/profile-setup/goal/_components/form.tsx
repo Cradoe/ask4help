@@ -6,7 +6,6 @@ import { Select } from "components/select";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { eduGoalsValidationSchema } from "validations";
 import { InferType } from "yup";
-import { ICountry, countries } from "countries-list";
 import Link from "next/link";
 import { SearchableSelect } from "components/select/searchable-select";
 import {
@@ -15,7 +14,9 @@ import {
   useSaveEducationGoal,
 } from "hooks/education";
 import { useRouter } from "next/navigation";
-import { InterestBox } from "./interest-box";
+import { useCountries } from "hooks/country";
+import { Country, Interest } from "interfaces";
+import { useInterests } from "hooks/interest";
 
 export const ProfileForm = () => {
   const router = useRouter();
@@ -28,6 +29,8 @@ export const ProfileForm = () => {
 
   const { data: faculties } = useFaculties();
   const { data: qualifications } = useQualifications();
+  const { data: countries } = useCountries();
+  const { data: interests } = useInterests();
 
   const {
     register,
@@ -77,15 +80,29 @@ export const ProfileForm = () => {
           );
         }}
         options={
-          Object.values(countries).map((country: ICountry) => ({
+          countries?.map((country: Country) => ({
             label: country.name,
-            value: country.name,
+            value: country.id,
           })) || []
         }
       />
-      <InterestBox
-        error={errors?.interests}
-        onChange={(values: string[]) => setValue("interests", values)}
+
+      <SearchableSelect
+        label="Interests"
+        error={errors.interests}
+        multi={true}
+        onChange={(selectedOptions: { label: string; value: string }[]) => {
+          setValue(
+            "interests",
+            selectedOptions?.map((item) => item.value)
+          );
+        }}
+        options={
+          interests?.map((interest: Interest) => ({
+            label: interest.name,
+            value: interest.id,
+          })) || []
+        }
       />
 
       <div className="pt-5 flex items-center justify-between">

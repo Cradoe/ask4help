@@ -14,7 +14,7 @@ export const SocialLinks = () => {
       <div className="flex items-center justify-between">
         <h3 className={clsx("text-xl", archivo.className)}>Social Links</h3>
 
-        {handles && <UpdateSocialHandles handles={handles} />}
+        {!isPending && <UpdateSocialHandles handles={handles || []} />}
       </div>
 
       <div className="flex items-center gap-5 flex-wrap">

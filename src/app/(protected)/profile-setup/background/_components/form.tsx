@@ -4,9 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
 import { Input } from "components/input";
 import { Select } from "components/select";
-import { useSignIn } from "hooks/auth";
 import {
   useClassOfDegrees,
+  useEducationBackground,
   useFaculties,
   useQualifications,
   useSaveEducationBackground,
@@ -39,6 +39,8 @@ export const ProfileForm = () => {
   const { data: classOfDegress } = useClassOfDegrees();
   const { data: faculties } = useFaculties();
 
+  const { data: educationBackground } = useEducationBackground();
+
   const sendToServer: SubmitHandler<
     InferType<typeof eduBackgroundValidationSchema>
   > = (data) => mutate({ data });
@@ -49,6 +51,7 @@ export const ProfileForm = () => {
         label="Highest Educational Level Attained"
         placeholder="e.g Bachelor of Science"
         error={errors.qualificationId}
+        defaultValue={educationBackground?.[0]?.qualification?.id}
         {...register("qualificationId", { required: true })}
         options={qualifications?.map((item) => ({
           label: item?.name,
@@ -60,6 +63,7 @@ export const ProfileForm = () => {
         label="Field of Study"
         placeholder="Please select"
         error={errors.facultyId}
+        defaultValue={educationBackground?.[0]?.faculty?.id}
         {...register("facultyId", { required: true })}
         options={faculties?.map((item) => ({
           label: item?.name,
@@ -71,6 +75,7 @@ export const ProfileForm = () => {
         label="Class of degree"
         placeholder="Please select"
         error={errors.classOfDegreeId}
+        defaultValue={educationBackground?.[0]?.classOfDegree?.id}
         {...register("classOfDegreeId", { required: true })}
         options={classOfDegress?.map((item) => ({
           label: item?.name,
@@ -82,6 +87,7 @@ export const ProfileForm = () => {
         label="Graduation Year"
         placeholder="Enter Graduation Year "
         error={errors.graduationYear}
+        defaultValue={educationBackground?.[0]?.graduationYear}
         {...register("graduationYear", { required: true })}
       />
 

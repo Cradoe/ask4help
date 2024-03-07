@@ -54,7 +54,7 @@ export const useSignIn = () => {
             user?.educationGoal?.length === 0
           ) {
             // check if user has set up education goal
-            router.push("/profile-setup/background");
+            router.push("/profile-setup/goal");
           } else {
             router.push("/home");
           }

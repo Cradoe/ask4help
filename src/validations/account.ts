@@ -35,3 +35,7 @@ export const socialHandlesValidationSchema = yup.object().shape({
   twitter: yup.string(),
   youtube: yup.string(),
 });
+
+export const interestValidationSchema = yup.object().shape({
+  interests: yup.mixed(),
+});

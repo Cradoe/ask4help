@@ -18,5 +18,5 @@ export const eduGoalsValidationSchema = yup.object().shape({
   qualificationId: yup.string().required("Please select a value"),
   facultyId: yup.string().required("Please select a value"),
   preferredDestinations: yup.mixed(),
-  interests: yup.mixed().required("Please pick at least one interest"),
+  interests: yup.mixed(),
 });

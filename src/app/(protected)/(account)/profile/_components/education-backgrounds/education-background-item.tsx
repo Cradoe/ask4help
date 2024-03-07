@@ -1,6 +1,10 @@
 import { EducationBackground } from "interfaces";
-import { CiEdit } from "react-icons/ci";
 import { HiOutlineBuildingLibrary } from "react-icons/hi2";
+import dynamic from "next/dynamic";
+
+const EditEducationBackground = dynamic(() =>
+  import("./edit-background").then((mod) => mod.EditEducationBackground)
+);
 
 export const EducationBackgroundItem = ({
   education,
@@ -20,9 +24,7 @@ export const EducationBackgroundItem = ({
         <div className="text-sm text-gray-600">{education?.graduationYear}</div>
       </div>
       <div>
-        <button className="font-medium text-3xl">
-          <CiEdit />
-        </button>
+        <EditEducationBackground education={education} />
       </div>
     </div>
   );

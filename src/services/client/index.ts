@@ -4,6 +4,7 @@ import { connectionClientRequest } from "./connectionApi";
 import { educationClientRequest } from "./educationApi";
 import { messageClientRequest } from "./messageApi";
 import { userClientRequest } from "./userApi";
+import { workExperienceClientRequest } from "./workExperienceApi";
 
 export const clientRequest = {
   auth: authClientRequest,
@@ -11,5 +12,6 @@ export const clientRequest = {
   message: messageClientRequest,
   user: userClientRequest,
   education: educationClientRequest,
+  workExperience: workExperienceClientRequest,
   connection: connectionClientRequest,
 };

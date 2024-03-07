@@ -12,7 +12,7 @@ export default function ProtectedRouteLayout({
   // check if token is in cookie
   // if not redirect to login page
   if (!token || !token?.value) {
-    // redirect("/");
+    redirect("/");
   }
 
   return children;
