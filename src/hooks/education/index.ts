@@ -5,3 +5,5 @@ export * from "./useSaveEducationBackground";
 export * from "./useSaveEducationGoal";
 export * from "./useEducationGoal";
 export * from "./useEducationBackground";
+export * from "./useUpdateEducationBackground";
+export * from "./useUpdateEducationGoal";

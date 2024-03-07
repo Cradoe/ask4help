@@ -2,10 +2,14 @@
 import clsx from "clsx";
 import { archivo } from "lib/font";
 import { SocialLinks } from "./social-media";
-import { EditBioModal } from "./edit-bio-modal";
 import { useAccount } from "hooks/account";
 import { Skeleton } from "components/skeleton";
 import { useMemo } from "react";
+import dynamic from "next/dynamic";
+
+const EditBioModal = dynamic(() =>
+  import("./edit-bio-modal").then((mod) => mod.EditBioModal)
+);
 
 export const AboutSection = () => {
   const { data: user, isPending: isLoadingUser } = useAccount();

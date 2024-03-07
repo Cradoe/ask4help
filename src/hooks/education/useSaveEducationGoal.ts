@@ -5,15 +5,12 @@ import { toast } from "react-hot-toast";
 import { clientRequest } from "services/client";
 import { InferType } from "yup";
 import { eduGoalsValidationSchema } from "validations";
-import { useState } from "react";
 
 type MutationProp = {
   data: InferType<typeof eduGoalsValidationSchema>;
-  userId?: string;
 };
 
 export const useSaveEducationGoal = (onSuccess?: Function) => {
-  const [userId, setUserId] = useState<string | undefined>();
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation<
@@ -22,14 +19,13 @@ export const useSaveEducationGoal = (onSuccess?: Function) => {
     MutationProp
   >({
     // @ts-ignore
-    mutationFn: ({ data, userId }: MutationProp) => {
-      setUserId(userId);
+    mutationFn: ({ data }: MutationProp) => {
       return clientRequest.education.saveEducationGoal(data);
     },
     onSuccess: async (response: APIResponse) => {
       if (response?.statusCode === 201) {
         queryClient.invalidateQueries({
-          queryKey: ["education", "goal", userId],
+          queryKey: ["education", "goal", undefined],
         });
 
         toast.success(response?.message || "Data saved successfully!");

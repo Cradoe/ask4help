@@ -2,12 +2,9 @@
 
 import clsx from "clsx";
 import { Modal } from "components/modal";
-import { useEscapeKeyListener, useOnClickOutside } from "hooks/common";
 import Image from "next/image";
-import { MutableRefObject, useRef, useState } from "react";
-import { FaCheckCircle } from "react-icons/fa";
+import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
-import { TfiAngleDown } from "react-icons/tfi";
 
 const options = [
   {

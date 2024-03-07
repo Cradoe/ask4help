@@ -36,3 +36,9 @@ export interface SocialMediaHandle {
   };
   handle: string;
 }
+
+export interface WorkExperience {
+  id: string;
+  position: string;
+  company: string;
+}

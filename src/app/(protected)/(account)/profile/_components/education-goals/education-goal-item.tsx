@@ -1,6 +1,10 @@
 import { EducationGoal } from "interfaces";
-import { CiEdit } from "react-icons/ci";
 import { HiOutlineBuildingLibrary } from "react-icons/hi2";
+import dynamic from "next/dynamic";
+
+const EditEducationGoal = dynamic(() =>
+  import("./edit-education-goal").then((mod) => mod.EditEducationGoal)
+);
 
 export const EducationGoalItem = ({ goal }: { goal: EducationGoal }) => {
   return (
@@ -12,13 +16,11 @@ export const EducationGoalItem = ({ goal }: { goal: EducationGoal }) => {
         <div className="font-medium ">{goal?.qualification?.name}</div>
         <div className="text-sm text-gray-600">{goal?.faculty?.name}</div>
         <div className="text-sm text-gray-600">
-          {goal?.preferredDestinations?.join(", ")}
+          {goal?.destinations?.flatMap((country) => country?.name).join(", ")}
         </div>
       </div>
       <div>
-        <button className="font-medium text-3xl">
-          <CiEdit />
-        </button>
+        <EditEducationGoal education={goal} />
       </div>
     </div>
   );

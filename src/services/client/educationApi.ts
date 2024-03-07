@@ -23,6 +23,11 @@ export const educationClientRequest = {
     payload: InferType<typeof eduBackgroundValidationSchema>
   ) => clientRequest().post({ url: `educations/background`, payload }),
 
+  editEducationBackground: (
+    id: string,
+    payload: InferType<typeof eduBackgroundValidationSchema>
+  ) => clientRequest().patch({ url: `educations/background/${id}`, payload }),
+
   // education goal
   getEducationGoal: (userId?: string) => {
     if (userId) {
@@ -34,4 +39,9 @@ export const educationClientRequest = {
 
   saveEducationGoal: (payload: InferType<typeof eduGoalsValidationSchema>) =>
     clientRequest().post({ url: `educations/goal`, payload }),
+
+  editEducationGoal: (
+    id: string,
+    payload: InferType<typeof eduGoalsValidationSchema>
+  ) => clientRequest().patch({ url: `educations/goal/${id}`, payload }),
 };

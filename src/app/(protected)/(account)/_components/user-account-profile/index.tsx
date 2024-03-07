@@ -4,7 +4,7 @@ import { useAccount } from "hooks/account";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 
-export const UserProfile = () => {
+export const UserAccountProfile = () => {
   const { data: user, isPending } = useAccount();
 
   return (

@@ -24,7 +24,7 @@ export const useSaveSocialMediaHandles = (onSuccess?: Function) => {
       if (response?.statusCode === 200) {
         toast.success(response?.message || "Handles updated successfully!");
         queryClient.invalidateQueries({
-          queryKey: ["profile", "social-media"],
+          queryKey: ["profile", "social-media", undefined],
         });
         onSuccess?.();
       } else {
