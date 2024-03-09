@@ -59,7 +59,7 @@ export const useSignIn = () => {
             router.push("/home");
           }
         } else if (user?.role === UserRole.HELPER) {
-          router.push("/helper/home");
+          router.push("/home");
         } else {
           // unknown/lost user
           toast.error("Access denied!");

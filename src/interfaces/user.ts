@@ -11,9 +11,11 @@ export interface User {
   email: string;
   role: UserRole;
   isVerified: boolean;
+  phone?: string;
+  profilePicture?: string;
+
   educationBackground?: EducationBackground[];
   educationGoal?: EducationGoal[];
-  profilePicture?: string;
 }
 
 export interface Connection {

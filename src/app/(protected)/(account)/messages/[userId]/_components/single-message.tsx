@@ -38,7 +38,7 @@ export const SingleMessage = ({
         <div>
           <div className="flex gap-3">
             {/* sender details  */}
-            {message?.senderId === myDetails?.id ? (
+            {message?.sender?.id === myDetails?.id ? (
               <div className="text-secondary-600 font-medium">You</div>
             ) : (
               <Link

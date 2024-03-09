@@ -34,7 +34,7 @@ export const Invitations = () => {
         </div>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col pt-5">
         {isLoading &&
           [...new Array(1)]?.map((_, index: number) => (
             <Skeleton
@@ -45,8 +45,8 @@ export const Invitations = () => {
             />
           ))}
 
-        {invitations?.map((invitation: Connection, index: number) => (
-          <InvitationCard invitation={invitation} key={index} />
+        {invitations?.map((invitation: Connection) => (
+          <InvitationCard invitation={invitation} key={invitation.id} />
         ))}
       </div>
     </section>

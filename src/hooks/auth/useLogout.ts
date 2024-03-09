@@ -4,7 +4,7 @@ import { deleteCookie } from "lib/cookie";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export const useLogout = () => {
+export const useLogout = (onSuccess?: Function) => {
   const [isPending, setIsPending] = useState<boolean>(false);
   const router = useRouter();
 
@@ -15,8 +15,12 @@ export const useLogout = () => {
     deleteCookie("role");
 
     setTimeout(() => {
-      // redirect to login page
-      router.replace("/login");
+      if (onSuccess) {
+        onSuccess?.();
+      } else {
+        // redirect to login page
+        router.replace("/login");
+      }
     }, 1100);
   };
 

@@ -32,11 +32,9 @@ export const ConnectSuggestions = () => {
             />
           ))}
 
-        {suggestedUsers?.map(
-          (suggestion: SuggestedConnection, index: number) => (
-            <UserConnectCard suggestion={suggestion} key={index} />
-          )
-        )}
+        {suggestedUsers?.map((suggestion: SuggestedConnection) => (
+          <UserConnectCard suggestion={suggestion} key={suggestion.user.id} />
+        ))}
       </div>
 
       {/* TODO:: implement pagination  */}
