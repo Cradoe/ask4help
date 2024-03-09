@@ -28,7 +28,7 @@ export const useAcknowledgeMessage = ({
     if (message && user) {
       if (message?.status !== MessageStatus.SEEN) {
         // send acknowledgement if the logged in user is not the sender of the message
-        if (message?.senderId !== user?.id) {
+        if (message?.sender?.id !== user?.id) {
           acknowledgeMessage();
         }
       }
