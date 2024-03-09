@@ -3,7 +3,9 @@ import { clientRequest } from "./clientRequest.service";
 import {
   basicUserDetailsValidationSchema,
   bioValidationSchema,
+  changePasswordValidationSchema,
   interestValidationSchema,
+  phoneValidationSchema,
   socialHandlesValidationSchema,
   waitlistValidationSchema,
 } from "validations";
@@ -13,6 +15,12 @@ export const accountClientRequest = {
     clientRequest().post({ url: "/api/waitlist", payload }),
 
   accountDetails: () => clientRequest().get("users/account"),
+
+  changePassword: (payload: InferType<typeof changePasswordValidationSchema>) =>
+    clientRequest().patch({ url: "/users/account/change-password", payload }),
+
+  updatePhoneNumber: (payload: InferType<typeof phoneValidationSchema>) =>
+    clientRequest().patch({ url: "/users/account/phone-number", payload }),
 
   editBasicDetails: (
     payload: InferType<typeof basicUserDetailsValidationSchema>
@@ -43,4 +51,7 @@ export const accountClientRequest = {
 
   updateUserInterests: (payload: InferType<typeof interestValidationSchema>) =>
     clientRequest().post({ url: "/users/account/interests", payload }),
+
+  closeAccount: () =>
+    clientRequest().delete({ url: "/users/account/close-account" }),
 };

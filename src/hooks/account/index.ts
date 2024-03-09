@@ -5,3 +5,6 @@ export * from "./useSaveSocialMediaHandles";
 export * from "./useSocialMediaHandles";
 export * from "./useUserInterests";
 export * from "./useUpdateUserInterests";
+export * from "./useChangePassword";
+export * from "./useUpdatePhoneNumber";
+export * from "./useCloseAccount";

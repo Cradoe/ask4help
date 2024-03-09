@@ -1,4 +1,3 @@
-import { SOCIAL_MEDIAS } from "lib/enum";
 import * as yup from "yup";
 
 export const basicUserDetailsValidationSchema = yup.object().shape({
@@ -39,3 +38,41 @@ export const socialHandlesValidationSchema = yup.object().shape({
 export const interestValidationSchema = yup.object().shape({
   interests: yup.mixed(),
 });
+
+export const phoneValidationSchema = yup.object().shape({
+  phone: yup
+    .string()
+    .required("Phone number is required")
+    .matches(
+      /^\+(?:[0-9] ?){6,14}[0-9]$/,
+      "Invalid phone number. Please use the international format e.g +2348000000000 or +1 5551234567"
+    ),
+});
+
+export const changePasswordValidationSchema = yup
+  .object()
+  .shape({
+    currentPassword: yup.string().required("Current password is required"),
+    newPassword: yup
+      .string()
+      .required("Current password is required")
+      .min(8, "Current password must be at least 8 characters"),
+    confirmNewPassword: yup
+      .string()
+      .required("Confirm password is required")
+      .oneOf([yup.ref("newPassword")], "Passwords must match"),
+  })
+  .test("check-password", "", function (values) {
+    const { currentPassword, newPassword } = values;
+
+    if (currentPassword === newPassword) {
+      throw new yup.ValidationError(
+        "Old password and new password cannot be the same",
+        values,
+        "newPassword"
+      );
+    }
+
+    // No error if validation passes
+    return true;
+  });

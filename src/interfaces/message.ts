@@ -3,11 +3,7 @@ import { User } from "./user";
 
 export interface Message {
   id: string;
-  sender?: User;
-  recepient?: User;
-
-  senderId?: string;
-  receiverId?: string;
+  sender?: Partial<User>;
   content: string;
   createdAt?: string;
   status: MessageStatus;
@@ -15,15 +11,9 @@ export interface Message {
 
 export interface ChatListItem {
   id: string;
-  user: ChatContact;
+  user: Partial<User>;
   lastMessage: ChatLastMessage;
   unreadMessageCount: number;
-}
-
-export interface ChatContact {
-  id: string;
-  firstName: string;
-  lastName: string;
 }
 
 export interface ChatLastMessage {

@@ -30,7 +30,7 @@ const menu: Menu[] = [
   },
   {
     title: "Account Settings",
-    path: "/account/settings",
+    path: "/settings",
     icon: <IoSettingsOutline />,
   },
   {
@@ -75,6 +75,7 @@ export const UserDropdown = () => {
               <LinkButton
                 key={index}
                 href={item?.path}
+                onClick={() => setShowDropdown(false)}
                 justifyContent="justify-start"
                 className="px flex gap-3 w-full md:h-12 text-sm border-transparent hover:bg-gray-100"
                 variant="transparent"

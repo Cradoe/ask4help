@@ -34,3 +34,14 @@ export interface HeaderMenu {
   title: string;
   path: string;
 }
+
+export interface SettingsMenuGRoup {
+  title: string;
+  items: SettingsMenuItem[];
+}
+
+export interface SettingsMenuItem {
+  title: string;
+  href: string;
+  comingSoon?: boolean;
+}
