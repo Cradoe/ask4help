@@ -42,7 +42,8 @@ const service = (baseURL = "") => {
         if (errors?.statusCode === 401) {
           location.href = "/login";
           return;
-        } else {
+          // @ts-ignore
+        } else if (errors?.statusCode !== 404) {
           // @ts-ignore
           let serverErrors = errors?.errors;
           if (serverErrors) {

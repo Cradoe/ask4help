@@ -1,3 +1,4 @@
+import { UserProfilePicture } from "components/profile-picture";
 import React from "react";
 import { FaUser } from "react-icons/fa";
 
@@ -10,23 +11,15 @@ export const StackedConnectionImages = ({
     <div className="flex">
       {profilePictures?.map((picture, index) => (
         <div className="relative h-12" key={index}>
-          <span
+          <div
             className={`flex items-center justify-center ${
               index !== 0 && "-ml-3"
             } z-${profilePictures?.length - index}`}
           >
-            {picture ? (
-              <img
-                src={picture}
-                alt={`Profile ${index + 1}`}
-                className="w-12 h-12 rounded-full border-2 border-white"
-              />
-            ) : (
-              <div className="rounded-full bg-secondary-600 text-white inline-block p-2">
-                <FaUser className="text-lg" />
-              </div>
-            )}
-          </span>
+            <div className="flex items-center w-10 h-10 justify-center">
+              <UserProfilePicture size="sm" profilePicture={picture} />
+            </div>
+          </div>
         </div>
       ))}
     </div>

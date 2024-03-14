@@ -1,6 +1,5 @@
 "use client";
 import { useState, useRef, ReactElement } from "react";
-import { FaUser } from "react-icons/fa";
 import { SlArrowDown } from "react-icons/sl";
 import { useEscapeKeyListener, useOnClickOutside } from "hooks/common";
 import { LinkButton } from "components/link-button";
@@ -13,6 +12,8 @@ import { ConnectionIcon } from "../sidebar/connection-icon";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
+import { UserProfilePicture } from "components/profile-picture";
+import { useAccount } from "hooks/account";
 
 interface Menu extends HeaderMenu {
   icon: ReactElement;
@@ -51,6 +52,8 @@ export const UserDropdown = () => {
     setShowDropdown((prev: boolean) => !prev);
   };
 
+  const { data: user } = useAccount();
+
   const { mutate: logout, isPending: isLoggingOut } = useLogout();
   return (
     <div className="relative" ref={dropdownRef}>
@@ -60,9 +63,10 @@ export const UserDropdown = () => {
         aria-haspopup="menu"
         aria-expanded={showDropdown ? "true" : "false"}
       >
-        <div className="flex items-center justify-center p-3 rounded-full bg-secondary-600 text-white">
-          <FaUser />
+        <div className="flex items-center w-10 h-10 justify-center rounded-full">
+          <UserProfilePicture size="sm" profilePicture={user?.profilePicture} />
         </div>
+
         <SlArrowDown className="font-bold text-xs" />
       </button>
       {showDropdown && (

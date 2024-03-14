@@ -1,8 +1,8 @@
 "use client";
+import { UserProfilePicture } from "components/profile-picture";
 import { Skeleton } from "components/skeleton";
 import { useAccount } from "hooks/account";
 import Link from "next/link";
-import { FaUser } from "react-icons/fa";
 
 export const UserAccountProfile = () => {
   const { data: user, isPending } = useAccount();
@@ -27,8 +27,11 @@ export const UserAccountProfile = () => {
 
       {user && (
         <>
-          <div className="flex items-center justify-center p-2 rounded-full bg-secondary-600 text-white">
-            <FaUser />
+          <div className="flex items-center w-10 h-10 justify-center rounded-full">
+            <UserProfilePicture
+              size="sm"
+              profilePicture={user?.profilePicture}
+            />
           </div>
           <div>
             <div className="text-sm leading-3">

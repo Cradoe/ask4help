@@ -1,11 +1,11 @@
 import { Button } from "components/button";
+import { UserProfilePicture } from "components/profile-picture";
 import {
   useAcceptConnectionRequest,
   useRejectConnectionRequest,
 } from "hooks/connections";
 import { Connection } from "interfaces";
 import Link from "next/link";
-import { FaUser } from "react-icons/fa";
 
 export const InvitationCard = ({ invitation }: { invitation: Connection }) => {
   const { mutate: acceptRequest, isPending: isAccepting } =
@@ -16,9 +16,9 @@ export const InvitationCard = ({ invitation }: { invitation: Connection }) => {
   const { user } = invitation;
   return (
     <div className="flex justify-between items center py-2 bg-secondary-50 py-5 px-8 border-l border-l-secondary-500 border-l-4">
-      <div className="flex">
-        <div className="p-2">
-          <FaUser />
+      <div className="flex items-center gap-2">
+        <div className="flex items-center w-10 h-10 justify-center rounded-full">
+          <UserProfilePicture size="sm" profilePicture={user?.profilePicture} />
         </div>
         <Link href={`/profile/${user?.id}`}>
           {user?.firstName} {user?.lastName}

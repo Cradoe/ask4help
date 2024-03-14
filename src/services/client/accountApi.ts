@@ -26,6 +26,9 @@ export const accountClientRequest = {
     payload: InferType<typeof basicUserDetailsValidationSchema>
   ) => clientRequest().patch({ url: "/users/account/basic", payload }),
 
+  editProfilePicture: (payload: FormData) =>
+    clientRequest().patch({ url: "/users/account/profile-picture", payload }),
+
   editBio: (payload: InferType<typeof bioValidationSchema>) =>
     clientRequest().patch({ url: "/users/account/bio", payload }),
 

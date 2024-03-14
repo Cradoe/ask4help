@@ -2,12 +2,12 @@
 
 import { useAccount } from "hooks/account";
 import { Message } from "interfaces";
-import { FaUser } from "react-icons/fa";
 import { getTimeFromDate } from "lib/util";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useAcknowledgeMessage } from "hooks/web-scoket";
 import { useUserDetails } from "hooks/user";
+import { UserProfilePicture } from "components/profile-picture";
 
 export const SingleMessage = ({
   message,
@@ -28,10 +28,17 @@ export const SingleMessage = ({
 
   return (
     <div className={`flex justify-start`}>
-      <div className={`flex justify-start w-[80%] gap-1`}>
+      <div className={`flex justify-start w-[80%] gap-2`}>
         <div>
-          <div className="text-3xl rounded-full p-2 border border-gray-200 bg-secondary-600 text-white">
-            <FaUser aria-hidden="true" />
+          <div className="flex items-center w-10 h-10 justify-center">
+            <UserProfilePicture
+              size="sm"
+              profilePicture={
+                message?.sender?.id === myDetails?.id
+                  ? myDetails?.profilePicture
+                  : receiver?.profilePicture
+              }
+            />
           </div>
         </div>
 

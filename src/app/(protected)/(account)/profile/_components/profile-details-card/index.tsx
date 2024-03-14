@@ -22,7 +22,7 @@ export const DetailsCard = () => {
         <div className="flex items-center justify-between gap-x-1 xl:gap-x-3 text-black focus:outline-2 relative">
           <ProfilePicture profilePicture={user?.profilePicture} />
 
-          <div className="pl-32 leading-3">
+          <div className="pl-36 leading-3">
             {isLoadingUser && <Skeleton height={20} width={150} />}
             <div className="text-xl">
               {user?.firstName} {user?.lastName}

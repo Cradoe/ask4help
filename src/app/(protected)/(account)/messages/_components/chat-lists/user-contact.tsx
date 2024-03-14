@@ -1,8 +1,8 @@
 import clsx from "clsx";
+import { UserProfilePicture } from "components/profile-picture";
 import { ChatListItem } from "interfaces";
 import { getTimeFromDate } from "lib/util";
 import Link from "next/link";
-import { FaUser } from "react-icons/fa";
 import { FaEllipsisH } from "react-icons/fa";
 
 export const UserContact = ({ contact }: { contact: ChatListItem }) => {
@@ -14,8 +14,11 @@ export const UserContact = ({ contact }: { contact: ChatListItem }) => {
         "hover:bg-secondary-50/35 ease-in-out duration-200"
       )}
     >
-      <div className="flex items-center justify-center p-2 rounded-full bg-secondary-600 text-white">
-        <FaUser />
+      <div className="flex items-center w-10 h-10 justify-center">
+        <UserProfilePicture
+          size="sm"
+          profilePicture={contact?.user?.profilePicture}
+        />
       </div>
       <div>
         <div className="text-sm leading-3 flex items-center justify-between">
