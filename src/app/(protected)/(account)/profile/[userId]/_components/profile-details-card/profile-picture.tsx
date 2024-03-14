@@ -1,4 +1,4 @@
-import { FaUser } from "react-icons/fa";
+import { UserProfilePicture } from "components/profile-picture";
 
 export const ProfilePicture = ({
   profilePicture,
@@ -7,8 +7,8 @@ export const ProfilePicture = ({
 }) => {
   return (
     <div className="z-20 absolute -top-[3.5rem]">
-      <div className="flex items-center justify-center p-8 rounded-full bg-secondary-600 text-white border border-4 border-white relative">
-        <FaUser className="text-5xl" />
+      <div className="flex h-32 w-32 items-center justify-center rounded-full border border-8 border-white relative">
+        <UserProfilePicture profilePicture={profilePicture} />
       </div>
     </div>
   );

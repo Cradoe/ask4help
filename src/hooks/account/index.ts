@@ -8,3 +8,4 @@ export * from "./useUpdateUserInterests";
 export * from "./useChangePassword";
 export * from "./useUpdatePhoneNumber";
 export * from "./useCloseAccount";
+export * from "./useUpdateProfilePicture";
