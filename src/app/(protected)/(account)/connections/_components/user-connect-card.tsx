@@ -15,7 +15,7 @@ export const UserConnectionCard = ({
 }) => {
   const { user, mutualUsers } = useMemo(() => connection, [connection]);
   return (
-    <div className="md:border md:border-gray-500 grid grid-cols-[30%_1fr] lg:grid-cols-1 md:rounded-3xl p-5">
+    <div className="md:border md:border-gray-500 grid grid-cols-[30%_1fr] gap-x-2 lg:grid-cols-1 md:rounded-3xl p-5">
       <div>
         <Link
           href={`/profile/${user?.id}`}
@@ -31,7 +31,7 @@ export const UserConnectionCard = ({
           </div>
         </Link>
       </div>
-      <div>
+      <div className="mt-2">
         <Link
           href={`/profile/${user?.id}`}
           aria-label={`${user?.firstName} ${user?.lastName}`}
@@ -43,9 +43,13 @@ export const UserConnectionCard = ({
           {user?.firstName} {user?.lastName}
         </Link>
 
-        <ConnectionStack mutualUsers={mutualUsers || []} />
+        <div className="text-xs">{user?.jobTitle}</div>
 
-        <div>{children}</div>
+        <div className="h-[4em] lg:h-[5em]">
+          <ConnectionStack mutualUsers={mutualUsers || []} />
+        </div>
+
+        <div className="mt-8">{children}</div>
       </div>
     </div>
   );

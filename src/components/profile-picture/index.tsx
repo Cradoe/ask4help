@@ -7,7 +7,7 @@ export const UserProfilePicture = ({
   profilePicture,
   size = "lg",
 }: {
-  size?: "sm" | "lg";
+  size?: "sm" | "lg" | "md";
   placeholderClassName?: string;
   profilePicture: string | undefined;
 }) => {
@@ -26,6 +26,7 @@ export const UserProfilePicture = ({
           className={clsx(
             "flex items-center justify-center text-white",
             { "p-3": size === "sm" },
+            { "p-5": size === "md" },
             { "p-8": size === "lg" }
           )}
         >
@@ -33,6 +34,7 @@ export const UserProfilePicture = ({
             className={clsx(
               placeholderClassName,
               { "text-base": size === "sm" },
+              { "text-base": size === "md" },
               { "text-5xl": size === "lg" }
             )}
           />

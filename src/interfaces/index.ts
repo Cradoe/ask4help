@@ -4,3 +4,4 @@ export * from "./message";
 export * from "./education";
 export * from "./country";
 export * from "./interest";
+export * from "./notification";

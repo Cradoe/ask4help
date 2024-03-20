@@ -45,3 +45,8 @@ export interface SettingsMenuItem {
   href: string;
   comingSoon?: boolean;
 }
+
+export interface Pagination {
+  page: number;
+  hasNextPage: boolean;
+}

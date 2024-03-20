@@ -43,39 +43,35 @@ const service = (baseURL = "") => {
           location.href = "/login";
           return;
           // @ts-ignore
-        } else if (errors?.statusCode !== 404) {
-          // @ts-ignore
-          let serverErrors = errors?.errors;
-          if (serverErrors) {
-            // loop through serverErrors object and display value of each key
-            Object.keys(serverErrors).forEach((key) => {
-              const error = serverErrors[key];
-              if (Array.isArray(error)) {
-                error.forEach((err) => {
-                  toast.error(
-                    err?.message || `Error with ${serverErrors[key]}`
-                  );
-                });
-              } else {
-                toast.error(
-                  error?.message || `Error with ${serverErrors[key]}`
-                );
-              }
-            });
-          } else {
-            // @ts-ignore
-            const messages = errors?.message;
-            if (Array.isArray(messages)) {
-              messages.forEach((message) => {
-                toast.error(message);
+        }
+
+        // @ts-ignore
+        let serverErrors = errors?.errors;
+        if (serverErrors) {
+          // loop through serverErrors object and display value of each key
+          Object.keys(serverErrors).forEach((key) => {
+            const error = serverErrors[key];
+            if (Array.isArray(error)) {
+              error.forEach((err) => {
+                toast.error(err?.message || `Error with ${serverErrors[key]}`);
               });
             } else {
-              toast.error(
-                // @ts-ignore
-                (errors?.message || errors?.error) ??
-                  "Something went wrong! Please try again."
-              );
+              toast.error(error?.message || `Error with ${serverErrors[key]}`);
             }
+          });
+        } else {
+          // @ts-ignore
+          const messages = errors?.message;
+          if (Array.isArray(messages)) {
+            messages.forEach((message) => {
+              toast.error(message);
+            });
+          } else {
+            toast.error(
+              // @ts-ignore
+              (errors?.message || errors?.error) ??
+                "Something went wrong! Please try again."
+            );
           }
         }
 

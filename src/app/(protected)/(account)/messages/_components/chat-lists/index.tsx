@@ -41,7 +41,7 @@ export const ChatList = () => {
         {/* no contact lists  */}
         {!isPending && contacts?.length === 0 && <NoContact />}
 
-        {contacts?.length && <Contacts contacts={contacts} />}
+        {contacts && contacts?.length > 0 && <Contacts contacts={contacts} />}
       </div>
     </div>
   );
