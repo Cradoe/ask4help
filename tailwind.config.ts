@@ -44,6 +44,7 @@ const config: Config = {
         "auth-bg-pattern": "url('/auth-bg-pattern.svg')",
         "profile-progress": "url('/profile-progress.png')",
         "cover-image-pattern": "url('/cover-image-pattern.svg')",
+        "discover-connection": "url('/discover-connection.webp')",
       },
     },
   },

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Option } from "./Select.type";
 import SelectSearch from "react-dropdown-select";
 
@@ -14,6 +15,7 @@ export const SearchableSelect = ({
   options,
   showRequiredAsterik = false,
   multi = false,
+  radius = "rounded",
   ...rest
 }: any) => {
   return (
@@ -28,7 +30,7 @@ export const SearchableSelect = ({
         </label>
       )}
 
-      <div className="relative mt-1 rounded-md">
+      <div className={clsx("relative mt-1", radius ? radius : "rounded-md")}>
         {leftIcon && (
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <span className="text-gray-500 sm:text-sm">{leftIcon}</span>
@@ -50,7 +52,11 @@ export const SearchableSelect = ({
             ) || []
           }
           onChange={(values: Option[]) => onChange?.(values)}
-          className="mt-2 outline-0 placeholder-[#515151] text-gray-600 block w-full h-12  text-sm rounded p-2 border border-slate-300 focus:outline-2  px-3"
+          className={clsx(
+            "mt-2 outline-0 placeholder-[#515151] text-gray-600 block w-full h-12  text-sm  p-2 border-none border-red-300 focus:outline-2  px-3 rounded-full",
+            className
+            // radius
+          )}
         />
       </div>
       <p className="text-red-500 text-xs">{error?.message}</p>
