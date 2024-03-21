@@ -100,3 +100,7 @@ const parseInputDate = (input: string): Date => {
 export const toSentenceCase = (input: string): string => {
   return input.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
 };
+
+export const addCommaToNumber = (val: number | string) => {
+  return new Intl.NumberFormat().format(Number(val));
+};

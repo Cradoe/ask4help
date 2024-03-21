@@ -4,6 +4,7 @@ import { connectionClientRequest } from "./connectionApi";
 import { educationClientRequest } from "./educationApi";
 import { messageClientRequest } from "./messageApi";
 import { notificationClientRequest } from "./notificationApi";
+import { taskClientRequest } from "./taskApi";
 import { userClientRequest } from "./userApi";
 import { workExperienceClientRequest } from "./workExperienceApi";
 
@@ -16,4 +17,5 @@ export const clientRequest = {
   workExperience: workExperienceClientRequest,
   connection: connectionClientRequest,
   notification: notificationClientRequest,
+  task: taskClientRequest,
 };
