@@ -45,7 +45,7 @@ const dummyTasks: SopTask[] = [
 ];
 export default function Page() {
   return (
-    <div className="bg-white space-y-10 rounded-3xl py-10 px-6 md:px-8 lg:mr-10 xl:mr-20">
+    <div className="bg-white space-y-10 rounded-3xl py-10 px-6 md:px-8 lg:mr-10">
       <h2 className={clsx("text-xl tracking-wider", archivo.className)}>
         Task Management
       </h2>
@@ -55,8 +55,11 @@ export default function Page() {
           data={dummyTasks ?? []}
           columns={TableHeader}
           isLoading={false}
-          // meta={meta}
-          // setPage={setPage}
+          meta={{
+            previousCursor: "dd",
+            nextCursor: "dd",
+          }}
+          setPage={() => {}}
         />
       </div>
     </div>

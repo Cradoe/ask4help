@@ -49,7 +49,7 @@ export const SingleMessage = ({
               <div className="text-secondary-600 font-medium">You</div>
             ) : (
               <Link
-                href={`/profile/${receiver?.id}`}
+                href={getProfileUrl(receiver?.role, receiver?.id)}
                 className="text-secondary-600 font-medium hover:underline"
               >
                 {receiver?.firstName} {receiver?.lastName}

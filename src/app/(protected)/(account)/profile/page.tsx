@@ -1,19 +1,20 @@
-import { AboutSection } from "./_components/about-section";
-import { EducationBackgrounds } from "./_components/education-backgrounds";
-import { EducationGoals } from "./_components/education-goals";
-import { Interests } from "./_components/interests";
-import { DetailsCard } from "./_components/profile-details-card";
-import { WorkExperiences } from "./_components/work-experiences";
+"use client";
+
+import { useAccount } from "hooks/account";
+import { UserRole } from "lib/enum";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page() {
-  return (
-    <div className="space-y-2">
-      <DetailsCard />
-      <AboutSection />
-      <EducationBackgrounds />
-      <EducationGoals />
-      <WorkExperiences />
-      <Interests />
-    </div>
-  );
+  const router = useRouter();
+  const { data: user } = useAccount();
+
+  useEffect(() => {
+    if (user && user.role == UserRole.USER) {
+      router.replace("/profile/user");
+    } else if (user && user.role == UserRole.HELPER) {
+      router.replace("/profile/helper");
+    }
+  }, [user]);
+  return <div>loading...</div>;
 }

@@ -16,10 +16,7 @@ export const sopReviewTaskValidationSchema = yup
         /^[A-Za-z0-9-_,. ]+$/,
         "Description cannot have invalid characters"
       ),
-    quantity: yup
-      .string()
-      .required("How many SOPs do you want to receive?")
-      .matches(/^[0-9]+$/, "Quantity can only be in digits"),
+    quantity: yup.number().required("How many SOPs do you want to receive?"),
     collectionStartDate: yup
       .string()
       .required("When do you want to start receiving SOPs?")
@@ -28,8 +25,12 @@ export const sopReviewTaskValidationSchema = yup
         "Collection start date cannot be in the past",
         (value) => {
           const today = new Date();
+          today.setHours(0, 0, 0, 0);
 
-          return new Date(value) >= today;
+          const selectedDate = new Date(value);
+          selectedDate.setHours(0, 0, 0, 0);
+
+          return selectedDate >= today;
         }
       ),
     collectionEndDate: yup
@@ -40,8 +41,12 @@ export const sopReviewTaskValidationSchema = yup
         "Collection end date cannot be in the past",
         (value) => {
           const today = new Date();
+          today.setHours(0, 0, 0, 0);
 
-          return new Date(value) >= today;
+          const selectedDate = new Date(value);
+          selectedDate.setHours(0, 0, 0, 0);
+
+          return selectedDate >= today;
         }
       ),
     returnStartDate: yup
@@ -52,8 +57,12 @@ export const sopReviewTaskValidationSchema = yup
         "Return start date cannot be in the past",
         (value) => {
           const today = new Date();
+          today.setHours(0, 0, 0, 0);
 
-          return new Date(value) >= today;
+          const selectedDate = new Date(value);
+          selectedDate.setHours(0, 0, 0, 0);
+
+          return selectedDate >= today;
         }
       ),
     returnEndDate: yup
@@ -64,8 +73,12 @@ export const sopReviewTaskValidationSchema = yup
         "Return end date cannot be in the past",
         (value) => {
           const today = new Date();
+          today.setHours(0, 0, 0, 0);
 
-          return new Date(value) >= today;
+          const selectedDate = new Date(value);
+          selectedDate.setHours(0, 0, 0, 0);
+
+          return selectedDate >= today;
         }
       ),
   })
@@ -111,3 +124,14 @@ export const sopReviewTaskValidationSchema = yup
     // No error if validation passes
     return true;
   });
+
+export const editSopValidationSchema = yup.object().shape({
+  content: yup
+    .string()
+    .required("Please enter the content")
+    .min(3, "Content must be at least 3 characters long")
+    .matches(
+      /^[A-Za-z0-9-_,./() ]+$/,
+      "Content cannot have invalid characters"
+    ),
+});

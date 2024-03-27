@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { NotificationCta } from "./notification-cta";
 import clsx from "clsx";
-import { getTimeAgo } from "lib/util";
+import { getProfileUrl, getTimeAgo } from "lib/util";
 import { HorizontalEllipsisDropdown } from "components/horizontal-ellipsis-dropdown";
 import { DeleteNotification } from "./delete-notification";
 
@@ -35,7 +35,7 @@ export const NotificationItem = ({
     >
       <div className="flex items-center gap-3">
         <div className="flex items-center w-16 h-16 justify-center rounded-full">
-          <Link href={`/profile/${sender?.id}`}>
+          <Link href={getProfileUrl(sender?.role, sender?.id)}>
             <UserProfilePicture
               size="md"
               profilePicture={sender?.profilePicture}
@@ -45,7 +45,7 @@ export const NotificationItem = ({
         <div>
           <div>
             <Link
-              href={`/profile/${sender?.id}`}
+              href={getProfileUrl(sender?.role, sender?.id)}
               className="font-medium hover:underline"
             >
               {sender?.firstName} {sender?.lastName}

@@ -5,13 +5,11 @@ import { toast } from "react-hot-toast";
 import { clientRequest } from "services/client";
 import { InferType } from "yup";
 import { sopReviewTaskValidationSchema } from "validations";
-import { useRouter } from "next/navigation";
 
 interface MutationProps {
   data: InferType<typeof sopReviewTaskValidationSchema>;
 }
-export const useCreateSopTask = () => {
-  const router = useRouter();
+export const useCreateSopTask = (onSuccess?: Function) => {
   const queryClient = useQueryClient();
   const { mutate, isPending, isSuccess } = useMutation<
     APIResponse,
@@ -29,7 +27,7 @@ export const useCreateSopTask = () => {
           queryKey: ["sop-tasks"],
         });
 
-        router.replace(`/tasks/new/success?taskId=${response?.data?.id}`);
+        onSuccess?.(response?.data);
       } else {
         if (response) {
           toast.error(response?.message || "Opps! Something went wrong.");

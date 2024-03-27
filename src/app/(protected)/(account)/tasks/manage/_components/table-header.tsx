@@ -14,7 +14,7 @@ export const TableHeader = [
     Cell: ({ value, row }: TableCell) => {
       return (
         <Link
-          href={`/tasks/${row?.original?.id}`}
+          href={`/tasks/manage/${row?.original?.id}`}
           className="underline text-secondary-500"
         >
           {value}

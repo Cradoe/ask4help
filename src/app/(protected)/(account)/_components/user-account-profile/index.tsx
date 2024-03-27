@@ -2,6 +2,7 @@
 import { UserProfilePicture } from "components/profile-picture";
 import { Skeleton } from "components/skeleton";
 import { useAccount } from "hooks/account";
+import { getPersonalProfileUrl } from "lib/util";
 import Link from "next/link";
 
 export const UserAccountProfile = () => {
@@ -38,7 +39,7 @@ export const UserAccountProfile = () => {
               {user?.firstName} {user?.lastName}
             </div>
             <Link
-              href="/profile"
+              href={getPersonalProfileUrl(user?.role)}
               className="text-gray-400 text-xs hover:underline  focus:outline-2 focus:outline-secondary-500 px-1 rounded"
             >
               View profile

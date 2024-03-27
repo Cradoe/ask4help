@@ -30,7 +30,7 @@ const menu: Menu[] = [
     icon: <ConnectionIcon />,
   },
   {
-    title: "Create Tasks",
+    title: "SOP Tasks",
     path: "/tasks",
     icon: <ConnectionIcon />,
   },

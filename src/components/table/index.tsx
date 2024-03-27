@@ -1,11 +1,13 @@
 "use client";
-import { Pagination } from "components/pagination";
 import { Skeleton } from "components/skeleton";
 import { TableInstance, TableInterface } from "interfaces";
 import { useMemo } from "react";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { HiOutlineExclamationTriangle } from "react-icons/hi2";
 import { useTable, useRowSelect } from "react-table";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import clsx from "clsx";
+import { Button } from "components/button";
 
 const removeKeyProp = (obj: any) => {
   const newObj = { ...obj };
@@ -15,7 +17,6 @@ const removeKeyProp = (obj: any) => {
 export const Table = ({
   data: tableData,
   columns: tableColumns,
-  title,
   isLoading = false,
   meta,
   setPage,
@@ -39,59 +40,6 @@ export const Table = ({
       <div className={`overflow-auto sm:-mx-6 lg:-mx-8 `}>
         <div className="align-middle inline-block w-full sm:px-6 lg:px-8">
           <div className="rounded-lg overflow-auto border-[#D4D4D8] border divide-y divide-[#D4D4D8]">
-            <div
-              className={`bg-white px-6  py-4 whitespace-nowrap flex flex-col md:flex-row ${
-                title ? "justify-between" : "justify-end"
-              }`}
-            >
-              <div className="flex gap-5 items-center">
-                {title && (
-                  <h3 className="text-sm font-bold" id="table-title">
-                    {title}
-                  </h3>
-                )}
-              </div>
-
-              {meta && (
-                <div className="text-xs text-gray-500 flex gap-8 items-center justify-between">
-                  {meta && meta?.page && meta?.perpage && meta?.total && (
-                    <span className="flex items-center gap-1">
-                      <div>Showing</div>
-                      {(meta?.page! - 1) * meta?.perpage! + 1} -{" "}
-                      {Math.min(meta?.page! * meta?.perpage!, meta?.total!)} of{" "}
-                      {meta?.total} {meta?.total ?? 1 > 1 ? "items" : "item"}
-                    </span>
-                  )}
-
-                  {meta?.pages > 1 ? (
-                    <div>
-                      <button
-                        className={` ${
-                          Number(meta?.page) > 1
-                            ? "text-black"
-                            : "text-[#9CA3AF]"
-                        } `}
-                        onClick={() => setPage?.(Number(meta?.page) - 1)}
-                        disabled={Number(Number(meta?.page)) === 1}
-                      >
-                        <TfiAngleLeft />
-                      </button>
-                      <button
-                        className={`ml-4 ${
-                          Number(meta?.pages) > Number(meta?.page)
-                            ? "text-black"
-                            : "text-[#9CA3AF]"
-                        } `}
-                        onClick={() => setPage?.(Number(meta?.page) + 1)}
-                        disabled={Number(meta?.pages) === Number(meta?.page)}
-                      >
-                        <TfiAngleRight />
-                      </button>
-                    </div>
-                  ) : null}
-                </div>
-              )}
-            </div>
             <div className="overflow-auto z-10 w-full">
               <table
                 className="w-full divide-y divide-[#D4D4D8]"
@@ -219,18 +167,42 @@ export const Table = ({
                 </tbody>
               </table>
             </div>
-          </div>
 
-          <div className="mt-10">
-            {meta && meta?.page && meta?.pages > 1 && (
-              <Pagination
-                currentPage={meta?.page}
-                totalPages={meta?.pages}
-                onPaginate={(page: number) => {
-                  setPage?.(page);
-                }}
-              />
-            )}
+            <div>
+              {meta && (meta?.nextCursor || meta?.previousCursor) ? (
+                <div className="flex items-center justify-between text-sm font-light sm:px-6 lg:px-8 py-1 bg-secondary-50/30">
+                  <div>
+                    {meta?.previousCursor && (
+                      <button
+                        className={clsx(
+                          "flex items-center gap-2 focus:outline-secondary-500 p-3 hover:text-seondary-500 group",
+                          meta?.previousCursor ? "text-black" : "text-[#9CA3AF]"
+                        )}
+                        onClick={() => setPage?.(meta?.previousCursor!)}
+                      >
+                        <FaArrowLeftLong className="group-hover:translate-x-1 ease-in-out duration-300" />{" "}
+                        <span>Previous</span>
+                      </button>
+                    )}
+                  </div>
+
+                  <div>
+                    {meta?.nextCursor && (
+                      <button
+                        className={clsx(
+                          "flex items-center gap-2  focus:outline-secondary-500  p-3 hover:text-seondary-500 group",
+                          meta?.nextCursor ? "text-black" : "text-[#9CA3AF]"
+                        )}
+                        onClick={() => setPage?.(meta?.nextCursor!)}
+                      >
+                        <span>Next</span>{" "}
+                        <FaArrowRightLong className="group-hover:-translate-x-1 ease-in-out duration-300" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

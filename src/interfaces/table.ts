@@ -17,17 +17,13 @@ export interface TableInterface {
   }[];
   title?: string;
   isLoading?: boolean;
-  setPage?: (page: number) => void;
+  setPage?: (cursor: string) => void;
   meta?: TableMeta;
 }
 
 export interface TableMeta {
-  field: string;
-  page: number;
-  pages: number;
-  perpage: number;
-  sort: string;
-  total: number;
+  nextCursor?: string;
+  previousCursor?: string;
 }
 
 export interface TableInstance {

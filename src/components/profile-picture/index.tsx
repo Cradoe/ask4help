@@ -19,7 +19,7 @@ export const UserProfilePicture = ({
           alt="profile picture"
           height={150}
           width={150}
-          className="h-full w-full rounded-full"
+          className="h-full w-full  rounded-full"
         />
       ) : (
         <div

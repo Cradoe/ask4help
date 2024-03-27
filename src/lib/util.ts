@@ -1,3 +1,5 @@
+import { UserRole } from "./enum";
+
 export const scrollToElement = (
   e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
 ) => {
@@ -103,4 +105,27 @@ export const toSentenceCase = (input: string): string => {
 
 export const addCommaToNumber = (val: number | string) => {
   return new Intl.NumberFormat().format(Number(val));
+};
+
+export const getPersonalProfileUrl = (userRole: UserRole): string => {
+  if (userRole === UserRole.USER) {
+    return "/profile/user";
+  } else if (userRole === UserRole.HELPER) {
+    return "/profile/helper";
+  }
+
+  return "";
+};
+
+export const getProfileUrl = (
+  userRole: UserRole | undefined,
+  userId: string | undefined
+): string => {
+  if (userRole === UserRole.USER) {
+    return `/user/${userId}`;
+  } else if (userRole === UserRole.HELPER) {
+    return `/helper/${userId}`;
+  }
+
+  return "";
 };
