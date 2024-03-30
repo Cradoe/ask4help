@@ -24,6 +24,7 @@
     "countries-list": "^3.0.6",
     "husky": "^8.0.3",
     "jsonwebtoken": "^9.0.2",
+    "jspdf": "^2.5.1",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",

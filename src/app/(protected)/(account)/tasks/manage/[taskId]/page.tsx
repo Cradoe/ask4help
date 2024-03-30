@@ -3,54 +3,32 @@ import clsx from "clsx";
 import { Table } from "components/table";
 import { archivo } from "lib/font";
 import { TableHeader } from "./_components/table-header";
-import { SopTask } from "interfaces";
 import Link from "next/link";
 import { Button } from "components/button";
+import { useGetSopTaskDocuments, useSopTask } from "hooks/task";
+import { useParams } from "next/navigation";
+import { Skeleton } from "components/skeleton";
 
-const dummyTasks: SopTask[] = [
-  {
-    id: "1",
-    title: "dddd",
-    description: "fff",
-    quantity: "20",
-    collectionStartDate: "2020-03-20",
-    collectionEndDate: "2020-03-20",
-    returnStartDate: "2020-03-20",
-    returnEndDate: "2020-03-20",
-    createdAt: "2020-03-20",
-    status: "Active",
-  },
-  {
-    id: "2",
-    title: "dddd",
-    description: "fff",
-    quantity: "20",
-    collectionStartDate: "2020-03-20",
-    collectionEndDate: "2020-03-20",
-    returnStartDate: "2020-03-20",
-    returnEndDate: "2020-03-20",
-    createdAt: "2020-03-20",
-    status: "Reviewing",
-  },
-  {
-    id: "3",
-    title: "dddd",
-    description: "fff",
-    quantity: "20",
-    collectionStartDate: "2020-03-20",
-    collectionEndDate: "2020-03-20",
-    returnStartDate: "2020-03-20",
-    returnEndDate: "2020-03-20",
-    createdAt: "2020-03-20",
-    status: "Completed",
-  },
-];
 export default function Page() {
+  const params = useParams();
+  const taskId = params.taskId as string;
+  const { data: sopTask, isPending: isLoadingTask } = useSopTask(taskId);
+  const {
+    data: submissions,
+    fetchPage,
+    pagination,
+    isPending,
+  } = useGetSopTaskDocuments();
+
   return (
     <div className="bg-white space-y-10 rounded-3xl py-10 px-6 md:px-8 lg:mr-10">
       <div className="flex items-center justify-between">
         <h2 className={clsx("text-xl tracking-wider", archivo.className)}>
-          Title
+          {isLoadingTask ? (
+            <Skeleton height={30} width={120} />
+          ) : (
+            sopTask?.title
+          )}
         </h2>
 
         <div className="flex items-center gap-4">
@@ -68,14 +46,11 @@ export default function Page() {
 
       <div>
         <Table
-          data={dummyTasks ?? []}
+          data={submissions ?? []}
           columns={TableHeader}
-          isLoading={false}
-          meta={{
-            previousCursor: "dd",
-            nextCursor: "dd",
-          }}
-          setPage={() => {}}
+          isLoading={isPending}
+          pagination={pagination}
+          setPage={fetchPage}
         />
       </div>
     </div>

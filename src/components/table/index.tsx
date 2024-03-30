@@ -2,12 +2,10 @@
 import { Skeleton } from "components/skeleton";
 import { TableInstance, TableInterface } from "interfaces";
 import { useMemo } from "react";
-import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { HiOutlineExclamationTriangle } from "react-icons/hi2";
 import { useTable, useRowSelect } from "react-table";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import clsx from "clsx";
-import { Button } from "components/button";
 
 const removeKeyProp = (obj: any) => {
   const newObj = { ...obj };
@@ -18,7 +16,7 @@ export const Table = ({
   data: tableData,
   columns: tableColumns,
   isLoading = false,
-  meta,
+  pagination,
   setPage,
 }: Readonly<TableInterface>) => {
   const columns = useMemo(() => tableColumns, [tableColumns]);
@@ -169,16 +167,19 @@ export const Table = ({
             </div>
 
             <div>
-              {meta && (meta?.nextCursor || meta?.previousCursor) ? (
+              {pagination &&
+              (pagination?.nextPage || pagination?.previousPage) ? (
                 <div className="flex items-center justify-between text-sm font-light sm:px-6 lg:px-8 py-1 bg-secondary-50/30">
                   <div>
-                    {meta?.previousCursor && (
+                    {pagination?.previousPage && (
                       <button
                         className={clsx(
                           "flex items-center gap-2 focus:outline-secondary-500 p-3 hover:text-seondary-500 group",
-                          meta?.previousCursor ? "text-black" : "text-[#9CA3AF]"
+                          pagination?.previousPage
+                            ? "text-black"
+                            : "text-[#9CA3AF]"
                         )}
-                        onClick={() => setPage?.(meta?.previousCursor!)}
+                        onClick={() => setPage?.(pagination?.previousPage!)}
                       >
                         <FaArrowLeftLong className="group-hover:translate-x-1 ease-in-out duration-300" />{" "}
                         <span>Previous</span>
@@ -187,13 +188,13 @@ export const Table = ({
                   </div>
 
                   <div>
-                    {meta?.nextCursor && (
+                    {pagination?.nextPage && (
                       <button
                         className={clsx(
                           "flex items-center gap-2  focus:outline-secondary-500  p-3 hover:text-seondary-500 group",
-                          meta?.nextCursor ? "text-black" : "text-[#9CA3AF]"
+                          pagination?.nextPage ? "text-black" : "text-[#9CA3AF]"
                         )}
-                        onClick={() => setPage?.(meta?.nextCursor!)}
+                        onClick={() => setPage?.(pagination?.nextPage!)}
                       >
                         <span>Next</span>{" "}
                         <FaArrowRightLong className="group-hover:-translate-x-1 ease-in-out duration-300" />

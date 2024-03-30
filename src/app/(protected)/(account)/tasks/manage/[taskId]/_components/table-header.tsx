@@ -1,8 +1,9 @@
-import { TableCell } from "interfaces";
+import { SopDocument, TableCell } from "interfaces";
 import Link from "next/link";
 import { formatDate } from "lib/util";
 import { LinkButton } from "components/link-button";
 import { LiaEdit } from "react-icons/lia";
+import { SOP_DOCUMENT_STATUS } from "lib/enum";
 
 export const TableHeader = [
   {
@@ -10,10 +11,10 @@ export const TableHeader = [
     Cell: ({ value, row }: TableCell) => {
       return (
         <Link
-          href={`/tasks/${row?.original?.id}`}
+          href={`/user/${row?.original?.user?.id}`}
           className="underline text-secondary-500"
         >
-          {value}
+          {value?.firstName} {value?.lastName}
         </Link>
       );
     },
@@ -29,7 +30,7 @@ export const TableHeader = [
   {
     accessor: "status",
     Cell: ({ value }: TableCell) => {
-      if (value?.toString()?.toLowerCase() === "active") {
+      if (value?.toString()?.toLowerCase() === "pending") {
         return (
           <span className="bg-secondary-50 px-5 py-1 rounded-full">
             {value}
@@ -54,17 +55,22 @@ export const TableHeader = [
   {
     accessor: "action",
     Cell: ({ row }: TableCell) => {
+      const submission: SopDocument = row?.original;
       return (
         <div>
-          <LinkButton
-            variant="transparent"
-            size="sm"
-            className="border-none gap-2 text-secondary-500 items-center flex hover:underline"
-            href={`/tasks/edit/${row?.original?.id}`}
-          >
-            <span>Edit</span>
-            <LiaEdit />
-          </LinkButton>
+          {submission?.review?.status !== SOP_DOCUMENT_STATUS.COMPLETED ? (
+            <LinkButton
+              variant="transparent"
+              size="sm"
+              className="border-none gap-2 text-secondary-500 items-center flex hover:underline"
+              href={`/tasks/edit/${row?.original?.id}`}
+            >
+              <span>Edit</span>
+              <LiaEdit />
+            </LinkButton>
+          ) : (
+            <span>--</span>
+          )}
         </div>
       );
     },

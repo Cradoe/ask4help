@@ -7,6 +7,7 @@ import {
   TableBodyPropGetter,
   TablePropGetter,
 } from "react-table";
+import { Pagination } from "./global";
 
 export interface TableInterface {
   data: object[];
@@ -17,13 +18,8 @@ export interface TableInterface {
   }[];
   title?: string;
   isLoading?: boolean;
-  setPage?: (cursor: string) => void;
-  meta?: TableMeta;
-}
-
-export interface TableMeta {
-  nextCursor?: string;
-  previousCursor?: string;
+  setPage?: (page: number) => void;
+  pagination?: Pagination;
 }
 
 export interface TableInstance {

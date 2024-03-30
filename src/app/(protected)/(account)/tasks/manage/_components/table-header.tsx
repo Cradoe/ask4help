@@ -7,7 +7,7 @@ export const TableHeader = [
   {
     accessor: "createdAt",
     Cell: ({ value }: TableCell) => formatDate(value),
-    Header: () => <span>Date</span>,
+    Header: () => <span>Date created</span>,
   },
   {
     accessor: "title",

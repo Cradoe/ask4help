@@ -6,7 +6,7 @@ import { FiEye } from "react-icons/fi";
 import { AiOutlineFieldNumber } from "react-icons/ai";
 import { GrDocumentVerified } from "react-icons/gr";
 import { TbProgress } from "react-icons/tb";
-import { addCommaToNumber } from "lib/util";
+import { addCommaToNumber, formatDate } from "lib/util";
 import { BiCalendarEvent } from "react-icons/bi";
 import { FaCalendarCheck } from "react-icons/fa6";
 
@@ -108,13 +108,13 @@ export const TaskDetailsModal = ({ task }: { task: SopTask }) => {
               <div className="space-x-4">
                 <span className="font-medium">Start</span>{" "}
                 <span className="bg-secondary-100 px-5 py-3 rounded-full">
-                  {task?.collectionStartDate}
+                  {formatDate(task?.collectionStartDate)}
                 </span>
               </div>
               <div className="space-x-4">
                 <span className="font-medium">End</span>{" "}
                 <span className="bg-[#F9CEC0] px-5 py-3 rounded-full">
-                  {task?.collectionEndDate}
+                  {formatDate(task?.collectionEndDate)}
                 </span>
               </div>
             </div>
@@ -131,13 +131,13 @@ export const TaskDetailsModal = ({ task }: { task: SopTask }) => {
               <div className="space-x-4">
                 <span className="font-medium">Start</span>{" "}
                 <span className="bg-secondary-100 px-5 py-3 rounded-full">
-                  {task?.collectionStartDate}
+                  {formatDate(task?.returnStartDate)}
                 </span>
               </div>
               <div className="space-x-4">
                 <span className="font-medium">End</span>{" "}
                 <span className="bg-[#F9CEC0] px-5 py-3 rounded-full">
-                  {task?.collectionEndDate}
+                  {formatDate(task?.returnEndDate)}
                 </span>
               </div>
             </div>

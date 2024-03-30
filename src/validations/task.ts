@@ -126,12 +126,13 @@ export const sopReviewTaskValidationSchema = yup
   });
 
 export const editSopValidationSchema = yup.object().shape({
+  status: yup.string(),
   content: yup
     .string()
     .required("Please enter the content")
-    .min(3, "Content must be at least 3 characters long")
-    .matches(
-      /^[A-Za-z0-9-_,./() ]+$/,
-      "Content cannot have invalid characters"
-    ),
+    .min(3, "Content must be at least 3 characters long"),
+  // .matches(
+  //   /^[A-Za-z0-9-_,./() ]+$/,
+  //   "Content cannot have invalid characters"
+  // ),
 });

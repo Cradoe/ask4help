@@ -3,12 +3,6 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useConnectionSuggestions } from "hooks/connections";
-import clsx from "clsx";
-import { archivo } from "lib/font";
-import { SuggestedConnection } from "interfaces";
-import { UserConnectCard } from "components/user-connect-card";
-import { Skeleton } from "components/skeleton";
 import { SliderNextArrow, SliderPrevArrow } from "./slider-arrows";
 import { TIPS_FOR_SUCCESS } from "lib/contents";
 import { SectionTitle } from "components/section-title";

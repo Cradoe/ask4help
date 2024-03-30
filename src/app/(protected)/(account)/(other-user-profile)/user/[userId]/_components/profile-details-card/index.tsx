@@ -3,7 +3,7 @@ import { LuUsers } from "react-icons/lu";
 import { ProfilePicture } from "./profile-picture";
 import { useCountConnections } from "hooks/connections";
 import { Skeleton } from "components/skeleton";
-import { useUserDetails } from "hooks/user";
+import { useRedirectFromUserToRolePage, useUserDetails } from "hooks/user";
 import { useParams } from "next/navigation";
 
 export const DetailsCard = () => {
@@ -12,6 +12,9 @@ export const DetailsCard = () => {
   const { data: user, isPending: isLoadingUser } = useUserDetails(userId);
   const { data: connections, isPending: isLoadingConnectionCount } =
     useCountConnections(userId);
+
+  // redirect from user to helper profile
+  useRedirectFromUserToRolePage(userId);
 
   return (
     <div>

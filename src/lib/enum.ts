@@ -14,3 +14,14 @@ export enum SOCIAL_MEDIAS {
   LINKEDIN = "linkedIn",
   YOUTUBE = "youtube",
 }
+
+export enum SOP_REVIEW_STATUS {
+  DRAFT = "draft",
+  COMPLETED = "completed",
+}
+
+export enum SOP_DOCUMENT_STATUS {
+  PENDING = "pending",
+  REVIEWING = "reviewing",
+  COMPLETED = "completed",
+}

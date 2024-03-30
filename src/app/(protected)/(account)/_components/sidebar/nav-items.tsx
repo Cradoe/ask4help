@@ -4,14 +4,13 @@ import { ReactElement } from "react";
 import { FiBell } from "react-icons/fi";
 import { GrHomeRounded } from "react-icons/gr";
 import { PiChatCircleTextBold } from "react-icons/pi";
-import Link from "next/link";
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
-import { archivo } from "lib/font";
 import { ConnectionIcon } from "./connection-icon";
+import { UserRole } from "lib/enum";
+import { NavItem } from "./nav-item";
 
 interface Menu extends HeaderMenu {
   icon: ReactElement;
+  role?: UserRole;
 }
 const menu: Menu[] = [
   {
@@ -33,6 +32,7 @@ const menu: Menu[] = [
     title: "SOP Tasks",
     path: "/tasks",
     icon: <ConnectionIcon />,
+    role: UserRole.HELPER,
   },
   {
     title: "Notifications",
@@ -42,25 +42,10 @@ const menu: Menu[] = [
 ];
 
 export const NavItems = () => {
-  const pathname = usePathname();
   return (
     <ul className="space-y-8">
       {menu?.map((item, index) => (
-        <li key={index}>
-          <Link
-            href={item.path}
-            className={clsx(
-              "flex items-center gap-3  focus:outline-2 focus:outline-secondary-500 rounded px-1",
-              archivo.className,
-              pathname.includes(item.path)
-                ? "text-secondary-500"
-                : "hover:text-secondary-500"
-            )}
-          >
-            <span>{item.icon}</span>
-            <span>{item.title}</span>
-          </Link>
-        </li>
+        <NavItem item={item} key={index} />
       ))}
     </ul>
   );
