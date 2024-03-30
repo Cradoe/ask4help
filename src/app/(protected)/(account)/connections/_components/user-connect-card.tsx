@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ConnectionStack } from "components/user-connect-card/connection-stack";
 import { ReactElement, useMemo } from "react";
 import { UserProfilePicture } from "components/profile-picture";
+import { getProfileUrl } from "lib/util";
 
 export const UserConnectionCard = ({
   connection,
@@ -18,7 +19,7 @@ export const UserConnectionCard = ({
     <div className="md:border md:border-gray-500 grid grid-cols-[30%_1fr] gap-x-2 lg:grid-cols-1 md:rounded-3xl p-5">
       <div>
         <Link
-          href={`/profile/${user?.id}`}
+          href={getProfileUrl(user.role, user?.id)}
           aria-label={`${user?.firstName} ${user?.lastName}`}
           className="rounded-full inline-block focus:outline-primary-500"
         >
@@ -33,7 +34,7 @@ export const UserConnectionCard = ({
       </div>
       <div className="mt-2">
         <Link
-          href={`/profile/${user?.id}`}
+          href={getProfileUrl(user?.role, user?.id)}
           aria-label={`${user?.firstName} ${user?.lastName}`}
           className={clsx(
             archivo.className,

@@ -1,5 +1,6 @@
 import { UserProfilePicture } from "components/profile-picture";
 import { useUserDetails } from "hooks/user";
+import { getProfileUrl } from "lib/util";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { FaEllipsisH } from "react-icons/fa";
@@ -25,7 +26,7 @@ export const Recipient = () => {
       <div className="leading-3 flex items-center gap-3">
         <div className="flex items-center justify-center rounded-full">
           <Link
-            href={`/profile/${user?.id}`}
+            href={getProfileUrl(user?.role, user?.id)}
             aria-label={`${user?.firstName} ${user?.lastName}`}
           >
             <div className="flex items-center w-10 h-10 justify-center">
@@ -36,7 +37,10 @@ export const Recipient = () => {
             </div>
           </Link>
         </div>
-        <Link href={`/profile/${user?.id}`} className="hover:underline">
+        <Link
+          href={getProfileUrl(user?.role, user?.id)}
+          className="hover:underline"
+        >
           {user?.firstName} {user?.lastName}
         </Link>
       </div>

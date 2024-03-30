@@ -77,7 +77,7 @@ export const Modal = ({
               </div>
             )}
             {/*body*/}
-            <div className="relative pt-2  flex flex-wrap flex-col whitespace-normal">
+            <div className="relative pt-2  flex flex-wrap flex-col whitespace-normal overflow-scroll max-h-[80vh]">
               {children}
             </div>
           </div>

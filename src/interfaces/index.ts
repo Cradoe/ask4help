@@ -5,3 +5,5 @@ export * from "./education";
 export * from "./country";
 export * from "./interest";
 export * from "./notification";
+export * from "./table";
+export * from "./task";

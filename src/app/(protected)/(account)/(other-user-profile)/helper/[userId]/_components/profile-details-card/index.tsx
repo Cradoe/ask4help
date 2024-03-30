@@ -3,8 +3,9 @@ import { LuUsers } from "react-icons/lu";
 import { ProfilePicture } from "./profile-picture";
 import { useCountConnections } from "hooks/connections";
 import { Skeleton } from "components/skeleton";
-import { useUserDetails } from "hooks/user";
+import { useRedirectFromHelperToRolePage, useUserDetails } from "hooks/user";
 import { useParams } from "next/navigation";
+import { SopReviewTaskBoard } from "./sop-task/sop-review-task-board";
 
 export const DetailsCard = () => {
   const params = useParams();
@@ -13,9 +14,13 @@ export const DetailsCard = () => {
   const { data: connections, isPending: isLoadingConnectionCount } =
     useCountConnections(userId);
 
+  // redirect from helper to user profile
+  useRedirectFromHelperToRolePage(userId);
+
   return (
-    <div>
-      <div className="h-36 rounded-t-3xl relative before:absolute before:left-0 before:top-0 before:w-full before:h-36 before:bg-cover-image-pattern before:bg-no-repeat before:bg-cover before:bg-center before:z-10 bg-secondary-500/80 before:rounded-t-3xl"></div>
+    <div className="relative">
+      <div className="h-44 rounded-t-3xl relative before:absolute before:left-0 before:top-0 before:w-full before:h-44 before:bg-cover-image-pattern before:bg-no-repeat before:bg-cover before:bg-center before:z-10 bg-black before:rounded-t-3xl"></div>
+      <SopReviewTaskBoard />
       <div className="bg-white px-10 relative pb-32 pt-3 rounded-b-3xl">
         <div className="flex items-center justify-between gap-x-1 xl:gap-x-3 text-black focus:outline-2 relative">
           <ProfilePicture profilePicture={user?.profilePicture} />

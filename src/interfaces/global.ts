@@ -1,4 +1,6 @@
 import { AxiosResponse } from "axios";
+import { UserRole } from "lib/enum";
+import { ReactElement } from "react";
 
 export interface ApiError extends Error {
   message: string;
@@ -35,6 +37,11 @@ export interface HeaderMenu {
   path: string;
 }
 
+export interface SidebarMenu extends HeaderMenu {
+  icon: ReactElement;
+  role?: UserRole;
+}
+
 export interface SettingsMenuGRoup {
   title: string;
   items: SettingsMenuItem[];
@@ -47,6 +54,9 @@ export interface SettingsMenuItem {
 }
 
 export interface Pagination {
-  page: number;
-  hasNextPage: boolean;
+  page?: number;
+  limit?: number;
+  hasNextPage?: boolean;
+  previousPage?: number;
+  nextPage?: number;
 }

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
+  label?: string | ReactElement;
   type?: string;
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;

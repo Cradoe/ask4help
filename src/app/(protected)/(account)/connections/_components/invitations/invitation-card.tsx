@@ -5,6 +5,7 @@ import {
   useRejectConnectionRequest,
 } from "hooks/connections";
 import { Connection } from "interfaces";
+import { getProfileUrl } from "lib/util";
 import Link from "next/link";
 
 export const InvitationCard = ({ invitation }: { invitation: Connection }) => {
@@ -20,7 +21,7 @@ export const InvitationCard = ({ invitation }: { invitation: Connection }) => {
         <div className="flex items-center w-10 h-10 justify-center rounded-full">
           <UserProfilePicture size="sm" profilePicture={user?.profilePicture} />
         </div>
-        <Link href={`/profile/${user?.id}`}>
+        <Link href={getProfileUrl(user?.role, user?.id)}>
           {user?.firstName} {user?.lastName}
         </Link>
       </div>

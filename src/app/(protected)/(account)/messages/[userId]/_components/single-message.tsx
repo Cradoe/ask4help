@@ -2,7 +2,7 @@
 
 import { useAccount } from "hooks/account";
 import { Message } from "interfaces";
-import { getTimeFromDate } from "lib/util";
+import { getProfileUrl, getTimeFromDate } from "lib/util";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useAcknowledgeMessage } from "hooks/web-scoket";
@@ -49,7 +49,7 @@ export const SingleMessage = ({
               <div className="text-secondary-600 font-medium">You</div>
             ) : (
               <Link
-                href={`/profile/${receiver?.id}`}
+                href={getProfileUrl(receiver?.role, receiver?.id)}
                 className="text-secondary-600 font-medium hover:underline"
               >
                 {receiver?.firstName} {receiver?.lastName}
