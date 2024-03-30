@@ -8,6 +8,8 @@ export enum NotificationStatus {
 export enum NotificationCtaType {
   MESSAGE = "MESSAGE",
   CONNECTION_REQUEST = "CONNECTION_REQUEST",
+  NEW_SOP_TASK = "NEW_SOP_TASK",
+  COMPLETED_SOP = "COMPLETED_SOP",
 }
 
 export interface Notification {
