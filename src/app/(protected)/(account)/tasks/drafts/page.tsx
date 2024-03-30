@@ -71,10 +71,6 @@ export default function Page() {
           data={dummyTasks ?? []}
           columns={TableHeader}
           isLoading={false}
-          meta={{
-            previousCursor: "dd",
-            nextCursor: "dd",
-          }}
           setPage={() => {}}
         />
       </div>

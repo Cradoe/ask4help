@@ -2,7 +2,7 @@
 
 import { useAccount } from "hooks/account";
 import { Message } from "interfaces";
-import { getTimeFromDate } from "lib/util";
+import { getProfileUrl, getTimeFromDate } from "lib/util";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useAcknowledgeMessage } from "hooks/web-scoket";
