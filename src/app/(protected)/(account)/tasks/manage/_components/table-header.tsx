@@ -44,21 +44,17 @@ export const TableHeader = [
     Cell: ({ value }: TableCell) => {
       if (value?.toString()?.toLowerCase() === "active") {
         return (
-          <span className="bg-secondary-50 px-5 py-1 rounded-full">
+          <span className="bg-secondary-50 px-5 py-1 rounded-full text-xs">
             {value}
           </span>
         );
       }
 
-      if (value?.toString()?.toLowerCase() === "completed") {
+      if (value?.toString()?.toLowerCase() === "closed") {
         return (
-          <span className="bg-green-200 px-5 py-1 rounded-full">{value}</span>
-        );
-      }
-
-      if (value?.toString()?.toLowerCase() === "reviewing") {
-        return (
-          <span className="bg-blue-200 px-5 py-1 rounded-full">{value}</span>
+          <span className="bg-red-200 px-5 py-1 rounded-full text-xs">
+            {value}
+          </span>
         );
       }
     },

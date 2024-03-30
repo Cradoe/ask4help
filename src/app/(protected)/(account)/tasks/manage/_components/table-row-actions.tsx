@@ -10,7 +10,8 @@ export const TableRowActions = ({ row }: { row: any }) => {
   return (
     <HorizontalEllipsisDropdown>
       <TaskDetailsModal task={task} />
-      <EditTaskModal task={task} />
+
+      {task?.status === "Active" && <EditTaskModal task={task} />}
 
       {/* delete customer */}
     </HorizontalEllipsisDropdown>
