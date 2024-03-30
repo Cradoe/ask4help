@@ -31,4 +31,7 @@ export const taskClientRequest = {
   ) => clientRequest().patch({ url: `sop/review/${documentId}`, payload }),
 
   myReviewedSOP: () => clientRequest().get(`sop/review/completed`),
+
+  getDraftSopReviews: (page?: number) =>
+    clientRequest().get(`sop/review/drafts?page=${page}`),
 };

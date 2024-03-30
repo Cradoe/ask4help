@@ -7,13 +7,13 @@ import { LiaEdit } from "react-icons/lia";
 export const TableHeader = [
   {
     accessor: "user",
-    Cell: ({ value, row }: TableCell) => {
+    Cell: ({ value }: TableCell) => {
       return (
         <Link
-          href={`/tasks/${row?.original?.id}`}
+          href={`/user/${value?.id}`}
           className="underline text-secondary-500"
         >
-          {value}
+          {value?.firstName} {value?.lastName}
         </Link>
       );
     },
@@ -21,11 +21,31 @@ export const TableHeader = [
   },
 
   {
-    accessor: "createdAt",
-    Cell: ({ value }: TableCell) => formatDate(value),
-    Header: () => <span>Date submitted</span>,
+    accessor: "task",
+    Cell: ({ value }: TableCell) => {
+      return (
+        <Link
+          href={`/tasks/manage/${value?.id}`}
+          className="underline text-secondary-500"
+        >
+          {value?.title}
+        </Link>
+      );
+    },
+    Header: () => <span>Task</span>,
   },
 
+  {
+    accessor: "createdAt",
+    Cell: ({ value }: TableCell) => formatDate(value),
+    Header: () => <span>Last submitted</span>,
+  },
+
+  {
+    accessor: "review.updatedAt",
+    Cell: ({ value }: TableCell) => formatDate(value),
+    Header: () => <span>Last modified</span>,
+  },
   {
     accessor: "status",
     Cell: ({ value }: TableCell) => {
