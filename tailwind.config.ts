@@ -45,6 +45,7 @@ const config: Config = {
         "profile-progress": "url('/profile-progress.png')",
         "cover-image-pattern": "url('/cover-image-pattern.svg')",
         "discover-connection": "url('/discover-connection.webp')",
+        "feedback-bg": "url('/feedback-bg.webp')",
       },
     },
   },
