@@ -7,13 +7,9 @@ import {
   interestValidationSchema,
   phoneValidationSchema,
   socialHandlesValidationSchema,
-  waitlistValidationSchema,
 } from "validations";
 
 export const accountClientRequest = {
-  joinWaitlist: (payload: InferType<typeof waitlistValidationSchema>) =>
-    clientRequest().post({ url: "/api/waitlist", payload }),
-
   accountDetails: () => clientRequest().get("users/account"),
 
   changePassword: (payload: InferType<typeof changePasswordValidationSchema>) =>

@@ -60,3 +60,8 @@ export interface Pagination {
   previousPage?: number;
   nextPage?: number;
 }
+
+export interface ProposedFeature {
+  id: string;
+  name: string;
+}

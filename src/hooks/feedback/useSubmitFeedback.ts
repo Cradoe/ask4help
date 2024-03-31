@@ -4,11 +4,13 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { clientRequest } from "services/client";
 import { InferType } from "yup";
-import { waitlistValidationSchema } from "validations";
+import { feedbackValidationSchema } from "validations";
 
-type MutationProp = { data: InferType<typeof waitlistValidationSchema> };
+type MutationProp = {
+  data: InferType<typeof feedbackValidationSchema>;
+};
 
-export const useJoinWaitlist = (onSuccess?: Function) => {
+export const useSubmitFeedback = (onSuccess?: Function) => {
   const { mutate, isPending } = useMutation<
     APIResponse,
     ApiError,
@@ -16,15 +18,16 @@ export const useJoinWaitlist = (onSuccess?: Function) => {
   >({
     // @ts-ignore
     mutationFn: ({ data }: MutationProp) => {
-      return clientRequest.account.joinWaitlist(data);
+      return clientRequest.feedback.saveFeedback(data);
     },
     onSuccess: async (response: APIResponse) => {
-      if (response?.status === 201) {
+      if (response?.statusCode === 201) {
+        toast.success(response?.message || "Feedback submitted successfully!");
+
         onSuccess?.();
       } else {
         if (response) {
-          // @ts-ignore
-          toast.error(response?.body?.message || "Opps! Something went wrong.");
+          toast.error(response?.message || "Opps! Something went wrong.");
         }
       }
     },
