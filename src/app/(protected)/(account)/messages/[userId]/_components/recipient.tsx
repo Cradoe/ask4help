@@ -6,7 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { FaEllipsisH } from "react-icons/fa";
 import { TbArrowBackUp } from "react-icons/tb";
 
-export const Recipient = () => {
+export const Recipient = ({ isTyping = false }: { isTyping?: boolean }) => {
   const params = useParams();
   const receiverId: string = params.userId as string;
 
@@ -37,12 +37,18 @@ export const Recipient = () => {
             </div>
           </Link>
         </div>
-        <Link
-          href={getProfileUrl(user?.role, user?.id)}
-          className="hover:underline"
-        >
-          {user?.firstName} {user?.lastName}
-        </Link>
+        <div>
+          <Link
+            href={getProfileUrl(user?.role, user?.id)}
+            className="hover:underline"
+          >
+            {user?.firstName} {user?.lastName}
+          </Link>
+
+          <div className="text-xs italic text-neutral-500">
+            {isTyping ? "Typing..." : <>&nbsp;</>}
+          </div>
+        </div>
       </div>
       <div>
         <button className="rounded-full p-1 text-xs  focus:outline-2 focus:outline-secondary-500">

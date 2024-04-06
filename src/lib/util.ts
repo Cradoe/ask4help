@@ -129,3 +129,7 @@ export const getProfileUrl = (
 
   return "";
 };
+
+export const getUserTimezone = (): string => {
+  return Intl.DateTimeFormat().resolvedOptions().timeZone;
+};

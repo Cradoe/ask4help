@@ -33,7 +33,7 @@ export const UserConnectCard = ({
         variant={hasSentRequest ? "neutral" : "primary"}
         disabled={isSendingRequest || hasSentRequest}
       >
-        {hasSentRequest ? "Pending" : "Connect"}
+        {hasSentRequest ? "Request sent" : "Connect"}
       </Button>
     </UserConnectionCard>
   );

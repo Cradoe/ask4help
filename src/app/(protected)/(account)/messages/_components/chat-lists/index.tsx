@@ -10,7 +10,12 @@ import { usePathname } from "next/navigation";
 import { Skeleton } from "components/skeleton";
 
 export const ChatList = () => {
-  const { data: contacts, isPending } = useChatLists();
+  const {
+    data: contacts,
+    isPending,
+    searchQuery,
+    setSearchQuery,
+  } = useChatLists();
   const pathname = usePathname();
 
   return (
@@ -28,7 +33,7 @@ export const ChatList = () => {
       </div>
 
       <div className="space-y-4 ">
-        <SearchBox />
+        <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
         <div className="space-y-4 px-5">
           {/* loading state  */}

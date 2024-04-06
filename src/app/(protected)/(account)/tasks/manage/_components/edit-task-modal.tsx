@@ -4,7 +4,7 @@ import { Button } from "components/button";
 import { Input } from "components/input";
 import { Modal } from "components/modal";
 import { Textarea } from "components/textarea";
-import { useCreateSopTask } from "hooks/task";
+import { useUpdateSopTask } from "hooks/task";
 import { SopTask } from "interfaces";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -17,7 +17,8 @@ export const EditTaskModal = ({ task }: { task: SopTask }) => {
   const handleModalClose = () => {
     setShowModal(false);
   };
-  const { mutate, isPending: isSubmitting } = useCreateSopTask();
+  const { mutate, isPending: isSubmitting } =
+    useUpdateSopTask(handleModalClose);
   const {
     register,
     handleSubmit,
@@ -30,7 +31,7 @@ export const EditTaskModal = ({ task }: { task: SopTask }) => {
 
   const sendToServer: SubmitHandler<
     InferType<typeof sopReviewTaskValidationSchema>
-  > = (data) => mutate({ data });
+  > = (data) => mutate({ taskId: task?.id, data });
 
   return (
     <div>
@@ -77,14 +78,14 @@ export const EditTaskModal = ({ task }: { task: SopTask }) => {
               label="Collection start date"
               type="date"
               error={errors.collectionStartDate}
-              defaultValue={task?.collectionStartDate}
+              defaultValue={task?.collectionStartDate?.split("T")?.[0]}
               {...register("collectionStartDate", { required: true })}
             />
             <Input
               label="Collection end date"
               type="date"
               error={errors.collectionEndDate}
-              defaultValue={task?.collectionEndDate}
+              defaultValue={task?.collectionEndDate?.split("T")?.[0]}
               {...register("collectionEndDate", { required: true })}
             />
           </div>
@@ -94,14 +95,14 @@ export const EditTaskModal = ({ task }: { task: SopTask }) => {
               label="Return start date"
               type="date"
               error={errors.returnStartDate}
-              defaultValue={task?.returnStartDate}
+              defaultValue={task?.returnStartDate?.split("T")?.[0]}
               {...register("returnStartDate", { required: true })}
             />
             <Input
               label="Return end date"
               type="date"
               error={errors.returnEndDate}
-              defaultValue={task?.returnEndDate}
+              defaultValue={task?.returnEndDate?.split("T")?.[0]}
               {...register("returnEndDate", { required: true })}
             />
           </div>

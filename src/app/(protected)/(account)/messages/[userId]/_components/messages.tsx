@@ -3,18 +3,9 @@
 import { Message } from "interfaces";
 import { formatDate } from "lib/util";
 import { useAutoScrollToLastMessage, useGroupedMessages } from "hooks/message";
-import { useParams } from "next/navigation";
-import { useWebSocket } from "hooks/web-scoket";
 import { SingleMessage } from "./single-message";
 
-export const Messages = () => {
-  const params = useParams();
-  const receiverId: string = params.userId as string;
-
-  const { messages } = useWebSocket({
-    receiverId,
-  });
-
+export const Messages = ({ messages }: { messages: Message[] }) => {
   const { messages: groupedChats } = useGroupedMessages(messages);
 
   const { ref } = useAutoScrollToLastMessage(groupedChats);

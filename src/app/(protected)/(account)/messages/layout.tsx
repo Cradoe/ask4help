@@ -6,9 +6,9 @@ export default function ProtectedRouteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[40%_1fr] gap-x-1">
+    <div className="grid grid-cols-1 md:grid-cols-[40%_1fr] gap-x-1 ">
       <ChatList />
-      <div className="bg-white rounded-r-xl ">{children}</div>
+      <div className="bg-white rounded-r-xl">{children}</div>
     </div>
   );
 }

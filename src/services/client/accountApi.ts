@@ -25,6 +25,9 @@ export const accountClientRequest = {
   editProfilePicture: (payload: FormData) =>
     clientRequest().patch({ url: "/users/account/profile-picture", payload }),
 
+  getProfileCompletionScore: () =>
+    clientRequest().get("/users/account/profile-completion-score"),
+
   editBio: (payload: InferType<typeof bioValidationSchema>) =>
     clientRequest().patch({ url: "/users/account/bio", payload }),
 

@@ -9,6 +9,7 @@ const socket = io(process.env.NEXT_PUBLIC_WS_URL!);
 export const useWebSocket = ({ receiverId }: { receiverId: string }) => {
   const { data: user } = useAccount();
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   useEffect(() => {
     if (user) {
@@ -23,6 +24,15 @@ export const useWebSocket = ({ receiverId }: { receiverId: string }) => {
       // Listen for incoming messages
       socket.on("message", (data) => {
         setMessages((prevMessages) => [...prevMessages, data]);
+      });
+
+      // Listen for typing event
+      socket.on("typingEvent", ({ senderId, isTyping: typing }) => {
+        if (senderId !== user?.id && typing) {
+          setIsTyping(true);
+        } else {
+          setIsTyping(false);
+        }
       });
 
       // Listen for incoming messages
@@ -55,5 +65,9 @@ export const useWebSocket = ({ receiverId }: { receiverId: string }) => {
     socket.emit("message", { senderId: user?.id, receiverId, content });
   };
 
-  return { messages, sendMessage };
+  const sendTypingEvent = ({ isTyping }: { isTyping: boolean }) => {
+    socket.emit("typingEvent", { senderId: user?.id, receiverId, isTyping });
+  };
+
+  return { messages, sendMessage, isTyping, sendTypingEvent };
 };

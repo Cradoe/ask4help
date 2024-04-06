@@ -7,3 +7,4 @@ export * from "./useSopTask";
 export * from "./useSopDocument";
 export * from "./useMyReviewedSops";
 export * from "./useGetDraftSopReviews";
+export * from "./useUpdateSopTask";
