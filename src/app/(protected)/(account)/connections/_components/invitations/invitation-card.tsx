@@ -35,7 +35,7 @@ export const InvitationCard = ({ invitation }: { invitation: Connection }) => {
           isLoading={isRejecting}
           onClick={() => rejectRequest(invitation.id)}
         >
-          Ignore
+          Decline
         </Button>
         <Button
           size="sm"

@@ -7,11 +7,20 @@ export const eduBackgroundValidationSchema = yup.object().shape({
   graduationYear: yup
     .string()
     .required("Graduation year is required")
+    .min(4, "Minimum charater of 4 digits")
+    .max(4, "Maximum charater of 4 digits")
     .test("graduationYear", "Graduation year must be in the past", (value) => {
       const currentYear = new Date().getFullYear();
 
-      return Number(value) < Number(currentYear);
-    }),
+      return Number(value) <= Number(currentYear);
+    })
+    .test(
+      "graduationYear",
+      "Graduation year cannot be older than 1980",
+      (value) => {
+        return Number(value) >= 1980;
+      }
+    ),
 });
 
 export const eduGoalsValidationSchema = yup.object().shape({

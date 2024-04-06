@@ -3,20 +3,19 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import { Textarea } from "components/textarea";
-import { useWebSocket } from "hooks/web-scoket";
-import { useParams } from "next/navigation";
 import { ChangeEvent } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosSend } from "react-icons/io";
 import { sendMessageValidationSchema } from "validations";
 import { InferType } from "yup";
 
-export const MessageBox = () => {
-  const params = useParams();
-  const receiverId: string = params.userId as string;
-
-  const { sendMessage } = useWebSocket({ receiverId });
-
+export const MessageBox = ({
+  sendMessage,
+  sendTypingEvent,
+}: {
+  sendMessage: (data: InferType<typeof sendMessageValidationSchema>) => void;
+  sendTypingEvent: ({ isTyping }: { isTyping: boolean }) => void;
+}) => {
   const { handleSubmit, watch, setValue, reset } = useForm({
     resolver: yupResolver(sendMessageValidationSchema),
   });
@@ -37,6 +36,8 @@ export const MessageBox = () => {
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setValue("content", e.target.value)
         }
+        onKeyUp={() => sendTypingEvent({ isTyping: true })}
+        onBlur={() => sendTypingEvent({ isTyping: false })}
       />
 
       <div className="px-4 flex justify-between items-center">

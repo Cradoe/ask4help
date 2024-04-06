@@ -51,34 +51,43 @@ export const sopReviewTaskValidationSchema = yup
       ),
     returnStartDate: yup
       .string()
-      .required("When do you want to start returning the SOPs?")
+      // .required("When do you want to start returning the SOPs?")
+      .optional()
       .test(
         "returnStartDate",
         "Return start date cannot be in the past",
         (value) => {
-          const today = new Date();
-          today.setHours(0, 0, 0, 0);
+          if (value) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-          const selectedDate = new Date(value);
-          selectedDate.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(value);
+            selectedDate.setHours(0, 0, 0, 0);
 
-          return selectedDate >= today;
+            return selectedDate >= today;
+          }
+
+          return true;
         }
       ),
     returnEndDate: yup
       .string()
-      .required("When do you want to stop receiving SOPs?")
+      // .required("When do you want to stop receiving SOPs?")
       .test(
         "returnEndDate",
         "Return end date cannot be in the past",
         (value) => {
-          const today = new Date();
-          today.setHours(0, 0, 0, 0);
+          if (value) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-          const selectedDate = new Date(value);
-          selectedDate.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(value);
+            selectedDate.setHours(0, 0, 0, 0);
 
-          return selectedDate >= today;
+            return selectedDate >= today;
+          }
+
+          return true;
         }
       ),
   })
@@ -99,7 +108,11 @@ export const sopReviewTaskValidationSchema = yup
   .test("check-return-date", "", function (values) {
     const { returnStartDate, returnEndDate } = values;
 
-    if (new Date(returnEndDate) < new Date(returnStartDate)) {
+    if (
+      returnEndDate &&
+      returnStartDate &&
+      new Date(returnEndDate) < new Date(returnStartDate)
+    ) {
       throw new yup.ValidationError(
         "Return end date cannot be before the start date",
         values,
@@ -113,7 +126,10 @@ export const sopReviewTaskValidationSchema = yup
   .test("check-collection-return-date", "", function (values) {
     const { returnStartDate, collectionStartDate } = values;
 
-    if (new Date(returnStartDate) < new Date(collectionStartDate)) {
+    if (
+      returnStartDate &&
+      new Date(returnStartDate) < new Date(collectionStartDate)
+    ) {
       throw new yup.ValidationError(
         "Return start date cannot be before collection start date",
         values,

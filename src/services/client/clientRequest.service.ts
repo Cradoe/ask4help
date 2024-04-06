@@ -4,6 +4,7 @@ import axios, {
   InternalAxiosRequestConfig,
 } from "axios";
 import { getCookie } from "lib/cookie";
+import { getUserTimezone } from "lib/util";
 import { toast } from "react-hot-toast";
 
 const service = (baseURL = "") => {
@@ -13,6 +14,7 @@ const service = (baseURL = "") => {
     headers: {
       Accept: "*/*",
       "Access-Control-Allow-Methods": "*",
+      Timezone: getUserTimezone(),
     },
   });
 

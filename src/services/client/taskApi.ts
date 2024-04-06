@@ -9,6 +9,11 @@ export const taskClientRequest = {
   createTask: (payload: InferType<typeof sopReviewTaskValidationSchema>) =>
     clientRequest().post({ url: "sop/tasks", payload }),
 
+  updateTask: (
+    sopTaskId: string,
+    payload: InferType<typeof sopReviewTaskValidationSchema>
+  ) => clientRequest().patch({ url: `sop/tasks/${sopTaskId}`, payload }),
+
   getAll: (page?: number) => clientRequest().get(`sop/tasks?page=${page}`),
 
   getOne: (taskId: string) => clientRequest().get(`sop/tasks/${taskId}`),

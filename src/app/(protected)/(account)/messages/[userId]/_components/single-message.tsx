@@ -75,7 +75,7 @@ const Paragraphs = ({ content }: { content: string }) => {
   const paragraphs = content?.split("\n");
 
   return (
-    <div>
+    <div className="overflow-x-auto break-all hyphens-auto">
       {paragraphs?.map((paragraph: string, index: number) => (
         <p key={index}>{paragraph}</p>
       ))}
