@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeaderMenu } from "interfaces";
 import { NavLink } from "./nav-links";
-import { SearchForm } from "./search-form";
+import { SearchForm } from "./search-form/search-form";
 import { UserDropdown } from "./user-dropdown";
 import { Notifications } from "./notifications";
 import { MobileHeaderMenu } from "./mobile-menu";
