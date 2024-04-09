@@ -31,14 +31,16 @@ export const UserContact = ({ contact }: { contact: ChatListItem }) => {
               {contact.unreadMessageCount}
             </span>
           ) : (
-            <button
+            <>
+              {/* <button
               className={clsx(
                 "rounded-full p-1 text-xs  focus:outline-2 focus:outline-secondary-500"
                 // "bg-gray-300" // show this if user id matches with if in URL
               )}
             >
               <FaEllipsisH />
-            </button>
+            </button> */}
+            </>
           )}
         </div>
         <div className="text-gray-500 text-xs flex items-end justify-between">

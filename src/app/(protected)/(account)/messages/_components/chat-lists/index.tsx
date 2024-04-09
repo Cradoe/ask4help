@@ -27,9 +27,9 @@ export const ChatList = () => {
       <div className="flex items-center justify-between px-9">
         <h1 className={clsx(archivo.className)}>Messages</h1>
 
-        <button className="text-2xl  focus:outline-2 focus:outline-secondary-500 rounded">
+        {/* <button className="text-2xl  focus:outline-2 focus:outline-secondary-500 rounded">
           <IoFilterSharp />
-        </button>
+        </button> */}
       </div>
 
       <div className="space-y-4 ">

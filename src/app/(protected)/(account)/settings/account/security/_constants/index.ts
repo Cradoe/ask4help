@@ -12,11 +12,11 @@ export const SETTINGS_MENU_GROUPS: SettingsMenuGRoup[] = [
         title: "Phone Number",
         href: "/settings/account/security/phone-number",
       },
-      {
-        title: "Two Step Verification",
-        href: "/settings/account/security/2fa",
-        comingSoon: true,
-      },
+      // {
+      //   title: "Two Step Verification",
+      //   href: "/settings/account/security/2fa",
+      //   comingSoon: true,
+      // },
     ],
   },
 ];

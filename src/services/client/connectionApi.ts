@@ -13,6 +13,9 @@ export const connectionClientRequest = {
     }
   },
 
+  findConnectionStatus: (userId: string) =>
+    clientRequest().get(`connections/${userId}/find-connection-status`),
+
   pendingInvitations: () =>
     clientRequest().get(`connections/invitations/received`),
 

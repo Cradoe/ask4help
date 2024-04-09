@@ -19,7 +19,7 @@ export const NotificationCta = ({
         href={`/connections`}
         variant="transparent"
         radius="rounded-full"
-        className="border-secondary-500 w-24 py-1 mt-3 hover:bg-secondary-500 hover:text-white"
+        className="border-secondary-500 w-32 py-1 mt-3 hover:bg-secondary-500 hover:text-white"
       >
         View
       </LinkButton>
@@ -33,9 +33,9 @@ export const NotificationCta = ({
         href={`/helper/${itemId}`}
         variant="transparent"
         radius="rounded-full"
-        className="border-secondary-500 w-24 py-1 mt-3 hover:bg-secondary-500 hover:text-white"
+        className="border-secondary-500 w-32 py-1 mt-3 hover:bg-secondary-500 hover:text-white"
       >
-        Upload SOP
+        Upload&nbsp;SOP
       </LinkButton>
     );
   }
@@ -47,9 +47,9 @@ export const NotificationCta = ({
         href={`/profile/user`}
         variant="transparent"
         radius="rounded-full"
-        className="border-secondary-500 w-24 py-1 mt-3 hover:bg-secondary-500 hover:text-white"
+        className="border-secondary-500 w-32 py-1 mt-3 hover:bg-secondary-500 hover:text-white"
       >
-        Download SOP
+        Download&nbsp;SOP
       </LinkButton>
     );
   }

@@ -10,7 +10,7 @@ export const ProfileProgress = () => {
 
   if (
     data &&
-    data?.completionPercentage > 0 &&
+    data?.completionPercentage >= 0 &&
     data?.completionPercentage < 100
   ) {
     return (

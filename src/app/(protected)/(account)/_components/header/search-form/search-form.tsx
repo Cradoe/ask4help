@@ -11,8 +11,6 @@ export const SearchForm = () => {
     data: searchResults,
     pagination,
     isPending,
-    error,
-    isError,
     searchQuery,
     setSearchQuery,
   } = useSearchForMiniUsers();
@@ -26,7 +24,7 @@ export const SearchForm = () => {
           radius="rounded-full"
           className="h-[2.5rem] w-[22.1rem]"
           leftIcon={<HiOutlineSearch className="text-xl" />}
-          placeholder="Search for study advisor"
+          placeholder="Search..."
         />
       </form>
 

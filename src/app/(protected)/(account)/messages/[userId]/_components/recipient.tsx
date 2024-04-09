@@ -51,9 +51,9 @@ export const Recipient = ({ isTyping = false }: { isTyping?: boolean }) => {
         </div>
       </div>
       <div>
-        <button className="rounded-full p-1 text-xs  focus:outline-2 focus:outline-secondary-500">
+        {/* <button className="rounded-full p-1 text-xs  focus:outline-2 focus:outline-secondary-500">
           <FaEllipsisH />
-        </button>
+        </button> */}
       </div>
     </div>
   );
