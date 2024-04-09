@@ -1,15 +1,13 @@
 "use client";
-import { Input } from "components/input";
 import { DebouncedInput } from "components/input/debounced-input";
 import { useSearchForMiniUsers } from "hooks/user";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SearchResults } from "./search-results";
-import { useRef } from "react";
 
 export const SearchForm = () => {
-  const ref = useRef();
-
   const {
+    dropdownRef,
+    showDropdown,
     data: searchResults,
     pagination,
     isPending,
@@ -20,7 +18,7 @@ export const SearchForm = () => {
   } = useSearchForMiniUsers();
 
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <form action="" className="w-[22.1rem]">
         <DebouncedInput
           value={searchQuery || ""}
@@ -32,12 +30,14 @@ export const SearchForm = () => {
         />
       </form>
 
-      <SearchResults
-        isPending={isPending}
-        users={searchResults || []}
-        searchQuery={searchQuery}
-        moreResults={!!pagination?.nextPage}
-      />
+      {showDropdown && (
+        <SearchResults
+          isPending={isPending}
+          users={searchResults || []}
+          searchQuery={searchQuery}
+          moreResults={!!pagination?.nextPage}
+        />
+      )}
     </div>
   );
 };

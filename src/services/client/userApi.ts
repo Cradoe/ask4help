@@ -9,4 +9,7 @@ export const userClientRequest = {
 
   miniSearch: (query: string) =>
     clientRequest().get(`/users/search?limit=5&searchQuery=${query}`),
+
+  search: (query: string) =>
+    clientRequest().get(`/users/search?searchQuery=${query}`),
 };
