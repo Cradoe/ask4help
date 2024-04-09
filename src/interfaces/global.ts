@@ -56,6 +56,7 @@ export interface SettingsMenuItem {
 export interface Pagination {
   page?: number;
   limit?: number;
+  total?: number;
   hasNextPage?: boolean;
   previousPage?: number;
   nextPage?: number;

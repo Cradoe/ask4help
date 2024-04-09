@@ -9,10 +9,7 @@ export const UserAccountProfile = () => {
   const { data: user, isPending } = useAccount();
 
   return (
-    <div
-      className="flex items-center gap-x-1 xl:gap-x-3 text-black focus:outline-2 "
-      aria-haspopup="menu"
-    >
+    <div className="flex items-center gap-x-1 xl:gap-x-3 text-black focus:outline-2 ">
       {/* loading state  */}
       {isPending && (
         <>
