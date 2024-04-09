@@ -44,11 +44,11 @@ export const FeedbackWidget = () => {
                 <AiOutlineClose />
               </button>
             </div>
-            <div className="text-sm">
+            {/* <div className="text-sm">
               {isSubmitted
                 ? "Your insights are instrumental in shaping our beta version and enhancing the user experience for everyone. We appreciate your contribution to our continuous improvement process."
                 : "Please share your thoughts, suggestions, and any issues you encountered while using our beta version. Your feedback will help  us improve and create a better experience for all users."}
-            </div>
+            </div> */}
           </div>
           {!isSubmitted && (
             <div className="bg-white p-10 pt-0 rounded-b-3xl mt-0">
