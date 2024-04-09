@@ -11,6 +11,7 @@ export interface SopTask {
   returnEndDate: string;
   createdAt: string;
   status: string;
+  user?: User;
 }
 
 export interface SopDocument {

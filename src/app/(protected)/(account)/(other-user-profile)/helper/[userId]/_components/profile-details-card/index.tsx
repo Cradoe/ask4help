@@ -6,6 +6,7 @@ import { Skeleton } from "components/skeleton";
 import { useRedirectFromHelperToRolePage, useUserDetails } from "hooks/user";
 import { useParams } from "next/navigation";
 import { SopReviewTaskBoard } from "./sop-task/sop-review-task-board";
+import { CtaButton } from "./cta-button";
 
 export const DetailsCard = () => {
   const params = useParams();
@@ -49,6 +50,8 @@ export const DetailsCard = () => {
               </div>
             )}
           </div>
+
+          <CtaButton />
         </div>
       </div>
     </div>

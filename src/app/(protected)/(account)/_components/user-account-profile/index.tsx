@@ -32,7 +32,7 @@ export const UserAccountProfile = () => {
             />
           </div>
           <div>
-            <div className="text-sm leading-3">
+            <div className="text-sm capitalize">
               {user?.firstName} {user?.lastName}
             </div>
             <Link

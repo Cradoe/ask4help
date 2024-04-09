@@ -15,11 +15,11 @@ export const Messages = ({ messages }: { messages: Message[] }) => {
       {groupedChats?.map((group, index: number) => (
         <div key={index}>
           <div className="grid grid-cols-[1fr,auto,1fr] justify-content items-center mb-4">
-            <div className="bg-[#C5C5C5] h-px"></div>
-            <div className="text-xs bg-neutral-200 rounded-full px-4 py-2">
+            <div className="bg-[#C5C5C5]/50 h-px"></div>
+            <div className="text-xs bg-neutral-200/60 text-black/60 rounded-full px-4 py-2">
               {formatDate(group?.date as string)}
             </div>
-            <div className="bg-[#C5C5C5] h-px"></div>
+            <div className="bg-[#C5C5C5]/50 h-px"></div>
           </div>
 
           <div className="flex flex-col gap-10">

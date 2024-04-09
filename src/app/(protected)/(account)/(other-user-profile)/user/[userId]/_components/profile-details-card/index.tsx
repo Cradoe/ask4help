@@ -5,6 +5,7 @@ import { useCountConnections } from "hooks/connections";
 import { Skeleton } from "components/skeleton";
 import { useRedirectFromUserToRolePage, useUserDetails } from "hooks/user";
 import { useParams } from "next/navigation";
+import { CtaButton } from "./cta-button";
 
 export const DetailsCard = () => {
   const params = useParams();
@@ -47,6 +48,8 @@ export const DetailsCard = () => {
               </div>
             )}
           </div>
+
+          <CtaButton />
         </div>
       </div>
     </div>

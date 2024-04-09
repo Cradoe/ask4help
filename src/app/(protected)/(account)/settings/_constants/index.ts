@@ -8,11 +8,11 @@ export const SETTINGS_MENU_GROUPS: SettingsMenuGRoup[] = [
         title: "Basic Info",
         href: "/settings/account/basic-info",
       },
-      {
-        title: "Privacy",
-        href: "/settings/account/privacy",
-        comingSoon: true,
-      },
+      // {
+      //   title: "Privacy",
+      //   href: "/settings/account/privacy",
+      //   comingSoon: true,
+      // },
       {
         title: "Password/Security",
         href: "/settings/account/security",

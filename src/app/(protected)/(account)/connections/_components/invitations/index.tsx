@@ -23,7 +23,7 @@ export const Invitations = () => {
             className="bg-secondary-50 px-3 md:px-6 py-1.5 rounded-full text-xs lg:text-sm hover:bg-secondary-500 hover:text-white"
             href="/connections/active"
           >
-            Connections
+            My connections
           </Link>
           <Link
             className="bg-secondary-50 px-3 md:px-8 py-1.5 rounded-full text-xs lg:text-sm  hover:bg-secondary-500 hover:text-white"

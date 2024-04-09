@@ -35,7 +35,7 @@ export const InterestSearch = () => {
         What are you searching for?
       </h2>
       <p className="text-xs md:text-sm">
-        We&apos;ll match you with the perfect {!user && "people"}{" "}
+        We will match you with the perfect {!user && "people"}{" "}
         {user?.role === UserRole.USER && "advisor"}{" "}
         {user?.role === UserRole.HELPER && "students"} based on your interests
         and preferences.

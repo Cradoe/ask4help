@@ -27,6 +27,13 @@ export const useSearchForMiniUsers = () => {
     enabled: !!searchQuery,
   });
 
+  // clear form when user navigate to another page
+  useEffect(() => {
+    if (searchQuery) {
+      setSearchQuery("");
+    }
+  }, [pathname]);
+
   useEffect(() => {
     if (searchQuery) {
       setShowDropdown(true);
