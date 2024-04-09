@@ -71,7 +71,8 @@ export const FeedbackForm = ({ onSuccess }: { onSuccess?: Function }) => {
       <div className="text-sm">
         <Button
           type="submit"
-          className="h-14 "
+          className="h-12 w-32 text-sm"
+          size="sm"
           radius="rounded-full focus:rounded-full"
           variant="secondary"
           isLoading={isSubmitting}
