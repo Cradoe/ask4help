@@ -8,7 +8,7 @@ import { useLogout } from "hooks/auth";
 import { UserAccountProfile } from "../user-account-profile";
 import { HeaderMenu } from "interfaces";
 import { PiChatCircleTextBold } from "react-icons/pi";
-import { ConnectionIcon } from "../sidebar/connection-icon";
+import { ConnectionIcon } from "../connection-icon";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";

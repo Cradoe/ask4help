@@ -1,10 +1,8 @@
-import { InferType } from "yup";
 import { clientRequest } from "./clientRequest.service";
-import { sendMessageValidationSchema } from "validations";
 
 export const messageClientRequest = {
-  sendMessage: (payload: InferType<typeof sendMessageValidationSchema>) =>
-    clientRequest().post({ url: "messages", payload }),
+  uploadAttachment: (payload: FormData) =>
+    clientRequest().post({ url: "real-time/chat/upload", payload }),
 
   getChatLists: (query?: string) => {
     if (query) {

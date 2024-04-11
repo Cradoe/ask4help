@@ -14,6 +14,9 @@ export const taskClientRequest = {
     payload: InferType<typeof sopReviewTaskValidationSchema>
   ) => clientRequest().patch({ url: `sop/tasks/${sopTaskId}`, payload }),
 
+  closeTask: (sopTaskId: string) =>
+    clientRequest().patch({ url: `sop/tasks/close/${sopTaskId}` }),
+
   getAll: (page?: number) => clientRequest().get(`sop/tasks?page=${page}`),
 
   getOne: (taskId: string) => clientRequest().get(`sop/tasks/${taskId}`),

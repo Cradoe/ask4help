@@ -3,6 +3,8 @@ import { Message } from "interfaces";
 import { MessageStatus } from "lib/enum";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
+import { sendMessageValidationSchema } from "validations";
+import { InferType } from "yup";
 
 const socket = io(process.env.NEXT_PUBLIC_WS_URL!);
 
@@ -61,8 +63,10 @@ export const useWebSocket = ({ receiverId }: { receiverId: string }) => {
     }
   }, [user, receiverId]);
 
-  const sendMessage = ({ content }: { content: string }) => {
-    socket.emit("message", { senderId: user?.id, receiverId, content });
+  const sendMessage = (
+    message: InferType<typeof sendMessageValidationSchema>
+  ) => {
+    socket.emit("message", { senderId: user?.id, receiverId, message });
   };
 
   const sendTypingEvent = ({ isTyping }: { isTyping: boolean }) => {

@@ -51,10 +51,10 @@ export const EditProfilePicture = ({
   }, [currentPhoto]);
 
   return (
-    <div className="absolute bottom-0 right-0">
+    <div className="absolute -bottom-1 md:bottom-0 -right-4 md:right-0">
       <button
         onClick={() => setShowModal(true)}
-        className="font-medium text-xl bg-neutral-200 rounded-full p-2 text-gray-600 focus:outline-secondary-500"
+        className="font-medium text-xl bg-neutral-200 rounded-full p-1 md:p-2 text-gray-600 focus:outline-secondary-500"
         aria-label="Edit profile photo"
       >
         <CiEdit aria-hidden="true" />

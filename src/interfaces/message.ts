@@ -5,6 +5,7 @@ export interface Message {
   id: string;
   sender?: Partial<User>;
   content: string;
+  mimeType?: string;
   createdAt?: string;
   status: MessageStatus;
 }
@@ -18,5 +19,6 @@ export interface ChatListItem {
 
 export interface ChatLastMessage {
   content: string;
+  mimeType?: string;
   createdAt: string;
 }

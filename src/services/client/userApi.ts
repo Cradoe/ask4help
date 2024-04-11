@@ -6,10 +6,21 @@ export const userClientRequest = {
   getCountries: () => clientRequest().get("/country"),
 
   getInterests: () => clientRequest().get("/interest"),
+  getAdvisorInterests: () => clientRequest().get("/interest/advisor"),
 
   miniSearch: (query: string) =>
     clientRequest().get(`/users/search?limit=5&searchQuery=${query}`),
 
-  search: (query: string) =>
-    clientRequest().get(`/users/search?searchQuery=${query}`),
+  search: ({ query, interests }: { query?: string; interests?: string }) => {
+    let searchParams = "search=true";
+    if (query) {
+      searchParams += `&searchQuery=${query}`;
+    }
+
+    if (interests) {
+      searchParams += `&interests=${interests}`;
+    }
+
+    return clientRequest().get(`/users/search?${searchParams}`);
+  },
 };

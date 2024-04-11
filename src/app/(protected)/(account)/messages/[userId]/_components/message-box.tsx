@@ -8,6 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosSend } from "react-icons/io";
 import { sendMessageValidationSchema } from "validations";
 import { InferType } from "yup";
+import { SendAttachment } from "./send-attachment";
 
 export const MessageBox = ({
   sendMessage,
@@ -29,19 +30,28 @@ export const MessageBox = ({
 
   return (
     <form className="grid grid-cols-[80%_1fr] md:block relative md:h-32 md:border md:border-slate-400 md:rounded-3xl px-1">
-      <Textarea
-        className="h-10 md:h-14 resize-none md:border-none md:focus:outline-transparent mt-0 pt-0"
-        placeholder="Write a message ..."
-        value={watch("content")}
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-          setValue("content", e.target.value)
-        }
-        onKeyUp={() => sendTypingEvent({ isTyping: true })}
-        onBlur={() => sendTypingEvent({ isTyping: false })}
-      />
+      <div>
+        <Textarea
+          className="h-10 md:h-14 resize-none md:border-none md:focus:outline-transparent mt-0 pt-0"
+          placeholder="Write a message ..."
+          value={watch("content")}
+          onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+            setValue("content", e.target.value)
+          }
+          onKeyUp={() => sendTypingEvent({ isTyping: true })}
+          onBlur={() => sendTypingEvent({ isTyping: false })}
+        />
+        <div className=" md:hidden">
+          <SendAttachment sendMessage={sendMessage} />
+        </div>
+      </div>
 
       <div className="px-4 flex justify-between items-center">
-        <div></div>
+        <div>
+          <div className="hidden md:block">
+            <SendAttachment sendMessage={sendMessage} />
+          </div>
+        </div>
         <button
           type="submit"
           className={clsx(

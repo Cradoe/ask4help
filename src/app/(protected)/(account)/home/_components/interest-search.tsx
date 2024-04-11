@@ -23,9 +23,11 @@ export const InterestSearch = () => {
   } = useForm();
 
   const sendToServer: SubmitHandler<InferType<any>> = (data) => {
+    console.log("data", data);
+
     if (!data?.interests) return;
 
-    router.push(`/connections?interests=${data?.interests}`);
+    router.push(`/search?interests=${data?.interests}`);
   };
 
   const { data: user } = useAccount();
@@ -60,10 +62,12 @@ export const InterestSearch = () => {
                 );
               }}
               options={
-                interests?.map((interest: Interest) => ({
-                  label: interest.name,
-                  value: interest.id,
-                })) || []
+                interests
+                  ?.filter((interest) => interest?.role !== user?.role)
+                  ?.map((interest: Interest) => ({
+                    label: interest.name,
+                    value: interest.id,
+                  })) || []
               }
             />
           </div>

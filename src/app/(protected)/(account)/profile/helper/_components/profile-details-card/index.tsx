@@ -17,12 +17,12 @@ export const DetailsCard = () => {
 
   return (
     <div>
-      <div className="h-36 rounded-t-3xl relative before:absolute before:left-0 before:top-0 before:w-full before:h-36 before:bg-cover-image-pattern before:bg-no-repeat before:bg-cover before:bg-center before:z-10 bg-secondary-500/80 before:rounded-t-3xl"></div>
-      <div className="bg-white px-10 relative pb-32 pt-3 rounded-b-3xl">
+      <div className="h-36 rounded-t-3xl relative before:absolute before:left-0 before:top-0 before:w-full before:h-36 before:bg-cover-image-pattern before:bg-no-repeat before:bg-cover before:bg-center before:z-10 bg-black before:rounded-t-3xl"></div>
+      <div className="bg-white px-2 md:px-10 relative pb-32 pt-3 rounded-b-3xl">
         <div className="flex items-center justify-between gap-x-1 xl:gap-x-3 text-black focus:outline-2 relative">
           <ProfilePicture profilePicture={user?.profilePicture} />
 
-          <div className="pl-36 leading-3">
+          <div className="pt-2 md:pt-0 md:pl-36 leading-3">
             {isLoadingUser && <Skeleton height={20} width={150} />}
             <div className="text-xl">
               {user?.firstName} {user?.lastName}

@@ -8,3 +8,4 @@ export * from "./useSopDocument";
 export * from "./useMyReviewedSops";
 export * from "./useGetDraftSopReviews";
 export * from "./useUpdateSopTask";
+export * from "./useCloseSopTask";

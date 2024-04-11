@@ -27,7 +27,7 @@ export const UserProfilePicture = ({
             "flex items-center justify-center text-white",
             { "p-3": size === "sm" },
             { "p-5": size === "md" },
-            { "p-8": size === "lg" }
+            { "p-5 md:p-8": size === "lg" }
           )}
         >
           <FaUser
@@ -35,7 +35,7 @@ export const UserProfilePicture = ({
               placeholderClassName,
               { "text-base": size === "sm" },
               { "text-base": size === "md" },
-              { "text-5xl": size === "lg" }
+              { "text-2xl md:text-5xl": size === "lg" }
             )}
           />
         </div>

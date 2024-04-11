@@ -3,7 +3,6 @@ import { UserProfilePicture } from "components/profile-picture";
 import { ChatListItem } from "interfaces";
 import { getTimeFromDate } from "lib/util";
 import Link from "next/link";
-import { FaEllipsisH } from "react-icons/fa";
 
 export const UserContact = ({ contact }: { contact: ChatListItem }) => {
   return (
@@ -44,7 +43,12 @@ export const UserContact = ({ contact }: { contact: ChatListItem }) => {
           )}
         </div>
         <div className="text-gray-500 text-xs flex items-end justify-between">
-          <span>{contact?.lastMessage?.content?.substring(0, 40)}...</span>
+          <span>
+            {contact?.lastMessage?.mimeType
+              ? "Sent file attachment".substring(0, 40)
+              : contact?.lastMessage?.content?.substring(0, 40)}
+            ...
+          </span>
           <span className="w-24">
             {getTimeFromDate(contact?.lastMessage?.createdAt)}
           </span>

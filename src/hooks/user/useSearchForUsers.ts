@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 export const useSearchForUsers = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
+  const interests = searchParams.get("interests") || undefined;
   const [searchQuery, setSearchQuery] = useState<string>();
 
   useEffect(() => {
@@ -19,11 +20,14 @@ export const useSearchForUsers = () => {
     data: User[];
     pagination: Pagination;
   }>({
-    queryKey: ["users", "search", searchQuery],
+    queryKey: ["users", "search", searchQuery, interests],
     queryFn: () => {
-      return clientRequest.user.search(searchQuery || "");
+      return clientRequest.user.search({
+        query: searchQuery,
+        interests,
+      });
     },
-    enabled: !!searchQuery,
+    enabled: !!searchQuery || !!interests,
   });
 
   return {

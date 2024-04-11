@@ -30,11 +30,11 @@ export const FeedbackForm = ({ onSuccess }: { onSuccess?: Function }) => {
   > = (data) => saveFeedback({ data });
 
   return (
-    <form onSubmit={handleSubmit(sendToServer)} className="mt-6">
+    <form onSubmit={handleSubmit(sendToServer)} className="mt-3">
       <Textarea
         label="Suggestions"
         labelClassName="font-medium"
-        className="h-24 resize-none"
+        className="h-12 resize-none"
         value={watch("suggestion")}
         onChange={(e) => setValue("suggestion", e?.target?.value)}
         showRequiredAsterik
@@ -43,8 +43,8 @@ export const FeedbackForm = ({ onSuccess }: { onSuccess?: Function }) => {
 
       <div className="text-sm mt-3">Which feature will you find useful?</div>
       <p className="text-gray-500 text-xs">(You can select multiple choice)</p>
-      <div className="my-5">
-        <div className="h-56 overflow-y-auto">
+      <div className="my-3">
+        <div className="h-48 overflow-y-auto text-sm">
           {/* loading state  */}
           {isLoadingOptions &&
             [...new Array(10)]?.map((_, index) => (
@@ -68,10 +68,10 @@ export const FeedbackForm = ({ onSuccess }: { onSuccess?: Function }) => {
         )}
       </div>
 
-      <div className="text-sm">
+      <div className="text-sm mt-2">
         <Button
           type="submit"
-          className="h-12 w-32 text-sm"
+          className="h-11 w-36"
           size="sm"
           radius="rounded-full focus:rounded-full"
           variant="secondary"

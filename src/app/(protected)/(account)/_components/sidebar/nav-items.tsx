@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import { FiBell } from "react-icons/fi";
 import { GrHomeRounded } from "react-icons/gr";
 import { PiChatCircleTextBold } from "react-icons/pi";
-import { ConnectionIcon } from "./connection-icon";
+import { ConnectionIcon } from "../connection-icon";
 import { UserRole } from "lib/enum";
 import { NavItem } from "./nav-item";
 import { LuFilePlus2 } from "react-icons/lu";

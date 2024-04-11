@@ -13,10 +13,10 @@ export const Sidebar = () => {
       <div className="text-xs space-y-5">
         <div className="flex gap-2 justify-center ">
           <Link
-            href="/legal/agreement"
+            href="/legal/terms-and-conditions"
             className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
-            User Agreement
+            Terms &amp; conditions
           </Link>
           <span>|</span>
           <Link
@@ -27,13 +27,13 @@ export const Sidebar = () => {
           </Link>
         </div>
         <div className="flex gap-2 justify-center ">
-          <Link
+          {/* <Link
             href="/legal/cookie-policy"
             className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
             Cookie Policy
           </Link>
-          <span>|</span>
+          <span>|</span> */}
           <Link
             href="/legal/support"
             className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"

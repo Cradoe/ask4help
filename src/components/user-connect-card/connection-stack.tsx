@@ -29,6 +29,7 @@ export const ConnectionStack = ({ mutualUsers }: { mutualUsers: User[] }) => {
           <div className="hidden md:block">
             <StackedConnectionImages profilePictures={profilePictures} />
           </div>
+
           <span className="text-gray-600">
             {`Connected with ${connectedNames
               .map((user) => user.name)

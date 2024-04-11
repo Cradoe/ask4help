@@ -45,11 +45,11 @@ export const SopReviews = () => {
 
   return (
     <section
-      className="rounded-3xl bg-white px-12 pt-10 pb-16 space-y-4"
+      className="rounded-3xl bg-white px-3 md:px-12 pt-10 pb-16 space-y-4"
       id="sop-reviews"
     >
       <div className="flex items-center justify-between">
-        <h2 className={clsx("text-xl", archivo.className)}>SOP reviews</h2>
+        <h2 className={clsx("md:text-xl", archivo.className)}>SOP reviews</h2>
       </div>
 
       <div className="pt-5 space-y-2 lg:w-[50vw]">

@@ -17,7 +17,7 @@ export const SearchForm = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <form action="" className="w-[22.1rem]">
+      <form action="" className="w-full md:w-[22.1rem]">
         <DebouncedInput
           value={searchQuery || ""}
           onChange={(value) => setSearchQuery(value?.toString())}

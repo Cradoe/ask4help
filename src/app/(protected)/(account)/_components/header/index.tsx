@@ -27,7 +27,7 @@ export const Header = () => {
     <header className="w-full">
       <nav className="flex items-center justify-between block w-full">
         <Link
-          href="/"
+          href="/home"
           className=" focus:outline-secondary-500 focus:outline-2 rounded block"
         >
           <Image
@@ -51,10 +51,14 @@ export const Header = () => {
           <UserDropdown />
         </div>
 
-        <div className="block flex-none lg:hidden">
-          <MobileHeaderMenu menu={navLinks} />
+        <div className="flex gap-4 items-center lg:hidden">
+          <Notifications />
+          <MobileHeaderMenu />
         </div>
       </nav>
+      <div className="md:hidden">
+        <SearchForm />
+      </div>
     </header>
   );
 };

@@ -35,7 +35,7 @@ export const NewTaskForm = ({ onSuccess }: { onSuccess?: Function }) => {
 
       <Textarea
         label="Description"
-        placeholder="Tell us about you"
+        placeholder="Tell us about this SOP task"
         error={errors.description}
         className="h-32"
         value={watch("description")}

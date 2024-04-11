@@ -20,7 +20,7 @@ export const SearchResults = ({
     <div>
       {searchQuery && (
         <div
-          className={`absolute top-[110%] w-[120%] right-0 z-30 bg-white rounded-xl shadow-lg py-1  focus:outline-none pb-5`}
+          className={`absolute top-[110%] w-full md:w-[120%] right-0 z-50 bg-white rounded-xl shadow-lg py-1  focus:outline-none pb-5`}
           role="menu"
           aria-orientation="vertical"
         >
