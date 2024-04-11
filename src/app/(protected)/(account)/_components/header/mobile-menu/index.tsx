@@ -32,7 +32,7 @@ export const MobileHeaderMenu = () => {
       },
       {
         title: "My profile",
-        path: getPersonalProfileUrl(user?.role),
+        path: getPersonalProfileUrl(user?.role!),
         icon: <FaUser />,
       },
       {

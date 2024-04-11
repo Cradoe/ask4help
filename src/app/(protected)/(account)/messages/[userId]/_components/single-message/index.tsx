@@ -16,8 +16,6 @@ export const SingleMessage = ({
 }: {
   message: Message | undefined;
 }) => {
-  if (!message) return null;
-
   const params = useParams();
   const receiverId: string = params.userId as string;
 
@@ -29,6 +27,8 @@ export const SingleMessage = ({
     receiverId,
     message,
   });
+
+  if (!message) return null;
 
   return (
     <div className={`flex justify-start`}>

@@ -27,21 +27,22 @@ export default function Home() {
             </p>
             <p>
               This Website is owned and operated by Ask4Help (referred to as
-              “We,” “Our,” “Us” or “Ask4Help”) while “You,” “Your,” “User” and
-              “Client” refers to the person who log on to this website in
-              connection with the use of our services or whose information
-              Ask4Help receives in connection with the services provided through
-              its platform.
+              &lsquo;We,&rsquo; &lsquo;Our,&rsquo; &lsquo;Us&rsquo; or
+              &lsquo;Ask4Help&rsquo;) while &lsquo;You,&rsquo;
+              &lsquo;Your,&rsquo; &lsquo;User&rsquo; and &lsquo;Client&rsquo;
+              refers to the person who log on to this website in connection with
+              the use of our services or whose information Ask4Help receives in
+              connection with the services provided through its platform.
             </p>
             <p>
               Kindly visit/examine our Terms and Conditions, Privacy Policy and
               other policies available on the Website (collectively referred to
-              as the “Terms”) that govern the access of the Website and use of
-              the Platform. By accepting these Terms, you acknowledge, accept,
-              consent, and undertake to be bound by, comply and adhere to the
-              Terms and if you do not agree to these Terms, you are not entitled
-              to the use of this Website and any use thereafter shall be
-              unauthorised.
+              as the &lsquo;Terms&rsquo;) that govern the access of the Website
+              and use of the Platform. By accepting these Terms, you
+              acknowledge, accept, consent, and undertake to be bound by, comply
+              and adhere to the Terms and if you do not agree to these Terms,
+              you are not entitled to the use of this Website and any use
+              thereafter shall be unauthorised.
             </p>
           </div>
 
@@ -167,11 +168,11 @@ export default function Home() {
               any nature. Hence, we make no representations or warranties of any
               kind, whether expressed or implied. The user understands and
               agrees that our services, the use of our website and
-              information/materials/contents downloaded is at the user's own
-              discretion and that the user will be solely responsible for any
-              damage to the user, the user's computer system, electronic device
-              or any loss of data that results from the download of such
-              material or data.
+              information/materials/contents downloaded is at the user&apos;s
+              own discretion and that the user will be solely responsible for
+              any damage to the user, the user&apos;s computer system,
+              electronic device or any loss of data that results from the
+              download of such material or data.
             </p>
           </div>
           <div className="space-y-4">
