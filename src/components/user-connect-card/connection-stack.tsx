@@ -4,15 +4,15 @@ import { StackedConnectionImages } from "./stacked-connection-images";
 
 export const ConnectionStack = ({ mutualUsers }: { mutualUsers: User[] }) => {
   const connectedNames = useMemo(() => {
-    return mutualUsers.slice(0, 2).map((user) => ({
+    return mutualUsers.slice(0, 1).map((user) => ({
       name: `${user.firstName} ${user.lastName}`,
       profilePicture: user?.profilePicture,
     }));
   }, [mutualUsers]);
 
   const othersText = useMemo(() => {
-    if (mutualUsers.length > 2) {
-      return ` and ${mutualUsers.length - 2} others you know`;
+    if (mutualUsers.length > 1) {
+      return ` and ${mutualUsers.length - 1} others`;
     }
     return "";
   }, [mutualUsers]);

@@ -22,7 +22,7 @@ export const Messages = ({ messages }: { messages: Message[] }) => {
             <div className="bg-[#C5C5C5]/50 h-px"></div>
           </div>
 
-          <div className="flex flex-col gap-10 pb-3">
+          <div className="flex flex-col gap-10 pb-3 break-all hyphens-auto">
             {group?.chats?.map((message: Message | undefined, idx: number) => (
               <SingleMessage message={message} key={idx} />
             ))}

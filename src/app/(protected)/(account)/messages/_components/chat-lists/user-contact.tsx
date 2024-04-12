@@ -42,7 +42,7 @@ export const UserContact = ({ contact }: { contact: ChatListItem }) => {
             </>
           )}
         </div>
-        <div className="text-gray-500 text-xs flex items-end justify-between">
+        <div className="text-gray-500 text-xs flex items-end justify-between break-all hyphens-auto">
           <span>
             {contact?.lastMessage?.mimeType
               ? "Sent file attachment".substring(0, 40)

@@ -38,7 +38,7 @@ export const Table = ({
       <div className={`overflow-auto sm:-mx-6 lg:-mx-8 `}>
         <div className="align-middle inline-block w-full sm:px-6 lg:px-8">
           <div className="rounded-lg overflow-auto border-[#D4D4D8] border divide-y divide-[#D4D4D8]">
-            <div className="overflow-auto z-10 w-full">
+            <div className="overflow-auto z-10  lg:max-w-[58vw]">
               <table
                 className="w-full divide-y divide-[#D4D4D8]"
                 // @ts-ignore

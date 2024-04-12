@@ -45,6 +45,7 @@ export const MobileHeaderMenu = () => {
         path: "/connections",
         icon: <ConnectionIcon />,
       },
+
       {
         title: "SOP Tasks",
         path: "/tasks",

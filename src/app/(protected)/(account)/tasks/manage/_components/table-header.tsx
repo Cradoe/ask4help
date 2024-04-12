@@ -15,9 +15,10 @@ export const TableHeader = [
       return (
         <Link
           href={`/tasks/manage/${row?.original?.id}`}
-          className="underline text-secondary-500"
+          className="underline text-secondary-500 w-36 truncate block"
         >
-          {value}
+          {value} lorefl oreflorefl oreflorefloreflor efloreflo reflorefl
+          oreflore florefloref loref
         </Link>
       );
     },
