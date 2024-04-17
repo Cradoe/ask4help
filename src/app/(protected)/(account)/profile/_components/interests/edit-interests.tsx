@@ -44,7 +44,7 @@ export const EditInterestsModal = () => {
       </button>
       <Modal
         show={showModal}
-        modalTitle="Education goal"
+        modalTitle="Interests"
         onCloseCallback={() => setShowModal(false)}
       >
         <form onSubmit={handleSubmit(sendToServer)} className="mt-6">

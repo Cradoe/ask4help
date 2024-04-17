@@ -21,12 +21,9 @@ export const scrollToElement = (
 
 export const validateEnvironmentVariables = () => {
   const requiredEnvironmentVariables = [
-    "GOOGLE_SHEETS_SERVICE_ACCOUNT",
-    "GOOGLE_SHEETS_PRIVATE_KEY",
-    "GOOGLE_SHEETS_SUBSCRIBERS_ID",
-    "GOOGLE_SHEETS_SUBSCRIBERS_PAGE",
     "NEXT_PUBLIC_API_BASE_URL",
     "NEXT_PUBLIC_WS_URL",
+    "NEXT_PUBLIC_SUPPORT_EMAIL",
   ];
   const missingEnvironmentVariables = [] as string[];
 

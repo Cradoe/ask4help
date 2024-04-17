@@ -17,6 +17,7 @@ import { useAccount } from "hooks/account";
 
 interface Menu extends HeaderMenu {
   icon: ReactElement;
+  external?: boolean;
 }
 const menu: Menu[] = [
   {
@@ -36,8 +37,9 @@ const menu: Menu[] = [
   },
   {
     title: "Support",
-    path: "#",
+    path: `mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`,
     icon: <MdOutlineContactSupport />,
+    external: true,
   },
 ];
 
@@ -83,6 +85,7 @@ export const UserDropdown = () => {
                 justifyContent="justify-start"
                 className="px flex gap-3 w-full md:h-12 text-sm border-transparent hover:bg-gray-100"
                 variant="transparent"
+                target={item?.external ? "_blank" : ""}
               >
                 <span className="text-base">{item.icon}</span>
                 {item?.title}

@@ -16,7 +16,7 @@ export const EducationGoals = () => {
     <section className="rounded-3xl bg-white px-3 md:px-12 pt-10 pb-16 space-y-4">
       <div className="flex items-center justify-between">
         <h2 className={clsx("md:text-xl", archivo.className)}>
-          Education Goal
+          Educational Goals
         </h2>
       </div>
 

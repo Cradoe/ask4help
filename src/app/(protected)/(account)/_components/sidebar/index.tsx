@@ -13,6 +13,8 @@ export const Sidebar = () => {
       <div className="text-xs space-y-5">
         <div className="flex gap-2 justify-center ">
           <Link
+            target="_blank"
+            referrerPolicy="no-referrer"
             href="/legal/terms-and-conditions"
             className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
@@ -20,6 +22,8 @@ export const Sidebar = () => {
           </Link>
           <span>|</span>
           <Link
+            target="_blank"
+            referrerPolicy="no-referrer"
             href="/legal/privacy-policy"
             className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
@@ -35,7 +39,9 @@ export const Sidebar = () => {
           </Link>
           <span>|</span> */}
           <Link
-            href="/legal/support"
+            href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`}
+            target="_blank"
+            referrerPolicy="no-referrer"
             className="hover:underline hover:text-secondary-500  focus:outline-2 focus:outline-secondary-500 rounded px-1"
           >
             Support

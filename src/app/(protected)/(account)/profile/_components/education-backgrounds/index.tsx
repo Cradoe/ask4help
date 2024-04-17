@@ -19,7 +19,7 @@ export const EducationBackgrounds = () => {
     <section className="rounded-3xl bg-white px-3 md:px-12 pt-10 pb-16 space-y-4">
       <div className="flex items-center justify-between flex-wrap">
         <h2 className={clsx("md:text-xl", archivo.className)}>
-          Education Background
+          Educational Background
         </h2>
 
         <AddEducationBackgroundModal />

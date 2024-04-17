@@ -14,6 +14,7 @@ export const LinkButton = (props: ButtonProps) => {
     justifyContent = "justify-center",
     size = "lg",
     radius = "rounded lg:rounded-md focus:rounded",
+    target,
     ...rest
   } = props;
 
@@ -45,6 +46,8 @@ export const LinkButton = (props: ButtonProps) => {
     <>
       <Link
         href={href}
+        target={target}
+        referrerPolicy="no-referrer"
         onClick={(e) => {
           onClick?.(e);
         }}
