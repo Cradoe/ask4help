@@ -7,16 +7,20 @@ type Menu = {
 
 const menu: Menu[] = [
   {
-    title: "Home",
-    path: "/",
-  },
-  {
     title: "About us",
     path: "/#about",
   },
   {
     title: "FAQs",
     path: "/#faqs",
+  },
+  {
+    title: "Terms & conditions",
+    path: "/legal/terms-and-conditions",
+  },
+  {
+    title: "Privacy policy",
+    path: "/legal/privacy-policy",
   },
 ];
 

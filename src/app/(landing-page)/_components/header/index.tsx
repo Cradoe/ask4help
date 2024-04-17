@@ -6,8 +6,13 @@ import { LinkButton } from "components/link-button";
 import { scrollToElement } from "lib/util";
 import { HEADER_MENU } from "lib/constants";
 import { HeaderMenu } from "interfaces";
+import { getCookie } from "lib/cookie";
+import { useMemo } from "react";
+import { usePathname } from "next/navigation";
 
 export const Header = () => {
+  const isLoggedIn = useMemo(() => getCookie("token"), []);
+  const pathname = usePathname();
   return (
     <header className="bg-secondary-600">
       <nav className="relative flex items-center justify-between px-wrapper md:px-wrapper-md lg:px-wrapper-lg xl:px-wrapper-xl 3xl:px-wrapper-3xl 4xl:px-wrapper-4xl py-4">
@@ -31,7 +36,9 @@ export const Header = () => {
             <li key={item.title}>
               <Link
                 href={item.path}
-                onClick={scrollToElement}
+                onClick={(e) =>
+                  pathname === "/" ? scrollToElement(e) : () => {}
+                }
                 className="text-white hover:text-white/80 hover:underline  focus:outline-primary-600 focus:outline-2 rounded px-2"
               >
                 {item.title}
@@ -41,21 +48,30 @@ export const Header = () => {
         </ul>
 
         <div className="hidden md:flex items-center gap-2">
-          <LinkButton
-            href="/login"
-            variant="transparent"
-            radius="rounded-full"
-            className="border-transparent text-white hover:border-primary-500 lg:w-36"
-          >
-            Log in
-          </LinkButton>
-          <LinkButton
-            href="/get-started/user"
-            radius="rounded-full"
-            className="lg:w-36"
-          >
-            <span>Sign up</span>
-          </LinkButton>
+          {isLoggedIn ? (
+            <LinkButton href="/home" radius="rounded-full" className="lg:w-36">
+              <span>Home</span>
+            </LinkButton>
+          ) : (
+            <>
+              {" "}
+              <LinkButton
+                href="/login"
+                variant="transparent"
+                radius="rounded-full"
+                className="border-transparent text-white hover:border-primary-500 lg:w-36"
+              >
+                Log in
+              </LinkButton>
+              <LinkButton
+                href="/get-started/user"
+                radius="rounded-full"
+                className="lg:w-36"
+              >
+                <span>Sign up</span>
+              </LinkButton>
+            </>
+          )}
         </div>
 
         <div className="block flex-none md:hidden">
