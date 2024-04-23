@@ -26,16 +26,14 @@ jobs:
             cd ask4help_frontend
             cat << EOF > .env
 
-            
-
             NEXT_PUBLIC_API_BASE_URL='${{secrets.NEXT_PUBLIC_API_BASE_URL}}'
             NEXT_PUBLIC_WS_URL='${{secrets.NEXT_PUBLIC_WS_URL}}'
             NEXT_PUBLIC_SUPPORT_EMAIL='${{secrets.NEXT_PUBLIC_SUPPORT_EMAIL}}'
             EOF
 
             echo "Generated .env file with dynamic values from environment variables or defaults"
-            
+
             git pull origin dev
             npm install
-            npm run build
+
 
