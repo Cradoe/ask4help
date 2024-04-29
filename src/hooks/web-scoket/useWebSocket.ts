@@ -6,7 +6,8 @@ import io from "socket.io-client";
 import { sendMessageValidationSchema } from "validations";
 import { InferType } from "yup";
 
-const socket = io("wss://api.ask4help.help/api");
+const socket = io("wss://api.ask4help.help"); // TODO:: Remove after debugging
+// const socket = io(process.env.NEXT_PUBLIC_WS_URL!);
 
 export const useWebSocket = ({ receiverId }: { receiverId: string }) => {
   const { data: user } = useAccount();
