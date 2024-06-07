@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { TOASTER_PROPS } from "lib/constants";
 import { ProviderWrappers } from "components/provider-wrappers";
 import { validateEnvironmentVariables } from "lib/util";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export { metadata } from "./meta";
 
@@ -22,6 +23,7 @@ export default function RootLayout({
           {children}
         </ProviderWrappers>
       </body>
+      <GoogleAnalytics gaId="G-CW8NZQDRXK" />
     </html>
   );
 }

@@ -9,4 +9,5 @@ export type ButtonProps = {
   justifyContent?: string;
   size?: "sm" | "md" | "lg";
   radius?: string;
+  target?: string;
 };

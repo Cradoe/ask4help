@@ -7,7 +7,9 @@ import { clientRequest } from "services/client";
 import { InferType } from "yup";
 import { resetPasswordValidationSchema } from "validations";
 
-type MutationProp = { data: InferType<typeof resetPasswordValidationSchema> };
+type MutationProp = {
+  data: InferType<typeof resetPasswordValidationSchema>;
+};
 
 export const useResetPassword = () => {
   const router = useRouter();

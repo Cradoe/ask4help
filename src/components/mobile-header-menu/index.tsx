@@ -4,13 +4,15 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useMobileHeader } from "hooks/common";
 import { HeaderMenu } from "interfaces";
 import { HEADER_MENU } from "lib/constants";
+import { getCookie } from "lib/cookie";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import { TfiClose } from "react-icons/tfi";
 
 export const MobileHeaderMenu = () => {
+  const isLoggedIn = useMemo(() => getCookie("token"), []);
   const { isOpen, toggleMobileMenu } = useMobileHeader();
   return (
     <>
@@ -61,7 +63,7 @@ export const MobileHeaderMenu = () => {
                       <Link
                         href={item.path}
                         onClick={toggleMobileMenu}
-                        className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
+                        className=" focus:outline-primary-600 focus:outline-2 rounded"
                       >
                         {item.title}
                       </Link>
@@ -71,25 +73,39 @@ export const MobileHeaderMenu = () => {
                     <hr className="border-gray-500 my-8" />
                   </li>
 
-                  <li className="py-2 transition-colors">
-                    <Link
-                      href="/login"
-                      onClick={toggleMobileMenu}
-                      className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
-                    >
-                      Login
-                    </Link>
-                  </li>
+                  {isLoggedIn ? (
+                    <li className="py-2 transition-colors">
+                      <Link
+                        href="/home"
+                        onClick={toggleMobileMenu}
+                        className=" focus:outline-primary-600 focus:outline-2 rounded"
+                      >
+                        Home
+                      </Link>
+                    </li>
+                  ) : (
+                    <>
+                      <li className="py-2 transition-colors">
+                        <Link
+                          href="/login"
+                          onClick={toggleMobileMenu}
+                          className=" focus:outline-primary-600 focus:outline-2 rounded"
+                        >
+                          Login
+                        </Link>
+                      </li>
 
-                  <li className="py-2 transition-colors">
-                    <Link
-                      href="/get-started/user"
-                      onClick={toggleMobileMenu}
-                      className="focus:outline-none focus:ring-primary-600 focus:ring-2 rounded"
-                    >
-                      Sign up
-                    </Link>
-                  </li>
+                      <li className="py-2 transition-colors">
+                        <Link
+                          href="/get-started/user"
+                          onClick={toggleMobileMenu}
+                          className=" focus:outline-primary-600 focus:outline-2 rounded"
+                        >
+                          Sign up
+                        </Link>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </Dialog.Panel>

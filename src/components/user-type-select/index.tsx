@@ -1,8 +1,9 @@
 "use client";
 
 import clsx from "clsx";
+import { useEscapeKeyListener, useOnClickOutside } from "hooks/common";
 import Image from "next/image";
-import { useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { TfiAngleDown } from "react-icons/tfi";
 
 const options = [
@@ -30,12 +31,19 @@ export const UserTypeSelect = ({
 }: any) => {
   const [value, setValue] = useState<string>("student");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   const handleSelect = (value: string) => {
     setValue(value);
     setShowDropdown(false);
     onChange(value);
   };
+
+  // close when user clicks outside of the parent div
+  useOnClickOutside(ref, () => setShowDropdown(false));
+
+  // close when user presses escape button
+  useEscapeKeyListener(() => setShowDropdown(false));
 
   return (
     <div className="py-3">
@@ -49,11 +57,11 @@ export const UserTypeSelect = ({
         </div>
       )}
 
-      <div className="relative mt-1 rounded-md">
+      <div className="relative mt-1 rounded-md" ref={ref}>
         <button
           type="button"
           onClick={() => setShowDropdown((prev) => !prev)}
-          className={`mt-2 outline-0 placeholder-[#828282] flex justify-between items-center w-full h-12  text-sm rounded-md py-2 border border-slate-300 focus:ring-1 focus:ring-primary-500  focus:outline-none px-4 ${
+          className={`mt-2 outline-0 placeholder-[#828282] flex justify-between items-center w-full h-12  text-sm rounded-md py-2 border border-slate-300 focus:outline-1 focus:outline-primary-500   px-4 ${
             className ? className : "text-gray-600"
           }`}
         >

@@ -19,11 +19,15 @@ export const Button = (props: ButtonProps) => {
 
   const variantClass = () => {
     if (variant === "primary") {
-      return "bg-primary-600 hover:bg-primary-600/80 focus:ring-secondary-600";
+      return "bg-primary-600 hover:bg-primary-600/80 focus:outline-secondary-600";
     } else if (variant === "secondary") {
-      return "text-white bg-secondary-500 hover:bg-secondary-500/80 focus:ring-secondary-500";
+      return "text-white bg-secondary-500 hover:bg-secondary-500/80 focus:outline-secondary-500";
+    } else if (variant === "neutral") {
+      return "text-[#neutral] bg-neutral-400 hover:bg-neutral-400/80 focus:outline-neutral-400";
+    } else if (variant === "danger") {
+      return "text-white bg-[#EF6D44] hover:bg-[#EF6D44]/80 focus:outline-[#F44616]";
     } else if (variant === "transparent") {
-      return "bg-transparent border border-[#D1D1D1] focus:ring-primary-600";
+      return "bg-transparent border border-[#D1D1D1] focus:outline-primary-600";
     } else {
       return "text-dark bg-white hover:bg-primary-100 border border-[#D1D1D1]";
     }
@@ -47,7 +51,7 @@ export const Button = (props: ButtonProps) => {
       onClick={onClick}
       disabled={isLoading || disabled}
       className={clsx(
-        "transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 font-medium  text-sm text-center flex items-center focus:ring-offset-2",
+        "transition-all duration-300 ease-in-out  focus:outline-2 font-medium  text-sm text-center flex items-center focus:outline-offset-2",
         archivo.className,
         justifyContent,
         radius,

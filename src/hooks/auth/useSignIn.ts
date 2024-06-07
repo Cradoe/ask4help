@@ -43,9 +43,23 @@ export const useSignIn = () => {
         setCookie("role", user?.role!);
 
         if (user?.role === UserRole.USER) {
-          router.push("/dashboard");
+          // check if user has set up education background
+          if (
+            !user?.educationBackground ||
+            user?.educationBackground?.length === 0
+          ) {
+            router.push("/profile-setup/background");
+          } else if (
+            !user?.educationGoal ||
+            user?.educationGoal?.length === 0
+          ) {
+            // check if user has set up education goal
+            router.push("/profile-setup/goal");
+          } else {
+            router.push("/home");
+          }
         } else if (user?.role === UserRole.HELPER) {
-          router.push("/helper/dashboard");
+          router.push("/home");
         } else {
           // unknown/lost user
           toast.error("Access denied!");

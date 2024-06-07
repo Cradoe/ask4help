@@ -1,4 +1,9 @@
-export type ButtonVariant = "primary" | "secondary" | "transparent";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "transparent"
+  | "neutral"
+  | "danger";
 
 export type ButtonProps = {
   onClick?: () => void;

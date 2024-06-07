@@ -12,7 +12,7 @@ export const CtaButton = () => {
       return {
         title: "Sign Up",
         caption: "Don't have an account?",
-        href: "/register",
+        href: "/get-started/user",
       };
     } else if (pathname === "/register") {
       return {

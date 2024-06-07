@@ -3,6 +3,8 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
+import { getCookie } from "lib/cookie";
+import { getUserTimezone } from "lib/util";
 import { toast } from "react-hot-toast";
 
 const service = (baseURL = "") => {
@@ -12,10 +14,17 @@ const service = (baseURL = "") => {
     headers: {
       Accept: "*/*",
       "Access-Control-Allow-Methods": "*",
+      Timezone: getUserTimezone(),
     },
   });
 
   service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    // get token from cookie
+    const token = getCookie("token");
+    if (token) {
+      // if token is present, add it to headers as Authorization
+      config.headers!["Authorization"] = `Bearer ${token}`;
+    }
     return config;
   });
 
@@ -29,6 +38,14 @@ const service = (baseURL = "") => {
         return Promise.reject("No internet connection");
       } else {
         const errors = error?.response?.data;
+
+        // check if statusCode is 401, unauthorized
+        // @ts-ignore
+        if (errors?.statusCode === 401) {
+          location.href = "/login";
+          return;
+          // @ts-ignore
+        }
 
         // @ts-ignore
         let serverErrors = errors?.errors;
@@ -59,6 +76,7 @@ const service = (baseURL = "") => {
             );
           }
         }
+
         return Promise.reject(errors);
       }
     }
